@@ -1,0 +1,38 @@
+.box{
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 4px;
+    max-width: 90%;
+    min-height: 300px;
+    margin-bottom: 100px;
+}
+
+.top{
+    color:#c2c2c2;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    height: 35px;
+    margin-top: 10px;
+}
+span:not(.time){
+    /* color:red; */
+}
+.time{
+    font-size: 12px;
+}
+
+.body{
+    margin-top: 10px;
+}
+
+.boxItem{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    color: #888;
+    cursor: pointer;
+}
+a{
+    display: inline-block;text-decoration: none;color: red;
+    
+}
