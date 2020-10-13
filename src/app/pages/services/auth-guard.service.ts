@@ -11,16 +11,22 @@ export class AuthGuardService implements CanActivate {
   }//constructor
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
-    if(state.url.includes("/pages/login")){
-      return true;
-    }
-    if (this.authSrv.tokenValid) return true;
-
     let params = {
       queryParams: {
         return: state.url
       }
     };
+    if(this.authSrv.tokenValid&&state.url.includes("/pages/login")){
+      this.router.navigate(["/pages/home"], params);
+      return false;
+    }
+    if(state.url.includes("/pages/login")){
+      return true;
+    }
+    
+    if (this.authSrv.tokenValid) return true;
+
+    
     this.router.navigate(["/pages/login"], params);
     return false;
   }//canActivate

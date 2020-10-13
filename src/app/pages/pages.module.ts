@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages.routing.module.routing';
+import { AccountService } from './services/account.service';
 
 
 @NgModule({
@@ -11,6 +12,6 @@ import { PagesRoutingModule } from './pages.routing.module.routing';
     
   ],
   declarations: [PagesComponent],
-  providers:[]
+  providers:[AccountService]
 })
 export class PagesModule { }

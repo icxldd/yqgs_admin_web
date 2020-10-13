@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-Home',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected accsrc:AccountService) { 
+    this.accsrc.getMyInfo().subscribe(x=>{
+      alert(JSON.stringify(x))
+      // console.log(x)
+    })
+  }
 
   ngOnInit() {
   }

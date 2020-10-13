@@ -2,7 +2,7 @@
     #center{
         position: fixed;
         left: 40%;
-        top: 30%;
+        top: 25%;
     }
     #logo{
         position: relative;
@@ -13,5 +13,21 @@
     #inputContainer{
         position: relative;
         top:1rem;
+    }
+    #buttonContainer{
+        // position: relative;
+        // top: 1rem;
+        text-align: center;
+    }
+    .inputText{
+        margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        #center{
+            position: fixed;
+            left: 30%;
+            top: 25%;
+        }
     }
 }

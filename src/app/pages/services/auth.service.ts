@@ -14,8 +14,7 @@ export class AuthService {
     if (!isPlatformBrowser(this.platformId)) return false;
 
     let hasToken = this.cacheSrv.token ? true : false;
-    let tokenNotExpired = new Date(this.cacheSrv.tokenExpires) > new Date();
-    if (hasToken && tokenNotExpired)
+    if (hasToken )
       return true;
 
     return false;

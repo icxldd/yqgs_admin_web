@@ -2,8 +2,23 @@
   <div id="center">
     <img src="/assets/imgs/logo.png" id="logo"/>
     <div id="inputContainer">
-      <input type="text" (keydown)="onkeydown()" [(ngModel)]="ccc" pInputText > 
-      <button pButton type="button" label="Click" ></button>
+      <div id="input">
+        <!-- <input type="text" (keydown)="onkeydown()" [(ngModel)]="ccc" pInputText >  -->
+
+        <div class="inputText">
+          <label for="username1">Username</label> <br/>
+          <input id="username1" type="username" aria-describedby="username1-help" pInputText [(ngModel)]="requestDTO.PhoneNumber" /> <br/>
+          <!-- <small id="username1-help">Enter your username</small> <br/> -->
+      </div>
+      <div class="inputText">
+        <label for="password1">password</label> <br/>
+        <input id="password1" type="password"  pPassword [(ngModel)]="requestDTO.Token" /> <br/>
+        <!-- <small id="password1-help">Enter your password</small> <br/> -->
     </div>
+      </div>
+      <div id="buttonContainer">
+        <button pButton pRipple type="button" (click)="login()" label="登陆" class="p-button-raised p-button-text"></button>
+        </div>
+  </div>    
   </div>
-</div>
+  </div>
