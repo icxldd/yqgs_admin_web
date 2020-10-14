@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import { Accountdto } from '../../dto/accountdto';
 import { AccountService } from '../../services/account.service';
 import { AppCacheService } from '../../services/app-cache.service';
@@ -12,12 +12,14 @@ import { PagecontrolService } from '../../services/pagecontrol.service';
 export class LoginComponent implements OnInit {
   requestDTO:Accountdto = new Accountdto()
 
-  constructor(protected accsrc:AccountService,protected cacheSrv: AppCacheService,protected pagesrc:PagecontrolService) { }
+  constructor(protected accsrc:AccountService,protected cacheSrv: AppCacheService,protected pagesrc:PagecontrolService,private messageService: MessageService) { }
 
   ngOnInit() {
   }
-  onkeydown(){
-    // console.log(this.ccc);
+  onkeydown(event){
+    if(event.keyCode=="13"){
+      this.login()
+    }
   }
 
 
@@ -25,6 +27,9 @@ export class LoginComponent implements OnInit {
     this.accsrc.login(this.requestDTO).subscribe((x:any)=>{
       this.cacheSrv.token= x.sessionId
       this.pagesrc.gotopage('/pages/home')
+    },err=>{
+      var msg =  err.error.responseStatus.message
+      this.messageService.add({severity:'error', summary: 'Error', detail: msg})
     })
   }
 

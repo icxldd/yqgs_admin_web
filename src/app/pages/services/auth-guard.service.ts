@@ -16,8 +16,8 @@ export class AuthGuardService implements CanActivate {
         return: state.url
       }
     };
-    if(this.authSrv.tokenValid&&state.url.includes("/pages/login")){
-      this.router.navigate(["/pages/home"], params);
+    if(this.authSrv.tokenValid&&document.location.pathname.includes("/pages/login")){
+      this.router.navigate(["/pages/post"], params);
       return false;
     }
     if(state.url.includes("/pages/login")){

@@ -18,11 +18,17 @@
         // position: relative;
         // top: 1rem;
         text-align: center;
+        width: 100%;
     }
     .inputText{
         margin-bottom: 1rem;
     }
 
+    .redText{
+        // color: red;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
     @media screen and (max-width: 600px) {
         #center{
             position: fixed;

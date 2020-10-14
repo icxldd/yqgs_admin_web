@@ -17,15 +17,20 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
-import { HomeComponent } from './pages/components/Home/Home.component';
 import { LoginComponent } from './pages/components/Login/Login.component';
 import {AccordionModule} from 'primeng/accordion';   
 import {PasswordModule} from 'primeng/password';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuModule} from 'primeng/menu';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PagecontrolService } from './pages/services/pagecontrol.service';
 import { AuthInterceptorService } from './pages/services/AuthInterceptor.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { AppConfigService } from './pages/services/AppConfigService';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
+
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
   }
@@ -39,7 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,HomeComponent,LoginComponent
+        AppComponent,LoginComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -62,11 +67,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         ButtonModule,
         TableModule,
         DialogModule,
-        PasswordModule
+        PasswordModule,
+        MenubarModule,MenuModule,ToastModule
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
