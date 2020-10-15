@@ -38,25 +38,6 @@ export class AppComponent {
          label:'内容管理',
          icon:'pi pi-fw pi-file',
          items:[
-            // {
-            //    label:'New',
-            //    icon:'pi pi-fw pi-plus',
-            //    items:[
-            //       {
-            //          label:'Bookmark',
-            //          icon:'pi pi-fw pi-bookmark'
-            //       },
-            //       {
-            //          label:'Video',
-            //          icon:'pi pi-fw pi-video'
-            //       },
-
-            //    ]
-            // },
-            // {
-            //    label:'Delete',
-            //    icon:'pi pi-fw pi-trash'
-            // },
             {
                label:'帖子发布',
                icon:'pi pi-fw pi-list',routerLink:'/pages/post'

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './components/Login/Login.component'
-import { AuthGuardService } from './services/auth-guard.service';
-import { PostComponent } from './components/post/post.component';
+import { Post_Component } from './components/post_/post_.component';
 import { TestComponent } from './components/test/test.component';
 const routes: Routes = [
     {
@@ -11,7 +10,7 @@ const routes: Routes = [
     },
     {
         path: 'post',
-        component: PostComponent,
+        component: Post_Component,
     },
     {
         path: 'test',

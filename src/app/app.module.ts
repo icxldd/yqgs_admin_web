@@ -12,11 +12,6 @@ import { AuthGuardService } from './pages/services/auth-guard.service';
 import { AuthService } from './pages/services/auth.service';
 import { LocalStoreService } from './pages/services/local-store.service';
 import { AppCacheService } from './pages/services/app-cache.service';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { FormsModule } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
 import { LoginComponent } from './pages/components/Login/Login.component';
 import {AccordionModule} from 'primeng/accordion';   
 import {PasswordModule} from 'primeng/password';
@@ -27,9 +22,36 @@ import { PagecontrolService } from './pages/services/pagecontrol.service';
 import { AuthInterceptorService } from './pages/services/AuthInterceptor.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { AppConfigService } from './pages/services/AppConfigService';
-import {ToastModule} from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import {ProductService} from './pages/services/product.service'
 
+
+
+
+
+
+
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {InputTextModule} from 'primeng/inputtext';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ToolbarModule} from 'primeng/toolbar';
+import {RatingModule} from 'primeng/rating';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FormsModule } from '@angular/forms';
+import { Post_Component } from './pages/components/post_/post_.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent
+        AppComponent,LoginComponent,Post_Component
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -68,11 +90,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
