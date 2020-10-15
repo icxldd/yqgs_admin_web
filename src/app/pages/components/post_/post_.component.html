@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="card">
-    <p-toolbar styleClass="p-mb-4">
+    <p-toolbar styleClass="p-mb-4" >
         <ng-template pTemplate="right">
             <button pButton pRipple label="添加" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
             <button pButton pRipple label="删除" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
@@ -33,8 +33,9 @@
                 <th pSortableColumn="postId">帖子ID <p-sortIcon field="postId"></p-sortIcon></th>
                 <th pSortableColumn="pitle">标题 <p-sortIcon field="pitle"></p-sortIcon></th>
                 <th pSortableColumn="description">描述 <p-sortIcon field="description"></p-sortIcon></th>
-                <th pSortableColumn="actionUrl">跳转连接 <p-sortIcon field="actionUrl"></p-sortIcon></th>
+                <th pSortableColumn="actionUrl">跳转链接 <p-sortIcon field="actionUrl"></p-sortIcon></th>
                 <th pSortableColumn="status">状态 <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="weight">排序权重值 <p-sortIcon field="weight"></p-sortIcon></th>
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th>
                   <span style="color:red;">操作</span>
@@ -50,7 +51,8 @@
                 <td>{{product.title}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.actionUrl}}</td>
-                <td>{{product.status}}</td>
+                <td>{{product.status==0?'正常':'已屏蔽'}}</td>
+                <td>{{product.weight}}</td>
                 <td>{{product.createdDate}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)"></button>
@@ -70,12 +72,12 @@
     <ng-template pTemplate="content">
         <div class="p-field">
             <label for="name">title</label>
-            <input type="text" pInputText id="name" [(ngModel)]="product.title" required autofocus />
+            <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="name" [(ngModel)]="product.title" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !product.title">title is required.</small>
         </div>
         <div class="p-field">
             <label for="description">Description</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
+            <textarea id="description" (keydown)="saveProductkeydown($event)" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
         </div>
 
         <div class="p-field">
@@ -95,19 +97,21 @@
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
                 <label for="price">go to url</label>
-                <input type="text" pInputText id="url" [(ngModel)]="product.actionUrl" required autofocus />
-                <small class="p-invalid" *ngIf="submitted && !product.actionUrl">title is required.</small>
+                <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="url" [(ngModel)]="product.actionUrl" required autofocus />
+                <small class="p-invalid" *ngIf="submitted && !product.actionUrl">actionUrl is required.</small>
             </div>
-            <!-- <div class="p-field p-col">
-                <label for="quantity">Quantity</label>
-                <p-inputNumber id="quantity" [(ngModel)]="product.quantity"></p-inputNumber>
-            </div> -->
+            <div class="p-field p-col">
+                <label for="weight">权重值</label>
+
+                <input type="number" (keydown)="saveProductkeydown($event)" pInputText id="weight" [(ngModel)]="product.weight" required autofocus />
+                <!-- <p-inputNumber id="weight" [(ngModel)]="product.weight" (keydown)="saveProductkeydown($event)"></p-inputNumber> -->
+            </div>
         </div>
     </ng-template>
     
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+        <button #save pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
     </ng-template>
 </p-dialog>
 

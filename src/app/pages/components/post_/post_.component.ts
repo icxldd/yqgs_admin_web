@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Post, Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { from, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post_',
@@ -14,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class Post_Component implements OnInit {
 
   
+
   productDialog: boolean;
 
   products: Post[];
@@ -23,6 +22,10 @@ export class Post_Component implements OnInit {
   selectedProducts: Post[];
 
   submitted: boolean;
+
+
+
+
 
   constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
@@ -77,11 +80,18 @@ export class Post_Component implements OnInit {
       this.productDialog = false;
       this.submitted = false;
   }
-  
+
+  @ViewChild('save') save: ElementRef;
+  saveProductkeydown(event){
+    
+    if(event.keyCode==13){
+      this.save.nativeElement.click()
+    }
+  }
   saveProduct() {
       this.submitted = true;
 
-      if (this.product.title.trim()) {
+      if (this.product.title.trim()&&this.product.actionUrl.toString().trim()) {
           if (this.product.postId) {
               this.products[this.findIndexById(this.product.postId)] = this.product;     
               

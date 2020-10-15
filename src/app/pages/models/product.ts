@@ -18,9 +18,10 @@ export interface Post {
     title?:string;
     description?:string;
     avatarUrl?:string;
-    actionUrl?:number;
+    actionUrl?:string;
     status?:number;
     createdDate?:string;
+    weight?:string;
 }
 
 
