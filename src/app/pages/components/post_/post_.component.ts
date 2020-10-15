@@ -3,6 +3,8 @@ import { Post, Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { from, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post_',
@@ -43,8 +45,10 @@ export class Post_Component implements OnInit {
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
               this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-              this.selectedProducts = null;
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+              this.productService.DeleteProducts(JSON.stringify(this.selectedProducts.map(x=>x.postId).join(','))).subscribe(x=>{
+                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+                this.selectedProducts = null;
+              })
           }
       });
   }
@@ -60,9 +64,11 @@ export class Post_Component implements OnInit {
           header: 'Confirm',
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
-              // this.products = this.products.filter(val => val.id !== product.id);
-              // this.product = {};
-              // this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
+              this.products = this.products.filter(val => val.postId !== product.postId);
+              this.productService.DeleteProducts(product.postId).subscribe(x=>{
+                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
+              })
+              this.product = {};
           }
       });
   }
@@ -75,22 +81,27 @@ export class Post_Component implements OnInit {
   saveProduct() {
       this.submitted = true;
 
-      // if (this.product.name.trim()) {
-      //     if (this.product.id) {
-      //         this.products[this.findIndexById(this.product.id)] = this.product;                
-      //         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
-      //     }
-      //     else {
-      //         this.product.PostId = this.createId();
-      //         // this.product.image = 'product-placeholder.svg';
-      //         this.products.push(this.product);
-      //         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
-      //     }
+      if (this.product.title.trim()) {
+          if (this.product.postId) {
+              this.products[this.findIndexById(this.product.postId)] = this.product;     
+              
+              
+              this.productService.PutProducts(this.product)
 
-      //     this.products = [...this.products];
-      //     this.productDialog = false;
-      //     this.product = {};
-      // }
+              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+          }
+          else {
+              this.product.postId = this.createId();
+              this.productService.PostProducts(this.product).subscribe(x=>{
+                this.products.push(x.post);
+              })
+              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
+          }
+
+          this.products = [...this.products];
+          this.productDialog = false;
+          this.product = {};
+      }
   }
 
   findIndexById(id: string): number {
