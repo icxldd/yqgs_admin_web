@@ -20,6 +20,7 @@ import {MenuModule} from 'primeng/menu';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PagecontrolService } from './pages/services/pagecontrol.service';
 import { AuthInterceptorService } from './pages/services/AuthInterceptor.service';
+import { ImageUploadOssService } from './pages/services/ImageUploadOss.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { AppConfigService } from './pages/services/AppConfigService';
 import {ProductService} from './pages/services/product.service'
@@ -94,7 +95,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

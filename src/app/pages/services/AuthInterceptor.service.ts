@@ -14,9 +14,11 @@ export class AuthInterceptorService implements HttpInterceptor {
     let token = this.cacheSrv.token;
     if (token) {
       let secureHeaders = req.headers;
-        const headerName = 'X-ss-id';
+        const headerName = 'X-ss-pid';
+        const headopt = 'X-ss-opt';
         if (token !== null && !req.headers.has(headerName)) {
             req = req.clone({ headers: req.headers.set(headerName, token) });
+            req = req.clone({ headers: req.headers.set(headopt, 'perm') });
         }
         return next.handle(req);
     }

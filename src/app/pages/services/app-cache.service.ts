@@ -29,9 +29,6 @@ export class AppCacheService {
   set token(vl: string) {
     AppCacheService.getInstance().token = vl;
     this.localStoreSrv.setItem(c_token, vl);
-    
-    var cookie=new MyCookie();
-    cookie.set('ss-id',vl);
   }
 
   get token(): string {

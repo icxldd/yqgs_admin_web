@@ -3,6 +3,8 @@ import { Post, Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { ImageUploadOssService } from '../../services/ImageUploadOss.service';
+
 
 @Component({
   selector: 'app-post_',
@@ -11,7 +13,6 @@ import { MessageService } from 'primeng/api';
 })
 export class Post_Component implements OnInit {
 
-  
 
   productDialog: boolean;
 
@@ -23,16 +24,17 @@ export class Post_Component implements OnInit {
 
   submitted: boolean;
 
+  url:string;
 
 
 
-
-  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService,private osssrc:ImageUploadOssService) { }
 
   ngOnInit() {
       this.productService.getProducts().subscribe((x:any)=>{
         this.products = x.post
       })
+      this.url = 'www.baidu.com'
   }
 
   openNew() {
@@ -96,9 +98,10 @@ export class Post_Component implements OnInit {
               this.products[this.findIndexById(this.product.postId)] = this.product;     
               
               
-              this.productService.PutProducts(this.product)
-
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+              this.productService.PutProducts(this.product).subscribe(x=>{
+                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+              })
+              
           }
           else {
               this.product.postId = this.createId();
@@ -113,7 +116,18 @@ export class Post_Component implements OnInit {
           this.product = {};
       }
   }
+  onBasicUploadAuto(event){
+    this.osssrc.PostImageUploadOss(event.files[0]).subscribe(x=>{
+        this.product.avatarUrl = x.url
+        this.messageService.add({severity:'success', summary: 'Successful', detail: '图片上传成功', life: 3000});
+    })
 
+  }
+
+  
+  onUpload(event){
+   
+  }
   findIndexById(id: string): number {
       let index = -1;
       for (let i = 0; i < this.products.length; i++) {

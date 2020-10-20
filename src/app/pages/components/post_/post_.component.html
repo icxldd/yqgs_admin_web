@@ -68,20 +68,20 @@
     </p-table>
 </div>
 
-<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Post Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="name">title</label>
+            <label for="name">title：</label>
             <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="name" [(ngModel)]="product.title" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !product.title">title is required.</small>
         </div>
         <div class="p-field">
-            <label for="description">Description</label>
+            <label for="description">Description：</label>
             <textarea id="description" (keydown)="saveProductkeydown($event)" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
         </div>
 
         <div class="p-field">
-            <label class="p-mb-3">status</label>
+            <label class="p-mb-3">Status：</label>
             <div class="p-formgrid p-grid">
                 <div class="p-field-radiobutton p-col-6">
                     <p-radioButton id="category1" name="category" value="0" [(ngModel)]="product.status"></p-radioButton>
@@ -96,22 +96,31 @@
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="price">go to url</label>
+                <label for="price">Go To Url：</label>
                 <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="url" [(ngModel)]="product.actionUrl" required autofocus />
                 <small class="p-invalid" *ngIf="submitted && !product.actionUrl">actionUrl is required.</small>
             </div>
             <div class="p-field p-col">
-                <label for="weight">权重值</label>
+                <label for="weight">权重值：</label>
 
                 <input type="number" (keydown)="saveProductkeydown($event)" pInputText id="weight" [(ngModel)]="product.weight" required autofocus />
                 <!-- <p-inputNumber id="weight" [(ngModel)]="product.weight" (keydown)="saveProductkeydown($event)"></p-inputNumber> -->
             </div>
+            <div class="p-field p-col">
+                <label for="weight">标题图片：</label>
+                <p-fileUpload customUpload="true" mode="basic" name="demo[]"  accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" (uploadHandler)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+                <img [src]="product.avatarUrl" style="width: 150px;height: 150px;" *ngIf="product.avatarUrl"/>
+            </div>
+            
+
+
         </div>
     </ng-template>
     
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button #save pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+
     </ng-template>
 </p-dialog>
 
