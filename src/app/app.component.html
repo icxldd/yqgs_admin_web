@@ -6,7 +6,12 @@
       <!-- <input type="text" pInputText placeholder="Search"> -->
       
       <p-menu #menu [popup]="true" [model]="items2"></p-menu>
-      <img src="assets/imgs/avatar.png" style="width: 40px;height: 40px;position: relative;right: 2rem;bottom:0.5rem;cursor: pointer;" (click)="menu.toggle($event)"/>
+      <!-- <img src="assets/imgs/avatar.png" style="width: 40px;height: 40px;position: relative;right: 2rem;bottom:0.5rem;cursor: pointer;" (click)="menu.toggle($event)"/> -->
+      
+      <img [src]="obj.avatarUrl" style="width: 40px;height: 40px;position: relative;right: 2.5rem;bottom:0.5rem;cursor: pointer;" (click)="menu.toggle($event)"/>
+      <span style="position: relative;right: 2rem;bottom:0.5rem;">
+        {{obj.displayName}}
+      </span>
       <!-- <button type="button" pButton icon="pi pi-list" label="Show" (click)="menu.toggle($event)"></button> -->
     </p-menubar>
     <div id="topPage">

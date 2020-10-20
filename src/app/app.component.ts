@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from './pages/services/account.service';
 import {MenuItem} from 'primeng/api';
 import { AppCacheService } from './pages/services/app-cache.service';
+import { Accounts } from './pages/models/account';
 
 @Component({
     selector: 'app-root',
@@ -11,18 +12,17 @@ import { AppCacheService } from './pages/services/app-cache.service';
 export class AppComponent {
 
     
-  items: MenuItem[];
-  items2:MenuItem[];
+  items: MenuItem[]
+  items2:MenuItem[]
   isShowTop:boolean
+
+  obj:Accounts=new Accounts()
 
   get getIsShowTop(): boolean {
     return !location.pathname.includes("/pages/login")
   }
   constructor(protected accsrc:AccountService,protected tokensrc:AppCacheService) { 
-    this.accsrc.getMyInfo().subscribe(x=>{
-      // alert(JSON.stringify(x))
-      // console.log(x)
-    })
+
   }
 
   ngOnInit() {
@@ -30,6 +30,9 @@ export class AppComponent {
           location.href="/pages/post"
       }
     this.initdata()
+    this.accsrc.getMyInfo().subscribe((x:any)=>{
+      this.obj = x.account
+    })
   }
 
   initdata(){
