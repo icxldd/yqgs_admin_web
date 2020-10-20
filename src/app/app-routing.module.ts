@@ -4,31 +4,6 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './pages/services/auth-guard.service';
 const routes: Routes = [
     {
-        path: 'he-nuo',
-        loadChildren: () => import('./he-nuo/he-nuo.module').then(m => m.HeNuoModule)
-    },
-    {
-        path: 'zi-die',
-        loadChildren: () => import('./zi-die/zi-die.module').then(m => m.ZiDieModule)
-    },
-    {
-        path: 'rui-kang',
-        loadChildren: () => import('./rui-kang/rui-kang.module').then(m => m.RuiKangModule)
-    },
-    {
-        path: 'lv-e',
-        loadChildren: () => import('./lv-e/lv-e.module').then(m => m.LvEModule)
-    }
-    ,
-    {
-        path: 'hui-jing',
-        loadChildren: () => import('./hui-jing/hui-jing.module').then(m => m.HuiJingModule)
-    },
-    {
-        path: 'open-source',
-        loadChildren: () => import('./open-source/open-source.module').then(m => m.OpenSourceModule)
-    },
-    {
         path: 'home',
         component:AppComponent,
         canActivate: [AuthGuardService]
