@@ -14,7 +14,7 @@
       </span>
       <!-- <button type="button" pButton icon="pi pi-list" label="Show" (click)="menu.toggle($event)"></button> -->
     </p-menubar>
-    <div id="topPage">
+    <div id="topPage" [ngStyle]="{'margin': getIsShowTop?'0 20px':'0'}">
     <router-outlet></router-outlet>
   </div>
   </div>

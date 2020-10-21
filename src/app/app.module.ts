@@ -53,6 +53,12 @@ import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
 import { Post_Component } from './pages/components/post_/post_.component';
+import { LiveModule } from './live/live.module';
+
+
+
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { LiveComponent } from './live/live.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -67,7 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component
+        AppComponent,LoginComponent,Post_Component,LiveComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -91,7 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule
     ],
     providers: [
         httpInterceptorProviders,

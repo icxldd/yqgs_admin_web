@@ -19,7 +19,7 @@ export class AppComponent {
   obj:Accounts=new Accounts()
 
   get getIsShowTop(): boolean {
-    return !location.pathname.includes("/pages/login")
+    return !location.pathname.includes("/pages/login")&&!location.pathname.includes("/live")
   }
   constructor(protected accsrc:AccountService,protected tokensrc:AppCacheService) { 
 
@@ -32,6 +32,8 @@ export class AppComponent {
     this.initdata()
     this.accsrc.getMyInfo().subscribe((x:any)=>{
       this.obj = x.account
+    },(e)=>{
+      // location.href="/pages/login"
     })
   }
 

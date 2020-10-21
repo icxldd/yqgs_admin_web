@@ -9,10 +9,13 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
     },
     {
+        path: 'live',
+        loadChildren: () => import('./live/live.module').then(m => m.LiveModule),
+    },
+    {
         path: 'pages',
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
         canActivate: [AuthGuardService]
-      
     },
     
     { path: '', pathMatch: 'full', redirectTo: 'home' },
