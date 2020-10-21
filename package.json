@@ -52,6 +52,8 @@
     "videojs-contrib-quality-levels": "^2.0.9",
     "videojs-flash": "^2.2.1",
     "videojs-hls-quality-selector": "^1.1.4",
+    "xgplayer": "^2.12.2",
+    "xgplayer-hls": "^2.3.36",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

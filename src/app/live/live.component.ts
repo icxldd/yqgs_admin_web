@@ -3,6 +3,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { liveDto } from './dto/live';
 import videojs from 'video.js'
+import Player from 'xgplayer'
+import HlsPlayer from 'xgplayer-hls'
+
 // import 'videojs-contrib-hls'
 
 @Component({
@@ -13,7 +16,7 @@ import videojs from 'video.js'
 export class LiveComponent implements OnInit,AfterViewInit {
 
   liveId:string
-  url = 'http://livecast.yangqungongshe.com/live/283e7b855bb841088a4ba105c40d16ba.m3u8'; 
+  url = 'http://livecast.yangqungongshe.com/live/0307819739d44ea083c004dac8b0155f.m3u8'; 
   safeUrl: any;
   live: liveDto
   constructor(private route: ActivatedRoute,private elementRef: ElementRef) {
@@ -21,29 +24,19 @@ export class LiveComponent implements OnInit,AfterViewInit {
 
    }
   ngAfterViewInit(): void {
-    var player = videojs('my-video', {"autoplay":true,});
-    player.play();
-    // var video = document.getElementById('video');
-    // var videoSrc = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
-    // //
-    // // First check for native browser HLS support
-    // //
-    // if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    //   video.src = videoSrc;
-    //   video.addEventListener('loadedmetadata', function() {
-    //     video.play();
-    //   });
-    // //
-    // // If no native HLS support, check if hls.js is supported
-    // //
-    // } else if (Hls.isSupported()) {
-    //   var hls = new Hls();
-    //   hls.loadSource(videoSrc);
-    //   hls.attachMedia(video);
-    //   hls.on(Hls.Events.MANIFEST_PARSED, function() {
-    //     video.play();
-    //   });
-    // }
+
+    let player = new HlsPlayer({
+      id: 'my-video',
+      url: this.url,
+      isLive: true,
+      autoplay: true,
+      closeVideoClick:true,
+      ignores: ['time','progress','play','replay'],
+      playsinline: false,
+      height: window.innerHeight,
+      width: window.innerWidth
+  });
+
 
   }
 
