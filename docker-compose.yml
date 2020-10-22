@@ -3,10 +3,7 @@ version: '3.4'
 services:
 
   angular-ssr-app:
-    container_name: angular-ssr-app-c
-    image: angular-ssr-app:latest
+    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:1022_4
     build:
       context: .
       dockerfile: image/Dockerfile
-    ports:
-      - "4000:4000"

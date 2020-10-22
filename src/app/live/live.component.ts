@@ -32,6 +32,8 @@ export class LiveComponent implements OnInit,AfterViewInit {
           this.live.guildName=x.livecast.guild.displayName
           this.live.pastorName = x.livecast.creator.displayName
           this.live.liveTitle = x.livecast.title
+          // let item:string = x.livecast.hlsPlayUrl
+          // item = item.replace('http','https')
           this.live.pullSteamAdress = x.livecast.hlsPlayUrl
            
           let player = new HlsPlayer({

@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  app-microservice-basic-admin:
+    container_name: app-microservice-basic-admin
+    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:1022_4
+    ports:
+      - "8080:8080"
+    networks:
+      icxl-work:
+        aliases:
+          - yqgs-basicadmin
+    restart: always
+
+
+
+networks:
+  icxl-work:
+   # driver: overlay
+      
