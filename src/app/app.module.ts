@@ -59,6 +59,7 @@ import { LiveModule } from './live/live.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LiveComponent } from './live/live.component';
+import { LiveService } from './live/services/live.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,7 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

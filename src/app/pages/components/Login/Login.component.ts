@@ -10,7 +10,7 @@ import { PagecontrolService } from '../../services/pagecontrol.service';
   styleUrls: ['./Login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  requestDTO:Accountdto = new Accountdto()
+  requestDTO:Accountdto = new Accountdto('','')
 
   constructor(protected accsrc:AccountService,protected cacheSrv: AppCacheService,protected pagesrc:PagecontrolService,private messageService: MessageService) { }
 

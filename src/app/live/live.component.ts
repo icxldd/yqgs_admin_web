@@ -5,6 +5,7 @@ import { liveDto } from './dto/live';
 import videojs from 'video.js'
 import Player from 'xgplayer'
 import HlsPlayer from 'xgplayer-hls'
+import { LiveService } from './services/live.service';
 
 // import 'videojs-contrib-hls'
 
@@ -16,28 +17,39 @@ import HlsPlayer from 'xgplayer-hls'
 export class LiveComponent implements OnInit,AfterViewInit {
 
   liveId:string
-  url = 'http://livecast.yangqungongshe.com/live/0307819739d44ea083c004dac8b0155f.m3u8'; 
   safeUrl: any;
   live: liveDto
-  constructor(private route: ActivatedRoute,private elementRef: ElementRef) {
+  constructor(private route: ActivatedRoute,private liveSrc:LiveService) {
 
 
    }
   ngAfterViewInit(): void {
 
-    let player = new HlsPlayer({
-      id: 'my-video',
-      url: this.url,
-      isLive: true,
-      autoplay: true,
-      closeVideoClick:true,
-      ignores: ['time','progress','play','replay'],
-      playsinline: false,
-      height: window.innerHeight,
-      width: window.innerWidth
-  });
-
-
+    this.route.queryParams.subscribe(p => {
+      this.liveId = p.liveId
+      this.liveSrc.getLiveInfo(this.liveId).then(t=>{
+        t.subscribe((x:any)=>{
+          this.live.guildName=x.livecast.guild.displayName
+          this.live.pastorName = x.livecast.creator.displayName
+          this.live.liveTitle = x.livecast.title
+          this.live.pullSteamAdress = x.livecast.hlsPlayUrl
+           
+          let player = new HlsPlayer({
+           id: 'my-video',
+           url: this.live.pullSteamAdress,
+           isLive: true,
+           autoplay: true,
+           closeVideoClick:true,
+           closeVideoTouch:true,
+           'x5-video-player-fullscreen':true,
+           ignores: ['time','progress','play','replay'],
+           playsinline: true,
+           height: window.innerHeight-64,
+           width: window.innerWidth
+       });
+         })
+      })
+    })
   }
 
   ngOnInit() {
@@ -46,9 +58,7 @@ export class LiveComponent implements OnInit,AfterViewInit {
     this.live.liveTitle='开心'
     this.live.pastorName='icxl'
 
-    this.route.queryParams.subscribe(p => {
-      this.liveId = p.liveId
-    })
+  
     
     
   }

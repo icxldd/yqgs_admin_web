@@ -29,12 +29,13 @@ export class AppComponent {
       if(location.pathname.includes("/home")){
           location.href="/pages/post"
       }
+      if(this.getIsShowTop){
     this.initdata()
     this.accsrc.getMyInfo().subscribe((x:any)=>{
       this.obj = x.account
     },(e)=>{
       // location.href="/pages/login"
-    })
+    })}
   }
 
   initdata(){
