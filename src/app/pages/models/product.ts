@@ -22,6 +22,7 @@ export interface Post {
     status?:number;
     createdDate?:string;
     weight?:string;
+    isFeatured?:string;
 }
 
 

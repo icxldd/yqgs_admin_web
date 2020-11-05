@@ -18,7 +18,7 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
-                <h5 class="p-m-0">Manage Products</h5>
+                <h5 class="p-m-0">Manage Posts</h5>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
@@ -33,9 +33,9 @@
                 <th pSortableColumn="postId">帖子ID <p-sortIcon field="postId"></p-sortIcon></th>
                 <th pSortableColumn="pitle">标题 <p-sortIcon field="pitle"></p-sortIcon></th>
                 <th pSortableColumn="description">描述 <p-sortIcon field="description"></p-sortIcon></th>
-                <th pSortableColumn="actionUrl">跳转链接 <p-sortIcon field="actionUrl"></p-sortIcon></th>
+                <th pSortableColumn="actionUrl" style="width: 20rem">跳转链接 <p-sortIcon field="actionUrl"></p-sortIcon></th>
                 <th pSortableColumn="status">状态 <p-sortIcon field="status"></p-sortIcon></th>
-                <th pSortableColumn="weight">排序权重值 <p-sortIcon field="weight"></p-sortIcon></th>
+                <th pSortableColumn="isFeatured">是否置顶 <p-sortIcon field="weight"></p-sortIcon></th>
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th>
                   <span style="color:red;">操作</span>
@@ -50,9 +50,10 @@
                 <td>{{product.postId}}</td>
                 <td>{{product.title}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.actionUrl}}</td>
+                <!-- <td>{{product.actionUrl | strlimit:"group,link":123:"icxl"}}</td> -->
+                <td>{{product.actionUrl | strlimit}}</td>
                 <td>{{product.status==0?'正常':'已屏蔽'}}</td>
-                <td>{{product.weight}}</td>
+                <td>{{product.isFeatured?"置顶":"不置顶"}}</td>
                 <td>{{product.createdDate}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)"></button>
@@ -71,7 +72,7 @@
 <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Post Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="name">title：</label>
+            <label for="name">标题：</label>
             <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="name" [(ngModel)]="product.title" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !product.title">title is required.</small>
         </div>
@@ -81,7 +82,7 @@
         </div>
 
         <div class="p-field">
-            <label class="p-mb-3">Status：</label>
+            <label class="p-mb-3">状态：</label>
             <div class="p-formgrid p-grid">
                 <div class="p-field-radiobutton p-col-6">
                     <p-radioButton id="category1" name="category" value="0" [(ngModel)]="product.status"></p-radioButton>
@@ -96,16 +97,32 @@
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="price">Go To Url：</label>
+                <label for="price">点击跳转链接：</label>
                 <input type="text" (keydown)="saveProductkeydown($event)" pInputText id="url" [(ngModel)]="product.actionUrl" required autofocus />
                 <small class="p-invalid" *ngIf="submitted && !product.actionUrl">actionUrl is required.</small>
             </div>
-            <div class="p-field p-col">
+            <!-- <div class="p-field p-col">
                 <label for="weight">权重值：</label>
 
                 <input type="number" (keydown)="saveProductkeydown($event)" pInputText id="weight" [(ngModel)]="product.weight" required autofocus />
-                <!-- <p-inputNumber id="weight" [(ngModel)]="product.weight" (keydown)="saveProductkeydown($event)"></p-inputNumber> -->
+                
+            </div> -->
+
+            <div class="p-field">
+                <label class="p-mb-3">是否置顶 ：</label>
+                <div class="p-formgrid p-grid">
+                    <div class="p-field-radiobutton p-col-6">
+                        <p-radioButton id="category11" name="category" [value]="true" [(ngModel)]="product.isFeatured"></p-radioButton>
+                        <label for="category1">置顶</label>
+                    </div>
+                    <div class="p-field-radiobutton p-col-6">
+                        <p-radioButton id="category22" name="category" [value]="false" [(ngModel)]="product.isFeatured"></p-radioButton>
+                        <label for="category2">取消置顶</label>
+                    </div>
+                </div>
             </div>
+
+
             <div class="p-field p-col">
                 <label for="weight">标题图片：</label>
                 <p-fileUpload customUpload="true" mode="basic" name="demo[]"  accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" (uploadHandler)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>

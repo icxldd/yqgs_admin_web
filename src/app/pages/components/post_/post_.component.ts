@@ -59,6 +59,7 @@ export class Post_Component implements OnInit {
   }
 
   editProduct(product: Post) {
+      console.log(product);
       this.product = {...product};
       this.productDialog = true;
   }
@@ -92,7 +93,7 @@ export class Post_Component implements OnInit {
   }
   saveProduct() {
       this.submitted = true;
-
+      
       if (this.product.title.trim()&&this.product.actionUrl.toString().trim()) {
           if (this.product.postId) {
               this.products[this.findIndexById(this.product.postId)] = this.product;     

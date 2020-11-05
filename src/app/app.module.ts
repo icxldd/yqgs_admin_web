@@ -60,6 +60,7 @@ import { LiveModule } from './live/live.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LiveComponent } from './live/live.component';
 import { LiveService } from './live/services/live.service';
+import { StrlimitPipe } from './pipe/strlimit.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,7 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
