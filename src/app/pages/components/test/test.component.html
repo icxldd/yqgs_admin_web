@@ -1,3 +1,13 @@
-<p>
-  test works!
-</p>
+<div id="SearchText">
+
+  <input type="text" (keyup)="keyup($event)" pInputText id="word" [(ngModel)]="str" autofocus />
+</div>
+
+<div id="showText">
+  <div class="DataDiv" *ngFor="let item of datalist">
+    <span>{{item.title}}</span>
+  </div>
+  <!-- <div class="DataDiv">
+    <span>你爱我</span>
+  </div> -->
+</div>

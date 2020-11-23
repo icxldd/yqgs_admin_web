@@ -53,6 +53,9 @@ import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
 import { Post_Component } from './pages/components/post_/post_.component';
+import { TestComponent } from './pages/components/test/test.component';
+
+
 import { LiveModule } from './live/live.module';
 
 
@@ -75,7 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -62,6 +62,12 @@ export class ProductService extends Basichttpclient {
 //       .then(data => { return data; });
 //   }
 
+
+
+  getInformations(skip:number,take:number,word:string):Observable<any>{
+    return this.http.get(this.uriBase+`/test/show?skip=${skip}&take=${take}&word=${word}`,  { headers: this.header})
+  }
+
   getProducts():Observable<any>{
     return this.http.get(this.uriBase+"/module/Post/show",  { headers: this.header})
   }
