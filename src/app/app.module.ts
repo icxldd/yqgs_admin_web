@@ -64,6 +64,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { LiveComponent } from './live/live.component';
 import { LiveService } from './live/services/live.service';
 import { StrlimitPipe } from './pipe/strlimit.pipe';
+import { GuildComponent } from './pages/modules/dashboards/guild/guild.component';
+import { DashboardspipePipe } from './pages/modules/pipes/dashboardspipe.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,DashboardspipePipe
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

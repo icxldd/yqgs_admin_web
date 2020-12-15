@@ -1,0 +1,65 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table #dt [value]="guilds" [rows]="10" [paginator]="true" [globalFilterFields]="['displayName','address']"
+        [(selection)]="selectedguilds" [rowHover]="true" dataKey="guildId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">guild Management</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="DisplayName">教会名称 <p-sortIcon field="DisplayName"></p-sortIcon></th>
+                <th pSortableColumn="Address">教会地址 <p-sortIcon field="Address"></p-sortIcon></th>
+                <th pSortableColumn="IsPublic">教会可搜索是否公开 <p-sortIcon field="IsPublic"></p-sortIcon></th>
+                <th pSortableColumn="JoinMode">加入教会的方式 <p-sortIcon field="JoinMode"></p-sortIcon></th>
+                <th pSortableColumn="Status">教会状态 <p-sortIcon field="Status"></p-sortIcon></th>
+                <th pSortableColumn="OwnerId">教会所属人ID <p-sortIcon field="OwnerId"></p-sortIcon></th>
+
+                <th pSortableColumn="ViolationCount">违规次数 <p-sortIcon field="ViolationCount"></p-sortIcon></th>
+                <th pSortableColumn="MembersCount">成员人数 <p-sortIcon field="MembersCount"></p-sortIcon></th>
+                <th>
+                  <span style="color:red;">操作</span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-guild>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="guild"></p-tableCheckbox>
+                </td>
+                <td>{{guild.guildId}}</td>
+                <td>{{guild.displayName}}</td>
+                <td>{{guild.address}}</td>
+                <td>{{guild.isPublic==0?'公开':'不公开'}}</td>
+                <td>{{guild.joinMode==0?'不允许加入':guild.joinMode==1?'需要所有者或管理员同意':guild.joinMode==2?'直接加入':'直接加入'}}</td>
+                <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
+                <td>{{guild.ownerId}}</td>
+                <td>{{guild.violationCount}}</td>
+                <td>{{guild.membersCount}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{guilds ? guilds.length : 0 }} guilds.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.accsrc.login(this.requestDTO).subscribe((x:any)=>{
       this.cacheSrv.token= x.sessionId
-      this.pagesrc.gotopage('/pages/home')
+      window.location.href ='/pages/home' 
     },err=>{
       var msg =  err.error.responseStatus.message
       this.messageService.add({severity:'error', summary: 'Error', detail: msg})

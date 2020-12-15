@@ -19,131 +19,151 @@ export class AppComponent {
   obj:Accounts=new Accounts()
 
   get getIsShowTop(): boolean {
-    return !location.pathname.includes("/pages/login")&&!location.pathname.includes("/live")
+    return !location.pathname.includes("/pages/login")
   }
   constructor(protected accsrc:AccountService,protected tokensrc:AppCacheService) { 
 
   }
 
   ngOnInit() {
-      if(location.pathname.includes("/home")){
-          location.href="/pages/post"
-      }
+      // if(location.pathname.includes("/home")){
+      //     location.href="/pages/home"
+      // }
       if(this.getIsShowTop){
-    this.initdata()
-    this.accsrc.getMyInfo().subscribe((x:any)=>{
-      this.obj = x.account
-    },(e)=>{
-      // location.href="/pages/login"
-    })}
+         this.initdata()
+         this.accsrc.getMyInfo().subscribe((x:any)=>{
+            this.obj = x.account
+         },(e)=>{
+            // location.href="/pages/login"
+         })}
   }
 
   initdata(){
     this.items = [
       {
-         label:'内容管理',
-         icon:'pi pi-fw pi-file',
+         label:'数据仪表盘',
+         icon:'pi pi-fw pi-globe',
          items:[
             {
-               label:'帖子发布',
-               icon:'pi pi-fw pi-list',routerLink:'/pages/post'
+               label:'教会管理',
+               icon:'pi pi-fw pi-home',routerLink:'/pages/dashboards/guild'
             },
             {
-                label:'测试路由',
-                icon:'pi pi-fw pi-list',routerLink:'/pages/test'
-             }
-         ]
-      },
-      {
-         label:'Edit',
-         icon:'pi pi-fw pi-pencil',
-         items:[
-            {
-               label:'Left',
-               icon:'pi pi-fw pi-align-left'
+               label:'直播',
+               icon:'pi pi-fw pi-video',routerLink:'/pages/dashboards/livecast'
             },
             {
-               label:'Right',
-               icon:'pi pi-fw pi-align-right'
+               label:'通知',
+               icon:'pi pi-fw pi-bell',routerLink:'/pages/dashboards/notification'
             },
             {
-               label:'Center',
-               icon:'pi pi-fw pi-align-center'
-            },
-            {
-               label:'Justify',
-               icon:'pi pi-fw pi-align-justify'
+               label:'讨论',
+               icon:'pi pi-fw pi-comments',routerLink:'/pages/dashboards/discuss'
             },
 
          ]
       },
       {
-         label:'Users',
-         icon:'pi pi-fw pi-user',
+         label:'人工巡查',
+         icon:'pi pi-fw pi-eye',
          items:[
             {
-               label:'New',
-               icon:'pi pi-fw pi-user-plus',
+               label:'教会事务审核',
+               icon:'pi pi-fw pi-home',
 
             },
             {
-               label:'Delete',
-               icon:'pi pi-fw pi-user-minus',
+               label:'举报审核',
+               icon:'pi pi-fw pi-exclamation-triangle',
 
             },
             {
-               label:'Search',
-               icon:'pi pi-fw pi-users',
-               items:[
-                  {
-                     label:'Filter',
-                     icon:'pi pi-fw pi-filter',
-                     items:[
-                        {
-                           label:'Print',
-                           icon:'pi pi-fw pi-print'
-                        }
-                     ]
-                  },
-                  {
-                     icon:'pi pi-fw pi-bars',
-                     label:'List'
-                  }
-               ]
-            }
+               label:'意见反馈',
+               icon:'pi pi-fw pi-external-link',
+
+            },
+            {
+               label:'违规用户',
+               icon:'pi pi-fw pi-user',
+
+            },
+            {
+               label:'违规教会',
+               icon:'pi pi-fw pi-cloud',
+
+            },
+            {
+               label:'垃圾站',
+               icon:'pi pi-fw pi-trash',
+
+            },
+          
+            // {
+            //    label:'Search',
+            //    icon:'pi pi-fw pi-users',
+            //    items:[
+            //       {
+            //          label:'Filter',
+            //          icon:'pi pi-fw pi-filter',
+            //          items:[
+            //             {
+            //                label:'Print',
+            //                icon:'pi pi-fw pi-print'
+            //             }
+            //          ]
+            //       },
+            //       {
+            //          icon:'pi pi-fw pi-bars',
+            //          label:'List'
+            //       }
+            //    ]
+            // }
          ]
       },
-      {
-         label:'Events',
-         icon:'pi pi-fw pi-calendar',
-         items:[
-            {
-               label:'Edit',
-               icon:'pi pi-fw pi-pencil',
-               items:[
-                  {
-                     label:'Save',
-                     icon:'pi pi-fw pi-calendar-plus'
-                  },
-                  {
-                     label:'Delete',
-                     icon:'pi pi-fw pi-calendar-minus'
-                  },
+      // {
+      //    label:'Events',
+      //    icon:'pi pi-fw pi-calendar',
+      //    items:[
+      //       {
+      //          label:'Edit',
+      //          icon:'pi pi-fw pi-pencil',
+      //          items:[
+      //             {
+      //                label:'Save',
+      //                icon:'pi pi-fw pi-calendar-plus'
+      //             },
+      //             {
+      //                label:'Delete',
+      //                icon:'pi pi-fw pi-calendar-minus'
+      //             },
 
-               ]
-            },
-            {
-               label:'Archieve',
-               icon:'pi pi-fw pi-calendar-times',
-               items:[
-                  {
-                     label:'Remove',
-                     icon:'pi pi-fw pi-calendar-minus'
-                  }
-               ]
-            }
-         ]
-      }
+      //          ]
+      //       },
+      //       {
+      //          label:'Archieve',
+      //          icon:'pi pi-fw pi-calendar-times',
+      //          items:[
+      //             {
+      //                label:'Remove',
+      //                icon:'pi pi-fw pi-calendar-minus'
+      //             }
+      //          ]
+      //       }
+      //    ]
+      // }, {
+      //    label:'内容管理',
+      //    icon:'pi pi-fw pi-file',
+      //    items:[
+      //       {
+      //          label:'帖子发布',
+      //          icon:'pi pi-fw pi-list',routerLink:'/pages/post'
+      //       },
+      //       {
+      //           label:'测试路由',
+      //           icon:'pi pi-fw pi-list',routerLink:'/pages/test'
+      //        }
+      //    ]
+      // },
   ];
 
   this.items2=[{
