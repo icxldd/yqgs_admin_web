@@ -6,12 +6,13 @@ import { DiscussComponent } from './discuss/discuss.component';
 import { GuildComponent } from './guild/guild.component';
 import { NotificationComponent } from './notification/notification.component';
 import { LivecastComponent } from './livecast/livecast.component';
+import { DetailGuildComponent } from './guild/detail-guild-component/detail-guild/detail-guild.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardsRoutingModule
   ],
-  declarations: [DashboardsComponent,DiscussComponent,LivecastComponent,NotificationComponent]
+  declarations: [DashboardsComponent,DiscussComponent,LivecastComponent,NotificationComponent,DetailGuildComponent]
 })
 export class DashboardsModule { }

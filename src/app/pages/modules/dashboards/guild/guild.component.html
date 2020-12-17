@@ -6,7 +6,7 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
-                <h5 class="p-m-0">guild Management</h5>
+                <h5 class="p-m-0">Guild Management</h5>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
@@ -22,7 +22,7 @@
                 <th pSortableColumn="DisplayName">教会名称 <p-sortIcon field="DisplayName"></p-sortIcon></th>
                 <th pSortableColumn="Address">教会地址 <p-sortIcon field="Address"></p-sortIcon></th>
                 <th pSortableColumn="IsPublic">教会可搜索是否公开 <p-sortIcon field="IsPublic"></p-sortIcon></th>
-                <th pSortableColumn="JoinMode">加入教会的方式 <p-sortIcon field="JoinMode"></p-sortIcon></th>
+                <th pSortableColumn="guildAuditMode">加入教会的方式 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
                 <th pSortableColumn="Status">教会状态 <p-sortIcon field="Status"></p-sortIcon></th>
                 <th pSortableColumn="OwnerId">教会所属人ID <p-sortIcon field="OwnerId"></p-sortIcon></th>
 
@@ -42,14 +42,14 @@
                 <td>{{guild.displayName}}</td>
                 <td>{{guild.address}}</td>
                 <td>{{guild.isPublic==0?'公开':'不公开'}}</td>
-                <td>{{guild.joinMode==0?'不允许加入':guild.joinMode==1?'需要所有者或管理员同意':guild.joinMode==2?'直接加入':'直接加入'}}</td>
+                <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'所有途径的新加入成员都需要审核':'所有途径的新加入成员都不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
                 <td>{{guild.violationCount}}</td>
                 <td>{{guild.membersCount}}</td>
                 <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button>
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
+                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailGuild(guild)" ></button>
+                    <!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button> -->
                 </td>
             </tr>
         </ng-template>
