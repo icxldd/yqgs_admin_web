@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import {skip, takeUntil, switchMap ,concatMap,tap,map,debounceTime,distinctUntilChanged	 } from 'rxjs/operators'
+import {
+  BehaviorSubject, Observable, Subject, merge,concat,of,from,Subscription,forkJoin	 
+}from 'rxjs'
+
 @Component({
   selector: 'app-detail-guild',
   templateUrl: './detail-guild.component.html',
