@@ -1,4 +1,5 @@
 export class GuildDto {
+    constructor() { }
     guildId:string
     displayName:string
     description:string
