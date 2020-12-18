@@ -7,8 +7,6 @@ export class Basichttpclient {
     public get uriBase(): string {
         return `${this.ur}`;
       }
-
-
       constructor(protected httpClient: HttpClient) {
           //APIURL
         this.ur = environment.APIURL;

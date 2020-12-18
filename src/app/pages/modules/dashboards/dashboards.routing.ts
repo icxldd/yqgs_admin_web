@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApiService } from '../basic/ApiService';
+import { DashboardsService } from '../services/dashboards.service';
 import { DiscussComponent } from './discuss/discuss.component';
 import { DetailGuildComponent } from './guild/detail-guild/detail-guild.component';
 import { GuildComponent } from './guild/guild.component';
@@ -12,9 +14,11 @@ const routes: Routes = [
     },
     {
         path: 'guild-detail/:id',
-        component: DetailGuildComponent
+        component: DetailGuildComponent,
+        resolve:{
+            guildObj:DashboardsService
+        }
     },
-   
     {
         path: 'discuss',
         component: DiscussComponent,
