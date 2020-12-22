@@ -9,7 +9,7 @@ import { GuildDto } from '../dtos/dashboards';
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardsService extends ApiService {
+export class GuildService extends ApiService {
   constructor(private http: HttpClient) {
       super(http)
    }
@@ -20,13 +20,9 @@ export class DashboardsService extends ApiService {
     return this.getGuild(id)
 }
 
-  getGuilds():Observable<any>{
-    return this.http.get(this.uriBase+`/spaadmin/guilds/show`,  { headers: this.header})
-   }
-   getGuild(guildId:string):Observable<any>{
+getGuild(guildId:string):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
-   }
+}
 
 
 }
-

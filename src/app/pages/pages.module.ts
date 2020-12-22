@@ -5,6 +5,7 @@ import { PagesRoutingModule } from './pages.routing.module.routing';
 import { AccountService } from './services/account.service';
 import { DashboardsService } from './modules/services/dashboards.service';
 import { DashboardspipePipe } from './modules/pipes/dashboardspipe.pipe';
+import { GuildService } from './modules/services/guild.service';
 
 
 @NgModule({
@@ -14,6 +15,6 @@ import { DashboardspipePipe } from './modules/pipes/dashboardspipe.pipe';
     
   ],
   declarations: [PagesComponent],
-  providers:[AccountService,DashboardsService]
+  providers:[AccountService,DashboardsService,GuildService]
 })
 export class PagesModule { }

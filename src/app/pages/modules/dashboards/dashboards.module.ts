@@ -7,11 +7,13 @@ import { GuildComponent } from './guild/guild.component';
 import { NotificationComponent } from './notification/notification.component';
 import { LivecastComponent } from './livecast/livecast.component';
 import { DetailGuildComponent } from './guild/detail-guild/detail-guild.component';
+import { CommonmModule } from 'src/app/common/common.module';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardsRoutingModule
+    DashboardsRoutingModule,CommonmModule,PanelModule
   ],
   declarations: [DashboardsComponent,DiscussComponent,LivecastComponent,NotificationComponent,DetailGuildComponent]
 })

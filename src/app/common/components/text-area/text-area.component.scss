@@ -1,0 +1,42 @@
+:host{
+    display: inline-block;
+    #text-area-box{
+        width: 20rem;
+        height: 10rem;
+        background-color: #fff;
+        border-radius: 15px;
+        display: inline-block;
+    }
+
+    // @media screen and (max-width:1210px) {
+    //     #text-area-box{
+    //         width: 16rem;
+    //     }
+    // }
+    // @media screen and (max-width:1400px) {
+    //     #text-area-box{
+    //         width: 16rem;
+    //     }
+    // }
+    #text-area-top{
+        padding-left: 0.5rem;
+        padding-top: 0.5rem;
+        font-weight: bold;
+        color: #888;
+    }
+    #text-area-context{
+        text-align: center;
+        color:#6a7ead;
+        position: relative;
+        top: 1.8rem;
+    }
+    #text-area-unit{
+        display: inline;
+        color: #888;
+    }
+    #text-area-count{
+        display: inline;
+        font-size: 50px;
+
+    }
+}

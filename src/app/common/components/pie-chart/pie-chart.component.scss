@@ -1,0 +1,15 @@
+:host{
+    display: inline-block;
+    #pie-chart-box{
+        width: 600px;height:400px;
+        background-color: #fff;
+        border-radius: 15px;
+        display: inline-block;
+    }
+    @media screen and (max-width:1210px) {
+        #pie-chart-box{
+            width: 550px;
+        }
+    }
+  
+}

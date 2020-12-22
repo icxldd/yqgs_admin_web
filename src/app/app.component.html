@@ -1,7 +1,10 @@
 <div>
     <p-menubar [model]="items" *ngIf="getIsShowTop">
       <ng-template pTemplate="start" >
-        <img src="assets/imgs/logo.png" width="40" height="40" class="p-mr-2" style="position: relative;left:0.5rem;bottom:10px;margin-right: 1.5rem;">
+        
+        <a onclick='javascript:window.history.back();' style="cursor: pointer;">
+          <img src="assets/imgs/logo.png" width="40" height="40" class="p-mr-2" style="position: relative;left:0.5rem;bottom:10px;margin-right: 1.5rem;">
+        </a>
       </ng-template>
       <!-- <input type="text" pInputText placeholder="Search"> -->
       
@@ -14,7 +17,7 @@
       </span>
       <!-- <button type="button" pButton icon="pi pi-list" label="Show" (click)="menu.toggle($event)"></button> -->
     </p-menubar>
-    <div id="topPage" [ngStyle]="{'margin': getIsShowTop?'0 20px':'0'}">
+    <div id="topPage" [ngStyle]="{'margin': getIsShowTop?'0 0px':'0'}">
     <router-outlet></router-outlet>
   </div>
   </div>

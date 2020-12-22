@@ -1,3 +1,61 @@
-<p>
-  detail-guild works!{{id}}
-</p>
+
+<div [ngStyle]="{'background-color': backcolor,'height':'100%'}" class="container">
+  <div class="panel">
+    <p-panel header="今日统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="toDayguildAbuseCount" [from]="toDayguildAbuseCount" class="card"></app-text-area>
+        <app-text-area id="toDayliveUseCount" [from]="toDayliveUseCount" class="card"></app-text-area>
+        <app-text-area id="toDayguildMemberJoinCount" [from]="toDayguildMemberJoinCount" class="card"></app-text-area><br/>
+        <app-pie-chart id="toDayguildBlocCount" [req]="toDayguildBlocCount" class="pieLine"></app-pie-chart>
+        <!-- <app-pie-chart [req]="todayBlocObject" class="pieLine"></app-pie-chart> -->
+      </div>
+    </p-panel>
+
+
+    <p-panel header="总共统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="sumGuildAbuseCount" [from]="sumGuildAbuseCount" class="card"></app-text-area>
+        <app-text-area id="sumLiveUseCount" [from]="sumLiveUseCount" class="card"></app-text-area>
+        <app-text-area id="sumGuildMemberJoinCount" [from]="sumGuildMemberJoinCount" class="card"></app-text-area><br/>
+        <app-pie-chart id="sumguildBlocCount" [req]="sumguildBlocCount" class="pieLine"></app-pie-chart>
+        <!-- <app-pie-chart [req]="todayBlocObject" class="pieLine"></app-pie-chart> -->
+      </div>
+    </p-panel>
+
+    <p-panel header="本月统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-basic-area id="monthJoinCount" [req]="monthJoinCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="monthLivecastCount" [req]="monthLivecastCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="monthAbuseCount" [req]="monthAbuseCount"  class="singleLine"></app-basic-area>
+
+        <!-- <app-multi-area [req]="todayBlocMultiAreaObject" class="multiLine"></app-multi-area>
+        <app-multi-area [req]="todayBlocMultiAreaObject" class="multiLine"></app-multi-area> -->
+
+      </div>
+    </p-panel>
+
+  
+  </div>
+
+  <!-- 
+  <app-text-area [from]="todayJoinMember" class="card"></app-text-area>
+  <app-text-area [from]="todayJoinMember" class="card"></app-text-area>
+  <app-text-area [from]="todayJoinMember" class="card"></app-text-area>
+  <br/>
+  
+  <app-pie-chart [req]="todayBlocObject" class="singleLine"></app-pie-chart>
+  <app-pie-chart [req]="todayBlocObject" class="singleLine"></app-pie-chart>
+  
+  <app-basic-area [req]="todayBlocBasicAreaObject"></app-basic-area>
+  <app-basic-area [req]="todayBlocBasicAreaObject"></app-basic-area>
+
+  <app-multi-area [req]="todayBlocMultiAreaObject"></app-multi-area>
+  <app-multi-area [req]="todayBlocMultiAreaObject"></app-multi-area> -->
+  
+  <!-- <app-pie-chart [req]="todayBlocObject"></app-pie-chart>
+
+  <app-multi-area [req]="todayBlocMultiAreaObject"></app-multi-area>
+  <app-basic-area [req]="todayBlocBasicAreaObject"></app-basic-area>
+   -->
+  
+</div>

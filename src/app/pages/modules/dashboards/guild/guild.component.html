@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="card">
-    <p-table #dt [value]="guilds" [rows]="10" [paginator]="true" [globalFilterFields]="['displayName','address']"
+    <p-table #dt [value]="guilds" [rows]="10" [paginator]="true" [globalFilterFields]="['displayName','address','guildId']"
         [(selection)]="selectedguilds" [rowHover]="true" dataKey="guildId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">

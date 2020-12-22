@@ -58,7 +58,7 @@ import { TestComponent } from './pages/components/test/test.component';
 
 import { LiveModule } from './live/live.module';
 
-
+import {PanelModule} from 'primeng/panel';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LiveComponent } from './live/live.component';
@@ -67,6 +67,7 @@ import { StrlimitPipe } from './pipe/strlimit.pipe';
 import { GuildComponent } from './pages/modules/dashboards/guild/guild.component';
 import { DashboardspipePipe } from './pages/modules/pipes/dashboardspipe.pipe';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { CommonmModule } from './common/common.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -105,7 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule
     ],
     providers: [
         httpInterceptorProviders,
