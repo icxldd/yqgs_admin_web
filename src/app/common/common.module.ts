@@ -5,12 +5,14 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { BasicAreaComponent } from './components/basic-area/basic-area.component';
 import { MultiAreaComponent } from './components/multi-area/multi-area.component';
+import { HlsVideoComponent } from './components/hls-video/hls-video.component';
+import { Mp4VideoComponent } from './components/mp4-video/mp4-video.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [CommonComponent,TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent],
-  exports:[TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent]
+  declarations: [CommonComponent,TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent,HlsVideoComponent,Mp4VideoComponent],
+  exports:[TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent,HlsVideoComponent,Mp4VideoComponent]
 })
 export class CommonmModule { }

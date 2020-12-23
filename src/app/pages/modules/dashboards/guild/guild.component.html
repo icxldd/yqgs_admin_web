@@ -48,8 +48,11 @@
                 <td>{{guild.violationCount}}</td>
                 <td>{{guild.membersCount}}</td>
                 <td>
+                    <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='屏蔽' (click)="setGuildStatus(false)" class="p-button-raised p-button-danger"></button>
+                    <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setGuildStatus(true)" class="p-button-raised p-button-success"></button>
+
+
                     <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailGuild(guild)" ></button>
-                    <!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button> -->
                 </td>
             </tr>
         </ng-template>

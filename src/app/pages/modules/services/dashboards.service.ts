@@ -14,19 +14,20 @@ export class DashboardsService extends ApiService {
       super(http)
    }
 
-   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Observable<Observable<any>> | Promise<Observable<any>> {
-    let id = route.paramMap.get('id');
-    
-    return this.getGuild(id)
-}
-
-  getGuilds():Observable<any>{
+   getGuilds():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guilds/show`,  { headers: this.header})
    }
+
+   getLivecasts():Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/livecasts/show`,  { headers: this.header})
+   }
+
    getGuild(guildId:string):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
    }
 
-
+   setGuildStatus(guildId:string,status:boolean):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
+   }
 }
 

@@ -56,7 +56,7 @@ export class DetailGuildComponent extends DetailBasic implements OnInit {
   monthLivecastCount:BasicAreaComponentReq = new BasicAreaComponentReq();
   monthAbuseCount:BasicAreaComponentReq = new BasicAreaComponentReq();
 
-  todayBlocMultiAreaObject:MultiAreaComponentReq = new MultiAreaComponentReq();
+  monthBlocMultiAreaObject:MultiAreaComponentReq = new MultiAreaComponentReq();
 
 
   constructor(public router: ActivatedRoute) { 
@@ -82,6 +82,7 @@ export class DetailGuildComponent extends DetailBasic implements OnInit {
     self.monthJoinCount = x.guildDetail.currentMonthNewJoinCount;
     self.monthLivecastCount = x.guildDetail.currentMonthLiveCastUseCount;
     self.monthAbuseCount = x.guildDetail.currentMonthGuildAbuseCount;
+    self.monthBlocMultiAreaObject = x.guildDetail.currentMonthGuildBlocCount;
   //   this.todayBlocObject.titleAfterStr="发布次数";
   //   this.todayBlocObject.titlePreStr="今日";
   //   this.todayBlocObject.titleContextStr="通知，讨论，直播";

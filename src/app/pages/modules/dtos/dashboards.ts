@@ -20,6 +20,7 @@ export class livecastDto {
     title:string
     avatarUrl:string
     rtmpPlayUrl:string
+    hlsPlayUrl:string
     recordUrl:string
     status:number //状态。（-2: 已屏蔽; -1: 已删除; 0: 进行中; 1: 未开始; 2: 已结束; 3: 已中断）
     creatorId:string
