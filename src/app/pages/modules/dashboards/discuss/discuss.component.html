@@ -1,3 +1,65 @@
-<p>
-  discuss works!
-</p>
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table #dt [value]="discusss" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','discussId']"
+        [(selection)]="selecteddiscusss" [rowHover]="true" dataKey="discussId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">discuss Management</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="discussId">讨论ID <p-sortIcon field="discussId"></p-sortIcon></th>
+                <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
+                <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
+                <th pSortableColumn="status">讨论状态 <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="creatorId">讨论创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
+                <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
+                <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
+                <th>
+                  <span style="color:red;">操作</span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-discuss>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="discuss"></p-tableCheckbox>
+                </td>
+                <td>{{discuss.guildId}}</td>
+                <td>{{discuss.discussId}}</td>
+                <td>{{discuss.title}}</td>
+                <td><img [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td>{{discuss.createdDate}}</td>
+                <td>{{discuss.beginDate}}</td>
+                <td>{{discuss.endDate}}</td>
+                <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>
+                <td>{{discuss.creatorId}}</td>
+                <td>{{discuss.viewedReceiversCount}}</td>
+                <td>{{discuss.unviewedReceiversCount}}</td>
+                <td>
+                  <button *ngIf="discuss.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-danger"></button>
+                  <button *ngIf="discuss.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-success"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{discusss ? discusss.length : 0 }} discusss.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

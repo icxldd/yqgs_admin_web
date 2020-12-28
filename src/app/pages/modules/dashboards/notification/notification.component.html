@@ -1,3 +1,61 @@
-<p>
-  notification works!
-</p>
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table #dt [value]="notifications" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','notificationId']"
+        [(selection)]="selectednotifications" [rowHover]="true" dataKey="notificationId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">notification Management</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="notificationId">通知ID <p-sortIcon field="notificationId"></p-sortIcon></th>
+                <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th pSortableColumn="status">通知状态 <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="creatorId">通知创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
+                <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
+                <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
+                <th>
+                  <span style="color:red;">操作</span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-notification>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="notification"></p-tableCheckbox>
+                </td>
+                <td>{{notification.guildId}}</td>
+                <td>{{notification.notificationId}}</td>
+                <td>{{notification.title}}</td>
+                <td><img [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td>{{notification.createdDate}}</td>
+                <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
+                <td>{{notification.creatorId}}</td>
+                <td>{{notification.viewedReceiversCount}}</td>
+                <td>{{notification.unviewedReceiversCount}}</td>
+                <td>
+                  <button *ngIf="notification.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-danger"></button>
+                  <button *ngIf="notification.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-success"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{notifications ? notifications.length : 0 }} notifications.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

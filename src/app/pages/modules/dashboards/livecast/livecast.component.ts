@@ -33,5 +33,16 @@ export class LivecastComponent implements OnInit {
     this.showLivecast = livecast;
   }
 
-
+  setLivecastStatus(livecast){
+    
+    let value = livecast.status==0?false:true;
+    if(value){
+      livecast.status = 0;
+    }else{
+      livecast.status =  -1;
+    }
+    this.ddService.putBlocStatus(livecast.livecastId,1,value).subscribe(x=>{
+      this.messageService.add({severity:'success', summary: 'Successful', detail: '更改状态成功', life: 3000});
+    });
+  }
 }

@@ -45,6 +45,10 @@ export class AppComponent {
          icon:'pi pi-fw pi-globe',
          items:[
             {
+               label:'教会成员',
+               icon:'pi pi-fw pi-user',routerLink:'/pages/dashboards/guild-member'
+            },
+            {
                label:'教会管理',
                icon:'pi pi-fw pi-home',routerLink:'/pages/dashboards/guild'
             },

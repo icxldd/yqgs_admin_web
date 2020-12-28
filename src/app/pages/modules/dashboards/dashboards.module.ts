@@ -15,6 +15,6 @@ import { PanelModule } from 'primeng/panel';
     CommonModule,
     DashboardsRoutingModule,CommonmModule,PanelModule
   ],
-  declarations: [DashboardsComponent,DiscussComponent,NotificationComponent,DetailGuildComponent]
+  declarations: [DashboardsComponent,DetailGuildComponent]
 })
 export class DashboardsModule { }

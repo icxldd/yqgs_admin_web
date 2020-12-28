@@ -21,6 +21,12 @@ export class DashboardsService extends ApiService {
    getLivecasts():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/livecasts/show`,  { headers: this.header})
    }
+   getDiscuss():Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/discuss/show`,  { headers: this.header})
+   }
+   getNotifications():Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/notifications/show`,  { headers: this.header})
+   }
 
    getGuild(guildId:string):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
@@ -29,5 +35,11 @@ export class DashboardsService extends ApiService {
    setGuildStatus(guildId:string,status:boolean):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
    }
+
+
+  putBlocStatus(blocId:string,blocType:number,blocValue:boolean):Observable<any>{
+    return this.http.put(this.uriBase+`/spaadmin/bloc/status`,{identificationId:blocId,blocType:blocType,blocValue:blocValue},  { headers: this.header})
+  }
+
 }
 

@@ -45,3 +45,18 @@ export class discussDto {
     viewedReceiversCount:number// 已查看
     unviewedReceiversCount:number//未查看人数
 }
+
+
+export class notificationDto {
+    notificationId:string
+    guildId:string
+    title:string
+    avatarUrl:string
+    status:number //状态。（-2: 已屏蔽; -1: 已删除; 0: 进行中; 1: 未开始; 2: 已结束; 3: 已中断）
+    creatorId:string
+    createdDate:string
+    beginDate:string
+    endDate:string
+    viewedReceiversCount:number// 已查看
+    unviewedReceiversCount:number//未查看人数
+}

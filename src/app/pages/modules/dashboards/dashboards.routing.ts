@@ -4,6 +4,7 @@ import { ApiService } from '../basic/ApiService';
 import { DashboardsService } from '../services/dashboards.service';
 import { GuildService } from '../services/guild.service';
 import { DiscussComponent } from './discuss/discuss.component';
+import { GuildMemberComponent } from './guild-member/guild-member.component';
 import { DetailGuildComponent } from './guild/detail-guild/detail-guild.component';
 import { GuildComponent } from './guild/guild.component';
 import { LivecastComponent } from './livecast/livecast.component';
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'guild',
         component: GuildComponent
+    },
+    {
+        path: 'guild-member',
+        component:GuildMemberComponent
     },
     {
         path: 'guild-detail/:id',

@@ -26,7 +26,17 @@ export class GuildComponent implements OnInit {
     this.pagesrc.gotopage(`/pages/dashboards/guild-detail/${_guild.guildId}`)
   }
 
-  setGuildStatus(iscorrect:boolean){
-    this.messageService.add({severity:'success', summary: 'Successful', detail: '该功能未实现', life: 3000});
+
+  setGuildStatus(guild){
+    
+    let value = guild.status==0?false:true;
+    if(value){
+      guild.status = 0;
+    }else{
+      guild.status = -1;
+    }
+    this.ddService.putBlocStatus(guild.guildId,3,value).subscribe(x=>{
+      this.messageService.add({severity:'success', summary: 'Successful', detail: '更改状态成功', life: 3000});
+    });
   }
 }

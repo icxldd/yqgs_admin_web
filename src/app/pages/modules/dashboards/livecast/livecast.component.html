@@ -53,6 +53,8 @@
                 <td>{{livecast.viewedReceiversCount}}</td>
                 <td>{{livecast.unviewedReceiversCount}}</td>
                 <td>
+                    <button *ngIf="livecast.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-danger"></button>
+                    <button *ngIf="livecast.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-success"></button>
                     <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
                     <ng-template #elseBlock>
                         <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
