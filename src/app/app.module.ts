@@ -73,6 +73,7 @@ import { DiscussComponent } from './pages/modules/dashboards/discuss/discuss.com
 import { NotificationComponent } from './pages/modules/dashboards/notification/notification.component';
 import { GuildMemberComponent } from './pages/modules/dashboards/guild-member/guild-member.component';
 import { AccountComponent } from './pages/modules/dashboards/account/account.component';
+import { ManualReviewModule } from './pages/modules/manual-review/manual-review.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -111,7 +112,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule
     ],
     providers: [
         httpInterceptorProviders,

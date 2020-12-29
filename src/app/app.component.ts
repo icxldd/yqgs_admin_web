@@ -76,35 +76,36 @@ export class AppComponent {
          icon:'pi pi-fw pi-eye',
          items:[
             {
-               label:'教会事务审核',
-               icon:'pi pi-fw pi-home',
+               label:'人工审核',
+               icon:'pi pi-fw pi-home',routerLink:'/pages/manual-review/manual-audit'
 
             },
             {
                label:'举报审核',
-               icon:'pi pi-fw pi-exclamation-triangle',
+               icon:'pi pi-fw pi-exclamation-triangle',routerLink:'/pages/manual-review/abuse-report-audit'
 
             },
             {
                label:'意见反馈',
-               icon:'pi pi-fw pi-external-link',
+               icon:'pi pi-fw pi-external-link',routerLink:'/pages/manual-review/idea-feedback'
 
-            },
-            {
-               label:'违规用户',
-               icon:'pi pi-fw pi-user',
+            }
+            // ,
+            // {
+            //    label:'违规用户',
+            //    icon:'pi pi-fw pi-user',
 
-            },
-            {
-               label:'违规教会',
-               icon:'pi pi-fw pi-cloud',
+            // },
+            // {
+            //    label:'违规教会',
+            //    icon:'pi pi-fw pi-cloud',
 
-            },
-            {
-               label:'垃圾站',
-               icon:'pi pi-fw pi-trash',
+            // },
+            // {
+            //    label:'垃圾站',
+            //    icon:'pi pi-fw pi-trash',
 
-            },
+            // },
           
             // {
             //    label:'Search',

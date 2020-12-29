@@ -6,6 +6,7 @@ import { AccountService } from './services/account.service';
 import { DashboardsService } from './modules/services/dashboards.service';
 import { DashboardspipePipe } from './modules/pipes/dashboardspipe.pipe';
 import { GuildService } from './modules/services/guild.service';
+import { ManualReviewService } from './modules/services/manual-review.service';
 
 
 @NgModule({
@@ -15,6 +16,6 @@ import { GuildService } from './modules/services/guild.service';
     
   ],
   declarations: [PagesComponent],
-  providers:[AccountService,DashboardsService,GuildService]
+  providers:[AccountService,DashboardsService,GuildService,ManualReviewService]
 })
 export class PagesModule { }

@@ -25,6 +25,10 @@ const routes: Routes = [
         path: 'dashboards',
         loadChildren: () => import('./modules/dashboards/dashboards.module').then(m => m.DashboardsModule),
     },
+    {
+        path: 'manual-review',
+        loadChildren: () => import('./modules/manual-review/manual-review.module').then(m => m.ManualReviewModule),
+    },
     { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 
