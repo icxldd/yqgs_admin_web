@@ -68,6 +68,22 @@ export class DashboardspipePipe implements PipeTransform {
             return '已屏蔽';
       }
     }
+    else if('guildMemberStatus'==args){
+      switch(value){
+            case 0:
+            return '正常';
+            case 1:
+            return '等待审核';
+            case 2:
+            return '已邀请等待加入';
+            case -1:
+            return '已退出';
+            case -2:
+            return '已屏蔽';
+            case -3:
+            return '已拒绝';
+      }
+    }
     
     //return value.toString().substring(0,25);
 

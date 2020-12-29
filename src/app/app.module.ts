@@ -72,6 +72,7 @@ import { LivecastComponent } from './pages/modules/dashboards/livecast/livecast.
 import { DiscussComponent } from './pages/modules/dashboards/discuss/discuss.component';
 import { NotificationComponent } from './pages/modules/dashboards/notification/notification.component';
 import { GuildMemberComponent } from './pages/modules/dashboards/guild-member/guild-member.component';
+import { AccountComponent } from './pages/modules/dashboards/account/account.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,7 +87,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

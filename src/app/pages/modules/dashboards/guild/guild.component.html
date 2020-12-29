@@ -20,15 +20,16 @@
                 </th>
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
                 <th pSortableColumn="DisplayName">教会名称 <p-sortIcon field="DisplayName"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">教会头像 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
                 <th pSortableColumn="Address">教会地址 <p-sortIcon field="Address"></p-sortIcon></th>
-                <th pSortableColumn="IsPublic">教会可搜索是否公开 <p-sortIcon field="IsPublic"></p-sortIcon></th>
+                <th pSortableColumn="isCanNewJoin">教会是否允许新成员加入 <p-sortIcon field="isCanNewJoin"></p-sortIcon></th>
                 <th pSortableColumn="guildAuditMode">加入教会的方式 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
                 <th pSortableColumn="Status">教会状态 <p-sortIcon field="Status"></p-sortIcon></th>
                 <th pSortableColumn="OwnerId">教会所属人ID <p-sortIcon field="OwnerId"></p-sortIcon></th>
 
                 <th pSortableColumn="ViolationCount">违规次数 <p-sortIcon field="ViolationCount"></p-sortIcon></th>
                 <th pSortableColumn="MembersCount">成员人数 <p-sortIcon field="MembersCount"></p-sortIcon></th>
-                <th>
+                <th style="width: 12rem">
                   <span style="color:red;">操作</span>
                 </th>
             </tr>
@@ -40,18 +41,17 @@
                 </td>
                 <td>{{guild.guildId}}</td>
                 <td>{{guild.displayName}}</td>
+                <td><img *ngIf="guild.avatarUrl!=null" [src]='guild.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{guild.address}}</td>
-                <td>{{guild.isPublic==0?'公开':'不公开'}}</td>
-                <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'所有途径的新加入成员都需要审核':'所有途径的新加入成员都不需要审核'}}</td>
+                <td>{{guild.isCanNewJoin==0?'不允许':'允许'}}</td>
+                <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
                 <td>{{guild.violationCount}}</td>
                 <td>{{guild.membersCount}}</td>
                 <td>
                     <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setGuildStatus(guild)" class="p-button-raised p-button-danger"></button>
-                    <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>
-
-
+                    <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>
                     <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailGuild(guild)" ></button>
                 </td>
             </tr>

@@ -40,7 +40,7 @@
                 <td>{{notification.guildId}}</td>
                 <td>{{notification.notificationId}}</td>
                 <td>{{notification.title}}</td>
-                <td><img [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{notification.createdDate}}</td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
@@ -48,7 +48,7 @@
                 <td>{{notification.unviewedReceiversCount}}</td>
                 <td>
                   <button *ngIf="notification.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-danger"></button>
-                  <button *ngIf="notification.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-success"></button>
+                  <button *ngIf="notification.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-success"></button>
                 </td>
             </tr>
         </ng-template>

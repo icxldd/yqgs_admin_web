@@ -30,7 +30,7 @@
                 <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
                 <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
-                <th>
+                <th style="width: 12rem">
                   <span style="color:red;">操作</span>
                 </th>
             </tr>
@@ -54,7 +54,7 @@
                 <td>{{livecast.unviewedReceiversCount}}</td>
                 <td>
                     <button *ngIf="livecast.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-danger"></button>
-                    <button *ngIf="livecast.status!=0" style="margin-right: 1rem;" pButton type="button" label='还原' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-success"></button>
+                    <button *ngIf="livecast.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-success"></button>
                     <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
                     <ng-template #elseBlock>
                         <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>

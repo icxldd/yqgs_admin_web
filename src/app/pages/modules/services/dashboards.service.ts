@@ -18,6 +18,14 @@ export class DashboardsService extends ApiService {
     return this.http.get(this.uriBase+`/spaadmin/guilds/show`,  { headers: this.header})
    }
 
+   getAccounts():Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/accounts/show`,  { headers: this.header})
+   }
+
+   getGuildMember():Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guildmember/show`,  { headers: this.header})
+   }
+
    getLivecasts():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/livecasts/show`,  { headers: this.header})
    }

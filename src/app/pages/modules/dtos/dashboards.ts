@@ -12,7 +12,50 @@ export class GuildDto {
     ownerId:string
     violationCount:number// 违规次数。
     membersCount:number//成员人数
+    isCanNewJoin:boolean
 }
+
+export class guildMemberAdminDto {
+
+
+    guildId:string
+    guildName:string
+    guildAvatarUrl:string
+    guildAddress:string
+    guildMembersCount:string
+
+    guildMembersDto:guildMemberDto[]
+}
+
+
+
+
+export class accountAdminDto {
+    userAuthId:string
+    nickName:string
+    avatarUrl:string
+    ownerGuildCount:number
+    joinGuildCount:number
+    isCloudChurchAdmin:boolean
+    lastUsingGuildId:string
+    userCreatedTime:string
+    notificationPublishCount:number
+    discussPublishCount:number
+    livecastPublishCount:number
+    violationCount:number
+    phoneNumber:string
+}
+
+export class guildMemberDto {
+    memberId:string
+    guildId:string
+    nickname:string
+    avatarUrl:string
+    phoneNumber:string
+    role:boolean// 角色。（0: 信徒; 1: 同工; 2: 牧者）
+    status:number// 状态。（-3：已拒绝; -2: 已屏蔽; -1: 已退出; 0: 正常; 1: 等待审核; 2: 已邀请等待加入）
+}
+
 
 export class livecastDto {
     livecastId:string
