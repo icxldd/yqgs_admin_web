@@ -21,6 +21,7 @@
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
                 <th pSortableColumn="notificationId">通知ID <p-sortIcon field="notificationId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th>直播文件</th>
                 <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="status">通知状态 <p-sortIcon field="status"></p-sortIcon></th>
@@ -40,13 +41,14 @@
                 <td>{{notification.guildId}}</td>
                 <td>{{notification.notificationId}}</td>
                 <td>{{notification.title}}</td>
+                <td><a href='javascript:' *ngIf="isHasVal(notification.files)" (click)="openFiles(notification)" >点我查看</a><span *ngIf="!isHasVal(notification.files)">没有文件</span></td>
                 <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{notification.createdDate}}</td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
                 <td>{{notification.viewedReceiversCount}}</td>
                 <td>{{notification.unviewedReceiversCount}}</td>
-                <td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
                   <button *ngIf="notification.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-danger"></button>
                   <button *ngIf="notification.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-success"></button>
                 </td>

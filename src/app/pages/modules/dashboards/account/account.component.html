@@ -22,6 +22,7 @@
                 <th pSortableColumn="phoneNumber">手机号 <p-sortIcon field="phoneNumber"></p-sortIcon></th>
                 <th pSortableColumn="nickName">用户名称 <p-sortIcon field="nickName"></p-sortIcon></th>
                 <th pSortableColumn="avatarUrl">用户头像 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
+                <th>上传的文件</th>
                 <th pSortableColumn="ownerGuildCount">用户创建的教会总数 <p-sortIcon field="ownerGuildCount"></p-sortIcon></th>
                 <th pSortableColumn="joinGuildCount">用户加入的教会总数 <p-sortIcon field="joinGuildCount"></p-sortIcon></th> 
                 <th pSortableColumn="isCloudChurchAdmin">是否云教会管理员 <p-sortIcon field="isCloudChurchAdmin"></p-sortIcon></th>
@@ -46,6 +47,7 @@
                 <td>{{account.phoneNumber}}</td>
                 <td>{{account.nickName}}</td>
                 <td><img *ngIf="account.avatarUrl!=null" [src]='account.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td><a href='javascript:' *ngIf="isHasVal(account.files)" (click)="openFiles(account)" >点我查看</a><span *ngIf="!isHasVal(account.files)">没有文件</span></td>
                 <td>{{account.ownerGuildCount}}</td>
                 <td>{{account.joinGuildCount}}</td>
                 <td>{{account.isCloudChurchAdmin?'是':'否'}}</td>
@@ -54,9 +56,13 @@
                 <td>{{account.notificationPublishCount}}</td>
                 <td>{{account.discussPublishCount}}</td>
                 <td>{{account.livecastPublishCount}}</td>
-                <td>{{account.violationCount}}</td>
                 <td>
-                  <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2"></button>
+                    <a href="javascript:" (click)="openViolation(account)">
+                    {{account.violationCount}}
+                </a>
+                </td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
+                  <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" ></button>
                 </td>
             </tr>
         </ng-template>

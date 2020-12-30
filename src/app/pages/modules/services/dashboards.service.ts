@@ -14,6 +14,12 @@ export class DashboardsService extends ApiService {
       super(http)
    }
 
+
+
+   getUserViolations(userId:number):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/account/violation?userId=${userId}`,  { headers: this.header})
+   }
+
    getGuilds():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guilds/show`,  { headers: this.header})
    }

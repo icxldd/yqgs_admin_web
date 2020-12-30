@@ -1,0 +1,16 @@
+<div>
+
+
+<div class="topBlock"  style="margin: 10px 0px;">
+<h2>用户ID:{{dto.userId}}的用户提问是</h2>
+<span>{{dto.description}}</span>
+</div>
+
+<div class="endBlock"  style="margin: 30px 0px;">
+  <p>您的意见反馈是：</p>
+  <input type="text" pInputText [(ngModel)]="thisDescription" style="width: 100%;"> 
+</div>
+  <div class="buttonBlock" style="margin: 10px 0px;">
+    <button pButton type="button" label='反馈' class="p-button-raised" (click)="onReplier()"></button>
+  </div>
+</div>

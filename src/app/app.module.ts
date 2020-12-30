@@ -74,6 +74,15 @@ import { NotificationComponent } from './pages/modules/dashboards/notification/n
 import { GuildMemberComponent } from './pages/modules/dashboards/guild-member/guild-member.component';
 import { AccountComponent } from './pages/modules/dashboards/account/account.component';
 import { ManualReviewModule } from './pages/modules/manual-review/manual-review.module';
+import { ManualAuditComponent } from './pages/modules/manual-review/manual-audit/manual-audit.component';
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
+import { FileListComponent } from './pages/modules/manual-review/common-component/file-list/file-list.component';
+import { ManualReviewPipe } from './pages/modules/pipes/manual-review.pipe';
+import { ManualAuditDetailComponent } from './pages/modules/manual-review/manual-audit/manual-audit-detail/manual-audit-detail.component';
+import { AbuseReportAuditComponent } from './pages/modules/manual-review/abuse-report-audit/abuse-report-audit.component';
+import { IdeaFeedbackComponent } from './pages/modules/manual-review/idea-feedback/idea-feedback.component';
+import { IdeaReplierComponent } from './pages/modules/manual-review/common-component/idea-replier/idea-replier.component';
+import { AuditableItemListComponent } from './pages/modules/common/auditableItem-list/auditableItem-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -88,7 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -112,11 +121,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

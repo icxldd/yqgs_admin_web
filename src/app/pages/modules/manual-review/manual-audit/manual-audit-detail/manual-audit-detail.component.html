@@ -1,0 +1,128 @@
+<!-- <p-toast></p-toast> -->
+<div>
+ <!-- <div class="audit-box">
+  <h5>正常</h5>
+  <div class="p-field-radiobutton">
+    <p-radioButton name="audit" value="正常" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+      <label for="audit">正常</label>
+  </div>
+ </div> -->
+<div class="block-box">
+  <div class="audit-box">
+    <h5>涉黄</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="涉黄-色情类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉黄-色情类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="涉黄-低俗类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉黄-低俗类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="涉黄-其他涉黄行为类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉黄-其他涉黄行为类</label>
+    </div>
+   </div>
+   <div class="audit-box">
+    <h5>暴恐</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="暴恐-仿真枪、军警用品、危险武器类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">暴恐-仿真枪、军警用品、危险武器类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="暴恐-易燃易爆、有毒化学物、毒品类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">暴恐-易燃易爆、有毒化学物、毒品类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="暴恐-其他暴恐行为类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">暴恐-其他暴恐行为类</label>
+    </div>
+   </div>
+   <div class="audit-box">
+    <h5>涉政</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="涉政-反动等破坏性信息类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉政-反动等破坏性信息类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="涉政-违法国家法律法规类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉政-违法国家法律法规类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="涉政-其他涉政行为类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">涉政-其他涉政行为类</label>
+    </div>
+   </div>
+   <div class="audit-box">
+    <h5>广告</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="广告-其他网络平台、虚拟商品类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">广告-其他网络平台、虚拟商品类 </label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="广告-实体商品类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">广告-实体商品类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="广告-其他广告行为类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">广告-其他广告行为类</label>
+    </div>
+  
+   </div>
+  
+   <div class="audit-box">
+    <h5>宗教</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="宗教-宣扬、组织邪教类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">宗教-宣扬、组织邪教类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="宗教-违背宗教政策类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">宗教-违背宗教政策类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="宗教-其他宗教行为类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">宗教-其他宗教行为类</label>
+    </div>
+  
+   </div>
+   <div class="audit-box">
+    <h5>违禁</h5>
+    <div class="p-field-radiobutton">
+      <p-radioButton name="audit" value="违禁-赌博类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">违禁-赌博类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="违禁-非法募捐、诈骗类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">违禁-非法募捐、诈骗类</label>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="audit" value="违禁-人身攻击、辱骂类" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+        <label for="audit">违禁-人身攻击、辱骂类</label>
+    </div>
+   
+   </div>
+
+   <!-- <div class="other-box">
+      <h5>其它理由</h5>
+      <input type="text" pInputText [(ngModel)]="audit" style="width: 100%;"> 
+   </div> -->
+</div>
+
+<div class="normalBlock">
+  <div class="audit-box">
+    <h4>正常</h4>
+    <p-radioButton name="audit" value="正常" [(ngModel)]="audit" inputId="audit"></p-radioButton>
+    <label for="audit">正常</label>
+  </div>
+</div>
+
+
+<div class="buttonBlock">
+
+  <p-button label="审核" (click)="onAudit()"></p-button>
+
+</div>
+
+
+</div>

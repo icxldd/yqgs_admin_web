@@ -1,3 +1,5 @@
+import { fileBasicDto } from "./manual-review"
+
 export class GuildDto {
     guildId:string
     displayName:string
@@ -13,6 +15,7 @@ export class GuildDto {
     violationCount:number// 违规次数。
     membersCount:number//成员人数
     isCanNewJoin:boolean
+    files:fileBasicDto[]
 }
 
 export class guildMemberAdminDto {
@@ -44,6 +47,7 @@ export class accountAdminDto {
     livecastPublishCount:number
     violationCount:number
     phoneNumber:string
+    files:fileBasicDto[]
 }
 
 export class guildMemberDto {
@@ -72,6 +76,7 @@ export class livecastDto {
     endDate:string
     viewedReceiversCount:number
     unviewedReceiversCount:number
+    files:fileBasicDto[]
 }
 
 
@@ -87,6 +92,7 @@ export class discussDto {
     endDate:string
     viewedReceiversCount:number// 已查看
     unviewedReceiversCount:number//未查看人数
+    files:fileBasicDto[]
 }
 
 
@@ -102,4 +108,5 @@ export class notificationDto {
     endDate:string
     viewedReceiversCount:number// 已查看
     unviewedReceiversCount:number//未查看人数
+    files:fileBasicDto[]
 }

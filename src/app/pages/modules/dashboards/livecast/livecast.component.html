@@ -21,6 +21,7 @@
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
                 <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th>直播文件</th>
                 <!-- <th pSortableColumn="avatarUrl">封面图地址 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
                 <th pSortableColumn="recordUrl">录播地址 <p-sortIcon field="recordUrl"></p-sortIcon></th> -->
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
@@ -43,6 +44,7 @@
                 <td>{{livecast.guildId}}</td>
                 <td>{{livecast.livecastId}}</td>
                 <td>{{livecast.title}}</td>
+                <td><a href='javascript:' *ngIf="isHasVal(livecast.files)" (click)="openFiles(livecast)" >点我查看</a><span *ngIf="!isHasVal(livecast.files)">没有文件</span></td>
                 <!-- <td>{{livecast.avatarUrl}}</td>
                 <td>{{livecast.recordUrl}}</td> -->
                 <td>{{livecast.createdDate}}</td>
@@ -52,7 +54,7 @@
                 <td>{{livecast.creatorId}}</td>
                 <td>{{livecast.viewedReceiversCount}}</td>
                 <td>{{livecast.unviewedReceiversCount}}</td>
-                <td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
                     <button *ngIf="livecast.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-danger"></button>
                     <button *ngIf="livecast.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-success"></button>
                     <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>

@@ -133,11 +133,31 @@ export class auditableItemDto{
     attachmentFiles:auditableItemFileDto[]
 
 }
-export class auditableItemFileDto {
+export class userFeedbackDto{
+    feedbackId:string
+    userId:string
+    description:string
+    createdDate:string
+    isReplied:boolean
+    repliedDescription:string
+    repliedDate:string
+    replierId:string
+}
+
+export class abuseReportDto{
+    reportId:string
+    itemId:string
+    item:auditableItemDto
+    category:string
+    description:string
+    createdDate:string
+}
+
+
+export class fileBasicDto {
     fileId:string
     guildId:string
     guild:GuildDto
-    itemId:string
     type:number
     name:string
     url:string
@@ -150,6 +170,10 @@ export class auditableItemFileDto {
     duration:number
 }
 
+
+export class auditableItemFileDto extends fileBasicDto{
+    itemId:string
+}
 
 
 

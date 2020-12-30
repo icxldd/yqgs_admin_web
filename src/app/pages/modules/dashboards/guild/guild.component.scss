@@ -2,4 +2,11 @@
     .card{
         margin: 0 20px;
     }
+    td {  
+        width: 100%;  
+        height: auto;  
+        word-wrap:break-word;  
+        word-break:break-all;  
+        overflow: hidden;  
+    }
 }

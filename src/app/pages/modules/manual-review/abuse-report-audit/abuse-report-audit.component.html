@@ -1,3 +1,74 @@
-<p>
-  abuse-report-audit works!
-</p>
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table #dt [value]="abuseReports" [rows]="5" [paginator]="true" [globalFilterFields]="['title','guildId','itemId','description']"
+        [(selection)]="selectedabuseReports" [rowHover]="true" dataKey="reportId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">abuseReport Management</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="reportId">举报ID <p-sortIcon field="reportId"></p-sortIcon></th>
+                <th pSortableColumn="itemId">业务ID <p-sortIcon field="itemId"></p-sortIcon></th>
+                <th pSortableColumn="description">举报描述 </th>
+                <th pSortableColumn="category">分类 </th>
+                <th pSortableColumn="createdDate">举报时间  <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="typeName">业务名称 <p-sortIcon field="typeName"></p-sortIcon></th>
+                <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="description">描述 <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
+                <th>业务文件</th>
+                <th pSortableColumn="statusName">状态 <p-sortIcon field="statusName"></p-sortIcon></th>
+                <th pSortableColumn="auditMessage">审核信息 <p-sortIcon field="auditMessage"></p-sortIcon></th>
+                <th pSortableColumn="userId">创建者userId <p-sortIcon field="userId"></p-sortIcon></th>
+                <th>
+                  <span style="color:red;">操作</span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-abuseReport>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="abuseReport"></p-tableCheckbox>
+                </td>
+                <td><span>{{abuseReport.reportId}}</span></td>
+                <td><span>{{abuseReport.item.itemId}}</span></td>
+                <td>{{abuseReport.description}}</td>
+                <td>{{abuseReport.category}}</td>
+                <td>{{abuseReport.createdDate}}</td>
+                <td>{{abuseReport.item.guildId}}</td>
+                <td>{{abuseReport.item.typeName}}</td>
+                <td>{{abuseReport.item.title}}</td>
+                <td>{{abuseReport.item.description}}</td>
+                <td><img *ngIf="abuseReport.item.avatarUrl!=null" [src]='abuseReport.item.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td>
+                  <a href="javascript:" (click)="openFiles(abuseReport)" *ngIf="isHasFile(abuseReport)">点我查看</a>
+                  <span *ngIf="!isHasFile(abuseReport)">无文件</span>
+                </td>
+               
+                <td [ngClass]="{'text-red': abuseReport.item.status==-2,'text-green':abuseReport.item.status==0}">{{abuseReport.item.statusName}}</td>
+                <td>{{abuseReport.item.auditMessage}}</td>
+                <td>{{abuseReport.item.userId}}</td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
+                  <button  style="margin-right: 1rem;" pButton type="button" label='审核' class="p-button-raised" (click)="openAudit(abuseReport)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{abuseReports ? abuseReports.length : 0 }} abuseReports.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

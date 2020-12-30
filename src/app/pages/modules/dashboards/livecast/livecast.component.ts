@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { livecastDto } from '../../dtos/dashboards';
+import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class LivecastComponent implements OnInit {
 
 
   showLivecast:livecastDto=new livecastDto();
-  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService) { }
+  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
 
   ngOnInit() {
     this.ddService.getLivecasts().subscribe(x=>{
@@ -33,6 +35,22 @@ export class LivecastComponent implements OnInit {
     this.showLivecast = livecast;
   }
 
+  openFiles(livecast:livecastDto){
+    this.dialogService.open(FileListComponent, {
+      data:livecast.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+  isHasVal<T>(dto:Array<T>):boolean{
+    if(dto==undefined||dto.length==0){
+        return false;
+    }else{
+        return true;
+    }
+}
   setLivecastStatus(livecast){
     
     let value = livecast.status==0?false:true;

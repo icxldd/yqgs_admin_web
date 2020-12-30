@@ -77,7 +77,8 @@ export class AppCacheService {
   }
 
   get userId(): string {
-    return AppCacheService.getInstance().userId;
+    return this.localStoreSrv.getItem(c_account_id);
+    // return AppCacheService.getInstance().userId;
   }
 
   set organId(vl: string) {

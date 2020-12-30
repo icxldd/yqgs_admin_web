@@ -1,0 +1,18 @@
+:host{
+    .card{
+        margin: 0 20px;
+    }
+    .text-red{
+        color: red;
+    }
+    .text-green{
+        color:green;
+    }
+    td {  
+        width: 100%;  
+        height: auto;  
+        word-wrap:break-word;  
+        word-break:break-all;  
+        overflow: hidden;  
+    }
+}

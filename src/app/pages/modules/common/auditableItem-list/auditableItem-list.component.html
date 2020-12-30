@@ -4,15 +4,6 @@
     <p-table #dt [value]="auditableItems" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','itemId']"
         [(selection)]="selectedauditableItems" [rowHover]="true" dataKey="auditableItemId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-        <ng-template pTemplate="caption">
-            <div class="p-d-flex p-ai-center p-jc-between">
-                <h5 class="p-m-0">auditableItem Management</h5>
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-                </span>
-            </div>
-        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 3rem">
@@ -29,9 +20,7 @@
                 <th pSortableColumn="statusName">状态 <p-sortIcon field="statusName"></p-sortIcon></th>
                 <th pSortableColumn="auditMessage">审核信息 <p-sortIcon field="auditMessage"></p-sortIcon></th>
                 <th pSortableColumn="userId">创建者userId <p-sortIcon field="userId"></p-sortIcon></th>
-                <th>
-                  <span style="color:red;">操作</span>
-                </th>
+               
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-auditableItem>
@@ -53,9 +42,7 @@
                 <td [ngClass]="{'text-red': auditableItem.status==-2,'text-green':auditableItem.status==0}">{{auditableItem.statusName}}</td>
                 <td>{{auditableItem.auditMessage}}</td>
                 <td>{{auditableItem.userId}}</td>
-                <td style="word-wrap: normal !important;word-break: normal !important;">
-                  <button  style="margin-right: 1rem;" pButton type="button" label='审核' class="p-button-raised" (click)="openAudit(auditableItem)"></button>
-                </td>
+              
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

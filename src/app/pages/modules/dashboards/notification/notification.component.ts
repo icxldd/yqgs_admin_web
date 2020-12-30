@@ -4,6 +4,8 @@ import { MessageService } from 'primeng/api';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { livecastDto } from '../../dtos/dashboards';
 import { DashboardsService } from '../../services/dashboards.service';
+import { DialogService } from 'primeng/dynamicdialog';
+import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 
 @Component({
   selector: 'app-notification',
@@ -16,14 +18,29 @@ export class NotificationComponent implements OnInit {
   selectednotifications: notificationDto[];
   displayModal:boolean=false;
 
-  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService) { }
+  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
 
   ngOnInit() {
     this.ddService.getNotifications().subscribe(x=>{
       this.notifications =  <notificationDto[]>x.notifications
    })
   }
-
+  openFiles(livecast:notificationDto){
+    this.dialogService.open(FileListComponent, {
+      data:livecast.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+  isHasVal<T>(dto:Array<T>):boolean{
+    if(dto==undefined||dto.length==0){
+        return false;
+    }else{
+        return true;
+    }
+}
   setNotificationStatus(notification){
     
     let value = notification.status==0?false:true;

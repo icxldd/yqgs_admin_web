@@ -22,6 +22,7 @@
                 <th pSortableColumn="discussId">讨论ID <p-sortIcon field="discussId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
                 <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
+                <th>讨论文件</th>
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
                 <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
@@ -43,6 +44,7 @@
                 <td>{{discuss.discussId}}</td>
                 <td>{{discuss.title}}</td>
                 <td><img *ngIf="discuss.avatarUrl!=null" [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td><a href='javascript:' *ngIf="isHasVal(discuss.files)" (click)="openFiles(discuss)" >点我查看</a><span *ngIf="!isHasVal(discuss.files)">没有文件</span></td>
                 <td>{{discuss.createdDate}}</td>
                 <td>{{discuss.beginDate}}</td>
                 <td>{{discuss.endDate}}</td>
@@ -50,7 +52,7 @@
                 <td>{{discuss.creatorId}}</td>
                 <td>{{discuss.viewedReceiversCount}}</td>
                 <td>{{discuss.unviewedReceiversCount}}</td>
-                <td>
+                <td  style="word-wrap: normal !important;word-break: normal !important;">
                   <button *ngIf="discuss.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-danger"></button>
                   <button *ngIf="discuss.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-success"></button>
                 </td>
