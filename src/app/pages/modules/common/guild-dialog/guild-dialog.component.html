@@ -1,7 +1,7 @@
 <p-toast></p-toast>
-<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
 <div class="card">
-    <p-table #dt [value]="guilds" [rows]="10" [paginator]="true" [globalFilterFields]="['displayName','address','guildId']"
+    <p-table #dt [value]="guilds" [rows]="5" [paginator]="true" [globalFilterFields]="['displayName','address','guildId']"
         [(selection)]="selectedguilds" [rowHover]="true" dataKey="guildId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
@@ -19,19 +19,16 @@
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
-                <th pSortableColumn="DisplayName">教会名称 </th>
-                <th pSortableColumn="avatarUrl">教会头像 </th>
-                <th pSortableColumn="Address">教会地址 </th>
+                <th pSortableColumn="DisplayName">教会名称 <p-sortIcon field="DisplayName"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">教会头像 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
+                <th pSortableColumn="Address">教会地址 <p-sortIcon field="Address"></p-sortIcon></th>
                 <th pSortableColumn="isCanNewJoin">教会是否允许新成员加入 <p-sortIcon field="isCanNewJoin"></p-sortIcon></th>
                 <th pSortableColumn="guildAuditMode">加入教会的方式 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
-                <th pSortableColumn="status">教会状态 <p-sortIcon field="status"></p-sortIcon></th>
-                <th pSortableColumn="ownerId">教会所属人ID <p-sortIcon field="ownerId"></p-sortIcon></th>
+                <th pSortableColumn="Status">教会状态 <p-sortIcon field="Status"></p-sortIcon></th>
+                <th pSortableColumn="OwnerId">教会所属人ID <p-sortIcon field="OwnerId"></p-sortIcon></th>
                 <th>教会文件</th>
-                <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
-                <th pSortableColumn="membersCount">成员人数 <p-sortIcon field="membersCount"></p-sortIcon></th>
-                <th style="width: 12rem">
-                  <span style="color:red;">操作</span>
-                </th>
+                <th pSortableColumn="ViolationCount">违规次数 <p-sortIcon field="ViolationCount"></p-sortIcon></th>
+                <th pSortableColumn="MembersCount">成员人数 <p-sortIcon field="MembersCount"></p-sortIcon></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-guild>
@@ -47,15 +44,10 @@
                 <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
-                <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td>
-
-                <td><a href='javascript:' (click)="openDialog(guild,0)" >{{guild.violationCount}}</a></td>
-                <td><a href='javascript:' (click)="openDialog(guild,1)" >{{guild.membersCount}}</a></td>
-                <td style="word-wrap: normal !important;word-break: normal !important;">
-                    <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setGuildStatus(guild)" class="p-button-raised p-button-danger"></button>
-                    <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>
-                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailGuild(guild)" ></button>
-                </td>
+                <!-- <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td> -->
+                <td>{{guild.files.length}}</td>
+                <td>{{guild.violationCount}}</td>
+                <td>{{guild.membersCount}}</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
+import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
+import { ViolatedAuditableItemComponent } from '../../common/violatedAuditableItem/violatedAuditableItem.component';
 import { GuildDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
@@ -15,11 +17,14 @@ export class GuildComponent implements OnInit {
   guilds: GuildDto[]
   guild: GuildDto;
   selectedguilds: GuildDto[];
+  showProgress:boolean=false;
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
 
   ngOnInit() {
+    this.showProgress=true;
     this.ddService.getGuilds().subscribe(x=>{
-       this.guilds =  <GuildDto[]>x.guilds
+       this.guilds =  <GuildDto[]>x.guilds;
+       this.showProgress = false;
     })
   }
 
@@ -42,6 +47,27 @@ export class GuildComponent implements OnInit {
     }else{
         return true;
     }
+}
+
+openDialog(guild:GuildDto,type:number){
+  if(type==0){
+    this.dialogService.open(ViolatedAuditableItemComponent, {
+      data:guild.auditables,
+      header: '违规记录列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+    
+  }else if(type==1){
+    this.dialogService.open(GuildmemberListComponent, {
+      data:guild.guildmembers,
+      header: '教会成员列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
 }
   setGuildStatus(guild){
     

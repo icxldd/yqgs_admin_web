@@ -1,4 +1,4 @@
-import { fileBasicDto } from "./manual-review"
+import { auditableItemDto, fileBasicDto } from "./manual-review"
 
 export class GuildDto {
     guildId:string
@@ -16,6 +16,8 @@ export class GuildDto {
     membersCount:number//成员人数
     isCanNewJoin:boolean
     files:fileBasicDto[]
+    auditables:auditableItemDto[]
+    guildmembers:guildMemberDto[]
 }
 
 export class guildMemberAdminDto {
@@ -50,6 +52,17 @@ export class accountAdminDto {
     files:fileBasicDto[]
 }
 
+
+export class accountDetailDto {
+   createdGuilds:GuildDto[]
+   joinGuilds:GuildDto[]
+   publishNotification:notificationDto[]
+   publishDiscuss:discussDto[]
+   publishLivecast:livecastDto[]
+}
+
+
+
 export class guildMemberDto {
     memberId:string
     guildId:string
@@ -77,6 +90,8 @@ export class livecastDto {
     viewedReceiversCount:number
     unviewedReceiversCount:number
     files:fileBasicDto[]
+    hasViewMembers:guildMemberDto[]
+    noViewMembers:guildMemberDto[]
 }
 
 
@@ -93,6 +108,8 @@ export class discussDto {
     viewedReceiversCount:number// 已查看
     unviewedReceiversCount:number//未查看人数
     files:fileBasicDto[]
+    hasViewMembers:guildMemberDto[]
+    noViewMembers:guildMemberDto[]
 }
 
 
@@ -109,4 +126,6 @@ export class notificationDto {
     viewedReceiversCount:number// 已查看
     unviewedReceiversCount:number//未查看人数
     files:fileBasicDto[]
+    hasViewMembers:guildMemberDto[]
+    noViewMembers:guildMemberDto[]
 }

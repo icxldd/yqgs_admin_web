@@ -1,6 +1,9 @@
 <p-toast></p-toast>
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
 
 <div class="card">
+    
+
     <p-table #dt [value]="accounts" [rows]="10" [paginator]="true" [globalFilterFields]="['userAuthId','nickName','phoneNumber']"
         [(selection)]="selectedaccounts" [rowHover]="true" dataKey="userAuthId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -25,14 +28,14 @@
                 <th>上传的文件</th>
                 <th pSortableColumn="ownerGuildCount">用户创建的教会总数 <p-sortIcon field="ownerGuildCount"></p-sortIcon></th>
                 <th pSortableColumn="joinGuildCount">用户加入的教会总数 <p-sortIcon field="joinGuildCount"></p-sortIcon></th> 
-                <th pSortableColumn="isCloudChurchAdmin">是否云教会管理员 <p-sortIcon field="isCloudChurchAdmin"></p-sortIcon></th>
-                <th pSortableColumn="lastUsingGuildId">最后浏览的教会ID <p-sortIcon field="lastUsingGuildId"></p-sortIcon></th>
-                <th pSortableColumn="userCreatedTime">用户创建时间 <p-sortIcon field="userCreatedTime"></p-sortIcon></th>
+              
                 <th pSortableColumn="notificationPublishCount">发布的通知数量 <p-sortIcon field="notificationPublishCount"></p-sortIcon></th>
                 <th pSortableColumn="discussPublishCount">发布的讨论数量 <p-sortIcon field="discussPublishCount"></p-sortIcon></th>
                 <th pSortableColumn="livecastPublishCount">发布的直播数量 <p-sortIcon field="livecastPublishCount"></p-sortIcon></th>
                 <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
-               
+                <th pSortableColumn="isCloudChurchAdmin">是否云教会管理员 <p-sortIcon field="isCloudChurchAdmin"></p-sortIcon></th>
+                <th pSortableColumn="lastUsingGuildId">最后浏览的教会ID <p-sortIcon field="lastUsingGuildId"></p-sortIcon></th>
+                <th pSortableColumn="userCreatedTime">用户创建时间 <p-sortIcon field="userCreatedTime"></p-sortIcon></th>
                 <th>
                   <span style="color:red;">操作</span>
                 </th>
@@ -47,20 +50,21 @@
                 <td>{{account.phoneNumber}}</td>
                 <td>{{account.nickName}}</td>
                 <td><img *ngIf="account.avatarUrl!=null" [src]='account.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
-                <td><a href='javascript:' *ngIf="isHasVal(account.files)" (click)="openFiles(account)" >点我查看</a><span *ngIf="!isHasVal(account.files)">没有文件</span></td>
-                <td>{{account.ownerGuildCount}}</td>
-                <td>{{account.joinGuildCount}}</td>
-                <td>{{account.isCloudChurchAdmin?'是':'否'}}</td>
-                <td>{{account.lastUsingGuildId}}</td>
-                <td>{{account.userCreatedTime}}</td>
-                <td>{{account.notificationPublishCount}}</td>
-                <td>{{account.discussPublishCount}}</td>
-                <td>{{account.livecastPublishCount}}</td>
+                <td><a href='javascript:' (click)="openFiles(account)" >{{account.files.length}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(account,0)" >{{account.ownerGuildCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(account,1)" >{{account.joinGuildCount}}</a></td>
+          
+                <td><a href='javascript:' (click)="openDialog(account,4)" >{{account.notificationPublishCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(account,3)" >{{account.discussPublishCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(account,2)" >{{account.livecastPublishCount}}</a></td>
                 <td>
                     <a href="javascript:" (click)="openViolation(account)">
                     {{account.violationCount}}
                 </a>
                 </td>
+                <td>{{account.isCloudChurchAdmin?'是':'否'}}</td>
+                <td>{{account.lastUsingGuildId}}</td>
+                <td>{{account.userCreatedTime}}</td>
                 <td style="word-wrap: normal !important;word-break: normal !important;">
                   <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" ></button>
                 </td>

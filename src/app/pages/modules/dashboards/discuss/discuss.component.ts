@@ -6,6 +6,7 @@ import { livecastDto } from '../../dtos/dashboards';
 import { DashboardsService } from '../../services/dashboards.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
+import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
 @Component({
   selector: 'app-discuss',
   templateUrl: './discuss.component.html',
@@ -16,15 +17,38 @@ export class DiscussComponent implements OnInit {
   discuss: discussDto;
   selecteddiscusss: discussDto[];
   displayModal:boolean=false;
-
+  showProgress:boolean=false;
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
 
   ngOnInit() {
+    this.showProgress=true;
     this.ddService.getDiscuss().subscribe(x=>{
-      this.discusss =  <discussDto[]>x.discuss
+      this.discusss =  <discussDto[]>x.discuss;
+      this.showProgress = false;
    })
   }
+  openDialog(discuss:discussDto,type:number){
 
+    if(type==0){
+      this.dialogService.open(GuildmemberListComponent, {
+        data:discuss.hasViewMembers,
+        header: '已查看成员列表',
+        width: '70%',
+        contentStyle: {"max-height": "700px", "overflow": "auto"},
+        baseZIndex: 10000
+    });
+    }
+    else if(type==1){
+      this.dialogService.open(GuildmemberListComponent, {
+        data:discuss.noViewMembers,
+        header: '未查看成员列表',
+        width: '70%',
+        contentStyle: {"max-height": "700px", "overflow": "auto"},
+        baseZIndex: 10000
+    });
+    }
+  
+  }
 
   openFiles(discuss:discussDto){
     this.dialogService.open(FileListComponent, {

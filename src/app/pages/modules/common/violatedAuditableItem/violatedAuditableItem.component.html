@@ -1,0 +1,54 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table #dt [value]="auditableItems" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','itemId']"
+        [(selection)]="selectedauditableItems" [rowHover]="true" dataKey="auditableItemId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="itemId">业务ID <p-sortIcon field="itemId"></p-sortIcon></th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="typeName">业务名称 <p-sortIcon field="typeName"></p-sortIcon></th>
+                <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="description">描述 <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
+                <th>业务文件</th>
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th pSortableColumn="statusName">状态 <p-sortIcon field="statusName"></p-sortIcon></th>
+                <th pSortableColumn="auditMessage">审核信息 <p-sortIcon field="auditMessage"></p-sortIcon></th>
+                <th pSortableColumn="userId">创建者userId <p-sortIcon field="userId"></p-sortIcon></th>
+               
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-auditableItem>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="auditableItem"></p-tableCheckbox>
+                </td>
+                <td>{{auditableItem.itemId}}</td>
+                <td>{{auditableItem.guildId}}</td>
+                <td>{{auditableItem.typeName}}</td>
+                <td>{{auditableItem.title}}</td>
+                <td style="max-height: 150px;">{{auditableItem.description.substring(0,50)}}</td>
+                <td><img *ngIf="auditableItem.avatarUrl!=null" [src]='auditableItem.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td>
+                  <a href="javascript:" (click)="openFiles(auditableItem)" *ngIf="isHasFile(auditableItem)">点我查看</a>
+                  <span *ngIf="!isHasFile(auditableItem)">无文件</span>
+                </td>
+                <td>{{auditableItem.createdDate}}</td>
+                <td [ngClass]="{'text-red': auditableItem.status==-2,'text-green':auditableItem.status==0}">{{auditableItem.statusName}}</td>
+                <td>{{auditableItem.auditMessage}}</td>
+                <td>{{auditableItem.userId}}</td>
+              
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{auditableItems ? auditableItems.length : 0 }} auditableItems.
+            </div>
+        </ng-template>
+    </p-table>
+</div>

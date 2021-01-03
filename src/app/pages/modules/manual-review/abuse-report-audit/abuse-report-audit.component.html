@@ -56,7 +56,6 @@
                   <a href="javascript:" (click)="openFiles(abuseReport)" *ngIf="isHasFile(abuseReport)">点我查看</a>
                   <span *ngIf="!isHasFile(abuseReport)">无文件</span>
                 </td>
-               
                 <td [ngClass]="{'text-red': abuseReport.item.status==-2,'text-green':abuseReport.item.status==0}">{{abuseReport.item.statusName}}</td>
                 <td>{{abuseReport.item.auditMessage}}</td>
                 <td>{{abuseReport.item.userId}}</td>

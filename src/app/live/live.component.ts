@@ -22,7 +22,8 @@ export class LiveComponent implements OnInit,AfterViewInit {
   constructor(private route: ActivatedRoute,private liveSrc:LiveService) {
 
 
-   }
+  }
+  
   ngAfterViewInit(): void {
 
     this.route.queryParams.subscribe(p => {

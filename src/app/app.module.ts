@@ -83,6 +83,13 @@ import { AbuseReportAuditComponent } from './pages/modules/manual-review/abuse-r
 import { IdeaFeedbackComponent } from './pages/modules/manual-review/idea-feedback/idea-feedback.component';
 import { IdeaReplierComponent } from './pages/modules/manual-review/common-component/idea-replier/idea-replier.component';
 import { AuditableItemListComponent } from './pages/modules/common/auditableItem-list/auditableItem-list.component';
+import { LivecastDialogComponent } from './pages/modules/common/livecast-dialog/livecast-dialog.component';
+import { DiscussDialogComponent } from './pages/modules/common/discuss-dialog/discuss-dialog.component';
+import { NotificationDialogComponent } from './pages/modules/common/notification-dialog/notification-dialog.component';
+import { GuildDialogComponent } from './pages/modules/common/guild-dialog/guild-dialog.component';
+import { ViolatedAuditableItemComponent } from './pages/modules/common/violatedAuditableItem/violatedAuditableItem.component';
+import { GuildmemberListComponent } from './pages/modules/common/guildmember-list/guildmember-list.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -97,7 +104,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -114,6 +121,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         StoreModule.forRoot({}),
         EffectsModule.forRoot(),
         StoreDevtoolsModule.instrument(),
+        MatProgressBarModule,
         AccordionModule,
         FormsModule,
         InputTextModule,

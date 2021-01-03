@@ -1,7 +1,7 @@
 <p-toast></p-toast>
-<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
 <div class="card">
-    <p-table #dt [value]="discusss" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','discussId']"
+    <p-table #dt [value]="discusss" [rows]="5" [paginator]="true" [globalFilterFields]="['title','guildId','discussId']"
         [(selection)]="selecteddiscusss" [rowHover]="true" dataKey="discussId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
@@ -30,9 +30,7 @@
                 <th pSortableColumn="creatorId">讨论创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
                 <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
-                <th>
-                  <span style="color:red;">操作</span>
-                </th>
+           
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-discuss>
@@ -44,18 +42,15 @@
                 <td>{{discuss.discussId}}</td>
                 <td>{{discuss.title}}</td>
                 <td><img *ngIf="discuss.avatarUrl!=null" [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
-                <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td>
+                <!-- <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td> -->
+                <td>{{discuss.files.length}}</td>
                 <td>{{discuss.createdDate}}</td>
                 <td>{{discuss.beginDate}}</td>
                 <td>{{discuss.endDate}}</td>
                 <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>
                 <td>{{discuss.creatorId}}</td>
-                <td><a href='javascript:' (click)="openDialog(discuss,0)" >{{discuss.viewedReceiversCount}}</a></td>
-                <td><a href='javascript:' (click)="openDialog(discuss,1)" >{{discuss.unviewedReceiversCount}}</a></td>
-                <td  style="word-wrap: normal !important;word-break: normal !important;">
-                  <button *ngIf="discuss.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-danger"></button>
-                  <button *ngIf="discuss.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setDiscussStatus(discuss)" class="p-button-raised p-button-success"></button>
-                </td>
+                <td>{{discuss.viewedReceiversCount}}</td>
+                <td>{{discuss.unviewedReceiversCount}}</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

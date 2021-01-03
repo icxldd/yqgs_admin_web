@@ -6,6 +6,7 @@ import { livecastDto } from '../../dtos/dashboards';
 import { DashboardsService } from '../../services/dashboards.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
+import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
 
 @Component({
   selector: 'app-notification',
@@ -17,12 +18,14 @@ export class NotificationComponent implements OnInit {
   notification: notificationDto;
   selectednotifications: notificationDto[];
   displayModal:boolean=false;
-
+  showProgress:boolean=false;
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
 
   ngOnInit() {
+    this.showProgress = true;
     this.ddService.getNotifications().subscribe(x=>{
-      this.notifications =  <notificationDto[]>x.notifications
+      this.notifications =  <notificationDto[]>x.notifications;
+      this.showProgress = false;
    })
   }
   openFiles(livecast:notificationDto){
@@ -40,6 +43,29 @@ export class NotificationComponent implements OnInit {
     }else{
         return true;
     }
+}
+
+openDialog(notification:notificationDto,type:number){
+
+  if(type==0){
+    this.dialogService.open(GuildmemberListComponent, {
+      data:notification.hasViewMembers,
+      header: '已查看成员列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+  else if(type==1){
+    this.dialogService.open(GuildmemberListComponent, {
+      data:notification.noViewMembers,
+      header: '未查看成员列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+
 }
   setNotificationStatus(notification){
     

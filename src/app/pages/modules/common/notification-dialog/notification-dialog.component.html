@@ -1,7 +1,7 @@
 <p-toast></p-toast>
-<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
 <div class="card">
-    <p-table #dt [value]="notifications" [rows]="10" [paginator]="true" [globalFilterFields]="['title','guildId','notificationId']"
+    <p-table #dt [value]="notifications" [rows]="5" [paginator]="true" [globalFilterFields]="['title','guildId','notificationId']"
         [(selection)]="selectednotifications" [rowHover]="true" dataKey="notificationId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
@@ -28,9 +28,7 @@
                 <th pSortableColumn="creatorId">通知创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
                 <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
-                <th>
-                  <span style="color:red;">操作</span>
-                </th>
+              
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-notification>
@@ -41,17 +39,15 @@
                 <td>{{notification.guildId}}</td>
                 <td>{{notification.notificationId}}</td>
                 <td>{{notification.title}}</td>
-                <td><a href='javascript:' (click)="openFiles(notification)" >{{notification.files.length}}</a></td>
+                <!-- <td><a href='javascript:' (click)="openFiles(notification)" >{{notification.files.length}}</a></td> -->
+                <td>{{notification.files.length}}</td>
                 <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{notification.createdDate}}</td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
-                <td><a href='javascript:' (click)="openDialog(notification,0)" >{{notification.viewedReceiversCount}}</a></td>
-                <td><a href='javascript:' (click)="openDialog(notification,1)" >{{notification.unviewedReceiversCount}}</a></td>
-                <td style="word-wrap: normal !important;word-break: normal !important;">
-                  <button *ngIf="notification.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-danger"></button>
-                  <button *ngIf="notification.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setNotificationStatus(notification)" class="p-button-raised p-button-success"></button>
-                </td>
+                <td>{{notification.viewedReceiversCount}}</td>
+                <td>{{notification.unviewedReceiversCount}}</td>
+               
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
