@@ -7,6 +7,7 @@ import { ViolatedAuditableItemComponent } from '../../common/violatedAuditableIt
 import { GuildDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
+import { GuildLivecastFluxTotalComponent } from './guild-livecast-flux-total/guild-livecast-flux-total.component';
 
 @Component({
   selector: 'app-guild',
@@ -68,6 +69,23 @@ openDialog(guild:GuildDto,type:number){
       baseZIndex: 10000
   });
   }
+}
+
+openDialogLivecastFlux(guild:GuildDto){
+
+console.log(guild)
+
+this.ddService.getGuildTotalAmount(guild.guildId).subscribe(x=>{
+  this.dialogService.open(GuildLivecastFluxTotalComponent, {
+    data:x.guildLivecastFluxs,
+    header: '教会直播流量',
+    width: '70%',
+    contentStyle: {"max-height": "700px", "overflow": "auto"},
+    baseZIndex: 10000
+  });
+});
+
+
 }
   setGuildStatus(guild){
     

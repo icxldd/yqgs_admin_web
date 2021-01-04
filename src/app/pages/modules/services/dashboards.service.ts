@@ -47,6 +47,22 @@ export class DashboardsService extends ApiService {
     return this.http.get(this.uriBase+`/spaadmin/notifications/show`,  { headers: this.header})
    }
 
+
+
+   getGuildTotalAmount(guildId:string):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guild/livecastFlux/show?guildId=${guildId}`,  { headers: this.header})
+   }
+   getGuildCharges(guildId:string):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guild/livecastFluxDetail/show?guildId=${guildId}&showFluxType=1`,  { headers: this.header})
+   }
+
+   getGuildConsumes(guildId:string):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guild/livecastFluxDetail/show?guildId=${guildId}&showFluxType=2`,  { headers: this.header})
+   }
+
+
+
+
    getGuild(guildId:string):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/guild/show?guildId=${guildId}`,  { headers: this.header})
    }

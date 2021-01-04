@@ -1,0 +1,39 @@
+<div class="card">
+  <p-table #dt [value]="guildCharges" [rows]="5" [paginator]="true" 
+      [(selection)]="selectedGuildCharges" [rowHover]="true" dataKey="chargeId"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 3rem">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th pSortableColumn="chargeId">充值ID <p-sortIcon field="chargeId"></p-sortIcon></th>
+              <th pSortableColumn="typeName">充值类型 </th>
+              <th pSortableColumn="consumedMoney">充值金额 <p-sortIcon field="consumedMoney"></p-sortIcon></th>
+              <th pSortableColumn="amount">充值数量 <p-sortIcon field="amount"></p-sortIcon></th>
+              <th pSortableColumn="remark">充值备注 <p-sortIcon field="remark"></p-sortIcon></th>
+              <th pSortableColumn="ownerId">充值者UserAuthID <p-sortIcon field="ownerId"></p-sortIcon></th>
+              
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-guild>
+          <tr>
+              <td>
+                  <p-tableCheckbox [value]="guild"></p-tableCheckbox>
+              </td>
+              <td>{{guild.chargeId}}</td>
+              <td>{{guild.typeName}}</td>
+              <td>{{guild.consumedMoney}}</td>
+              <td>{{guild.amount}}</td>
+              <td>{{guild.remark}}</td>
+              <td>{{guild.ownerId}}</td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+          <div class="p-d-flex p-ai-center p-jc-between">
+              In total there are {{guildCharges ? guildCharges.length : 0 }} guildCharges.
+          </div>
+      </ng-template>
+  </p-table>
+</div>
+

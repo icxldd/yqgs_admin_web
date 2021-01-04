@@ -129,3 +129,35 @@ export class notificationDto {
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
 }
+
+
+export class guildTotalAmountDto{
+    guildId:string
+    chargeMoney:number
+    consumeMoney:number
+    remainMoney:number
+    chargeFlux:number
+    consumeFlux:number
+    remainFlux:number
+}
+
+export class guildChargeDto{
+    chargeId:string
+    type:number
+    typeName:string
+    consumedMoney:number
+    amount:number
+    remark:string
+    ownerId:string
+}
+
+
+export class guildConsumeDto{
+    consumeId:string
+    type:number
+    typeName:string
+    amount:number
+    remark:string
+    ownerId:string
+}
+

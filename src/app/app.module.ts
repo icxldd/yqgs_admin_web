@@ -90,6 +90,9 @@ import { GuildDialogComponent } from './pages/modules/common/guild-dialog/guild-
 import { ViolatedAuditableItemComponent } from './pages/modules/common/violatedAuditableItem/violatedAuditableItem.component';
 import { GuildmemberListComponent } from './pages/modules/common/guildmember-list/guildmember-list.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { GuildLivecastFluxTotalComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-total/guild-livecast-flux-total.component';
+import { GuildLivecastFluxChargeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-charge/guild-livecast-flux-charge.component';
+import { GuildLivecastFluxConsumeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-consume/guild-livecast-flux-consume.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -104,7 +107,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

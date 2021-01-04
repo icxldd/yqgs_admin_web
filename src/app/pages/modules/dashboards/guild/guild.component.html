@@ -26,6 +26,7 @@
                 <th pSortableColumn="guildAuditMode">加入教会的方式 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
                 <th pSortableColumn="status">教会状态 <p-sortIcon field="status"></p-sortIcon></th>
                 <th pSortableColumn="ownerId">教会所属人ID <p-sortIcon field="ownerId"></p-sortIcon></th>
+                <th>教会直播流量</th>
                 <th>教会文件</th>
                 <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
                 <th pSortableColumn="membersCount">成员人数 <p-sortIcon field="membersCount"></p-sortIcon></th>
@@ -47,8 +48,8 @@
                 <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
+                <td><a href='javascript:' (click)="openDialogLivecastFlux(guild)" >点击查看</a></td>
                 <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td>
-
                 <td><a href='javascript:' (click)="openDialog(guild,0)" >{{guild.violationCount}}</a></td>
                 <td><a href='javascript:' (click)="openDialog(guild,1)" >{{guild.membersCount}}</a></td>
                 <td style="word-wrap: normal !important;word-break: normal !important;">

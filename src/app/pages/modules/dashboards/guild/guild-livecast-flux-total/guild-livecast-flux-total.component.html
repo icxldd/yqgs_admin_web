@@ -1,0 +1,44 @@
+<div class="card">
+    <p-table #dt [value]="guildTotalAmounts" [rows]="5" [paginator]="true" 
+        [(selection)]="selectedGuildTotalAmounts" [rowHover]="true" dataKey="guildId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="chargeMoney">充值金额 <p-sortIcon field="chargeMoney"></p-sortIcon></th>
+                <th pSortableColumn="consumeMoney">消费金额 <p-sortIcon field="consumeMoney"></p-sortIcon></th>
+                <th pSortableColumn="remainMoney">剩余金额 <p-sortIcon field="remainMoney"></p-sortIcon></th>
+                <th pSortableColumn="chargeFlux">充值流量 <p-sortIcon field="chargeFlux"></p-sortIcon></th>
+                <th pSortableColumn="consumeFlux">消费流量 <p-sortIcon field="consumeFlux"></p-sortIcon></th>
+                <th pSortableColumn="remainFlux">剩余流量 <p-sortIcon field="remainFlux"></p-sortIcon></th>
+                <th>充值记录</th>
+                <th>消费记录</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-guild>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="guild"></p-tableCheckbox>
+                </td>
+                <td>{{guild.guildId}}</td>
+                <td>{{guild.chargeMoney}}</td>
+                <td>{{guild.consumeMoney}}</td>
+                <td>{{guild.remainMoney}}</td>
+                <td>{{guild.chargeFlux}}</td>
+                <td>{{guild.consumeFlux}}</td>
+                <td>{{guild.remainFlux}}</td>
+                <td><a href='javascript:' (click)="openDialog(guild,0)" >充值记录</a></td>
+                <td><a href='javascript:' (click)="openDialog(guild,1)" >消费记录</a></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{guildTotalAmounts ? guildTotalAmounts.length : 0 }} guildTotalAmounts.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
