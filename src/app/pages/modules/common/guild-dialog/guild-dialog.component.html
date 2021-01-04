@@ -45,9 +45,9 @@
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
                 <!-- <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td> -->
-                <td>{{guild.files.length}}</td>
-                <td>{{guild.violationCount}}</td>
-                <td>{{guild.membersCount}}</td>
+                <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(guild,0)" >{{guild.violationCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(guild,1)" >{{guild.membersCount}}</a></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

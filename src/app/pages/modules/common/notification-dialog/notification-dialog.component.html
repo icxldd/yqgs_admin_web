@@ -45,8 +45,9 @@
                 <td>{{notification.createdDate}}</td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
-                <td>{{notification.viewedReceiversCount}}</td>
-                <td>{{notification.unviewedReceiversCount}}</td>
+        
+                <td><a href='javascript:' (click)="openDialog(notification,0)" >{{notification.viewedReceiversCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(notification,1)" >{{notification.unviewedReceiversCount}}</a></td>
                
             </tr>
         </ng-template>

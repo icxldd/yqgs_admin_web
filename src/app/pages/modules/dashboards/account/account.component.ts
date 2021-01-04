@@ -33,6 +33,7 @@ export class AccountComponent implements OnInit {
    })
   }
   openFiles(account:accountAdminDto){
+
     this.dialogService.open(FileListComponent, {
       data:account.files,
       header: '文件列表',
@@ -44,7 +45,8 @@ export class AccountComponent implements OnInit {
 
   //type 0:自己创建的教会 1:加入的教会 2:直播 3:讨论 4：通知
 openDialog(account:accountAdminDto,type:number){
-  this.ddService.getAccountDetail(account.userAuthId).subscribe(x=>{
+  this.showProgress=true;
+  this.ddService.getAccountDetail(account.userAuthId,type).subscribe(x=>{
     
     switch (type) {
         case 0:
@@ -95,6 +97,7 @@ openDialog(account:accountAdminDto,type:number){
       default:
         break;
     }
+    this.showProgress = false;
     
 
 

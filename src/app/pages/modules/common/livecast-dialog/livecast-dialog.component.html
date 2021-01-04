@@ -51,8 +51,9 @@
                 <td>{{livecast.endDate}}</td>
                 <td>{{livecast.status | dashboardspipe:"livecastStatus"}}</td>
                 <td>{{livecast.creatorId}}</td>
-                <td>{{livecast.viewedReceiversCount}}</td>
-                <td>{{livecast.unviewedReceiversCount}}</td>
+              
+                <td><a href='javascript:' (click)="openDialog(livecast,0)" >{{livecast.viewedReceiversCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(livecast,1)" >{{livecast.unviewedReceiversCount}}</a></td>
                
             </tr>
         </ng-template>

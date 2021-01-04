@@ -28,8 +28,8 @@ export class DashboardsService extends ApiService {
     return this.http.get(this.uriBase+`/spaadmin/accounts/show`,  { headers: this.header})
    }
 
-   getAccountDetail(userId:string):Observable<any>{
-    return this.http.get(this.uriBase+`/spaadmin/account/detail/show?userAuthId=${userId}`,  { headers: this.header})
+   getAccountDetail(userId:string,searchType:number):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/account/detail/show?userAuthId=${userId}&searchType=${searchType}`,  { headers: this.header})
    }
 
 

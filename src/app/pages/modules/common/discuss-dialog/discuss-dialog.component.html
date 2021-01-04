@@ -49,8 +49,8 @@
                 <td>{{discuss.endDate}}</td>
                 <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>
                 <td>{{discuss.creatorId}}</td>
-                <td>{{discuss.viewedReceiversCount}}</td>
-                <td>{{discuss.unviewedReceiversCount}}</td>
+                <td><a href='javascript:' (click)="openDialog(discuss,0)" >{{discuss.viewedReceiversCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(discuss,1)" >{{discuss.unviewedReceiversCount}}</a></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

@@ -5,6 +5,7 @@ import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { discussDto, GuildDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
+import { GuildmemberListComponent } from '../guildmember-list/guildmember-list.component';
 
 @Component({
   selector: 'app-discuss-dialog',
@@ -22,5 +23,28 @@ export class DiscussDialogComponent implements OnInit {
 
   ngOnInit() {
     this.discusss = this.config.data
+  }
+
+  openDialog(discuss:discussDto,type:number){
+
+    if(type==0){
+      this.dialogService.open(GuildmemberListComponent, {
+        data:discuss.hasViewMembers,
+        header: '已查看成员列表',
+        width: '70%',
+        contentStyle: {"max-height": "700px", "overflow": "auto"},
+        baseZIndex: 10000
+    });
+    }
+    else if(type==1){
+      this.dialogService.open(GuildmemberListComponent, {
+        data:discuss.noViewMembers,
+        header: '未查看成员列表',
+        width: '70%',
+        contentStyle: {"max-height": "700px", "overflow": "auto"},
+        baseZIndex: 10000
+    });
+    }
+  
   }
 }

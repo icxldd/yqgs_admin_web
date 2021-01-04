@@ -5,6 +5,7 @@ import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { GuildDto, livecastDto, notificationDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
+import { GuildmemberListComponent } from '../guildmember-list/guildmember-list.component';
 
 @Component({
   selector: 'app-notification-dialog',
@@ -21,4 +22,28 @@ export class NotificationDialogComponent implements OnInit {
   ngOnInit() {
     this.notifications = this.config.data
   }
+
+  
+openDialog(notification:notificationDto,type:number){
+
+  if(type==0){
+    this.dialogService.open(GuildmemberListComponent, {
+      data:notification.hasViewMembers,
+      header: '已查看成员列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+  else if(type==1){
+    this.dialogService.open(GuildmemberListComponent, {
+      data:notification.noViewMembers,
+      header: '未查看成员列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
+
+}
 }
