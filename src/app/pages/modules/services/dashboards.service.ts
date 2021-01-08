@@ -90,5 +90,7 @@ export class DashboardsService extends ApiService {
   postLivecastMessage(LivecastId:string,message:string):Observable<any>{
     return this.http.post(this.uriBase+`/module/livecast/message`,{LivecastId:LivecastId,Type:0,Description:message},  { headers: this.header})
   }
+
+
 }
 

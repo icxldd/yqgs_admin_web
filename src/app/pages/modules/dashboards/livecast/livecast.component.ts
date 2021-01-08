@@ -61,17 +61,18 @@ export class LivecastComponent implements OnInit {
         let message = '';
 
         let obj = JSON.parse(x.data);
+        let onlineSumDeviceCountByRoom = obj.roomDto.onlineSumDeviceCountByRoom;
         message+=obj.roomDto.triggerGuildMember.nickname;
         if(obj.eventType==1){
-          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          this.onlineCount= onlineSumDeviceCountByRoom;
           message+="解散房间。聊天结束";
         }
         else if(obj.eventType==2){
-          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          this.onlineCount= onlineSumDeviceCountByRoom;
           message+="加入房间";
         }
         else if(obj.eventType==3){
-          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          this.onlineCount= onlineSumDeviceCountByRoom;
           message+="离开房间";
         }
         else if(obj.eventType==10){
@@ -136,4 +137,7 @@ export class LivecastComponent implements OnInit {
       this.messageService.add({severity:'success', summary: 'Successful', detail: '更改状态成功', life: 3000});
     });
   }
+
+
+  
 }
