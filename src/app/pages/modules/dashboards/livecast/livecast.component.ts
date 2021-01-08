@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
+import { WebsockertService } from 'src/app/pages/services/websockert.service';
 import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
 import { livecastDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
@@ -18,6 +19,8 @@ export class LivecastComponent implements OnInit {
   selectedlivecasts: livecastDto[];
   displayModal:boolean=false;
   showProgress:boolean=false;
+  messages:string[]=[];
+  onlineCount:number=0;
 
 
   openDialog(livecast:livecastDto,type:number){
@@ -43,7 +46,7 @@ export class LivecastComponent implements OnInit {
   
   }
   showLivecast:livecastDto=new livecastDto();
-  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService) { }
+  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,private sockert:WebsockertService) { }
 
   ngOnInit() {
     this.showProgress = true;
@@ -52,12 +55,59 @@ export class LivecastComponent implements OnInit {
        this.livecasts =  <livecastDto[]>x.livecasts;
        this.showProgress = false;
     })
+
+    this.sockert.onmessage$.subscribe(x=>{
+      if(x.type=='message'){
+        let message = '';
+
+        let obj = JSON.parse(x.data);
+        message+=obj.roomDto.triggerGuildMember.nickname;
+        if(obj.eventType==1){
+          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          message+="解散房间。聊天结束";
+        }
+        else if(obj.eventType==2){
+          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          message+="加入房间";
+        }
+        else if(obj.eventType==3){
+          this.onlineCount= obj.roomDto.onlineSumCountByRoom;
+          message+="离开房间";
+        }
+        else if(obj.eventType==10){
+          message+="发送消息:";
+          message+=obj.messageBody;
+        }
+
+
+        this.messages.push(message)
+      }
+      
+      console.log(x)
+    })
   }
-  DetailLivecast(livecast){
-    this.displayModal = !this.displayModal;
-    this.showLivecast = livecast;
+  DetailLivecast(livecast:livecastDto){
+  this.ddService.putEnterLivecast(livecast.livecastId).subscribe(x=>{
+
+      this.displayModal = !this.displayModal;
+        this.showLivecast = livecast;
+    })
+  
+
   }
 
+  publishMessage(livecast:livecastDto,event){
+    if(event.keyCode==13){
+    var message = event.target.value;
+    this.ddService.postLivecastMessage(livecast.livecastId,message).subscribe(x=>{
+
+    })
+  }
+  }
+  onHide(livecast:livecastDto){
+    this.ddService.putLeaveLivecast(livecast.livecastId).subscribe(x=>{
+    })
+  }
   openFiles(livecast:livecastDto){
     this.dialogService.open(FileListComponent, {
       data:livecast.files,

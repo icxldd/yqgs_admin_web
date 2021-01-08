@@ -93,6 +93,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { GuildLivecastFluxTotalComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-total/guild-livecast-flux-total.component';
 import { GuildLivecastFluxChargeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-charge/guild-livecast-flux-charge.component';
 import { GuildLivecastFluxConsumeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-consume/guild-livecast-flux-consume.component';
+import { WebsockertService } from './pages/services/websockert.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -136,7 +137,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService,WebsockertService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

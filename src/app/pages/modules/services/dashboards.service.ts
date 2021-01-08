@@ -76,5 +76,19 @@ export class DashboardsService extends ApiService {
     return this.http.put(this.uriBase+`/spaadmin/bloc/status`,{identificationId:blocId,blocType:blocType,blocValue:blocValue},  { headers: this.header})
   }
 
+
+  putEnterLivecast(LivecastId:string):Observable<any>{
+    return this.http.put(this.uriBase+`/module/livecast/receiver/enter`,{LivecastId:LivecastId},  { headers: this.header})
+  }
+
+
+  putLeaveLivecast(LivecastId:string):Observable<any>{
+    return this.http.put(this.uriBase+`/module/livecast/receiver/leave`,{LivecastId:LivecastId},  { headers: this.header})
+  }
+
+
+  postLivecastMessage(LivecastId:string,message:string):Observable<any>{
+    return this.http.post(this.uriBase+`/module/livecast/message`,{LivecastId:LivecastId,Type:0,Description:message},  { headers: this.header})
+  }
 }
 

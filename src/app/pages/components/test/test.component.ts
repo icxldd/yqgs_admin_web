@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppCacheService } from '../../services/app-cache.service';
 import { ProductService } from '../../services/product.service';
+import { WebsockertService } from '../../services/websockert.service';
 
 @Component({
   selector: 'app-test',
@@ -9,23 +11,20 @@ import { ProductService } from '../../services/product.service';
 export class TestComponent implements OnInit {
 
 
-
-  datalist:any=[];
-  str:string;
-  constructor(private productService: ProductService) { }
+  strArr:string[]
+  constructor(private sockert:WebsockertService,protected cacheSrv: AppCacheService) { }
 
   ngOnInit() {
-  }
-
-  keyup(event){
-    
-    console.log(this.str);
-    this.productService.getInformations(0,10,this.str).subscribe(x=>{
-      this.datalist = x.data;
-      console.log(x)
-    });
+    // this.sockert.createObservableSocket(this.cacheSrv.token).subscribe(x=>{
+    //   if(x.type=='message'){
+    //     this.strArr.push(x.data);
+    //   }
+    //   // this.strArr.push(x);
+    // })
 
   }
+
+
 
 
 
