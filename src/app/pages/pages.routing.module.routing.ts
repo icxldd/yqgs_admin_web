@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import {LoginComponent} from './components/Login/Login.component'
 import { Post_Component } from './components/post_/post_.component';
 import { TestComponent } from './components/test/test.component';
+import { WebrtcComponent } from './components/webrtc/webrtc.component';
 const routes: Routes = [
     {
         path: 'login',
@@ -21,6 +22,11 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent,
     },
+    {
+        path:'webrtc',
+        component:WebrtcComponent
+    }
+    ,
     {
         path: 'dashboards',
         loadChildren: () => import('./modules/dashboards/dashboards.module').then(m => m.DashboardsModule),

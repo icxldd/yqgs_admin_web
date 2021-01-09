@@ -9,11 +9,11 @@ import { GuildService } from './modules/services/guild.service';
 import { ManualReviewService } from './modules/services/manual-review.service';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
-    
   ],
   declarations: [PagesComponent],
   providers:[AccountService,DashboardsService,GuildService,ManualReviewService]

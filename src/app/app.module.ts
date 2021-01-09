@@ -94,7 +94,8 @@ import { GuildLivecastFluxTotalComponent } from './pages/modules/dashboards/guil
 import { GuildLivecastFluxChargeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-charge/guild-livecast-flux-charge.component';
 import { GuildLivecastFluxConsumeComponent } from './pages/modules/dashboards/guild/guild-livecast-flux-consume/guild-livecast-flux-consume.component';
 import { WebsockertService } from './pages/services/websockert.service';
-
+import { WebrtcComponent } from './pages/components/webrtc/webrtc.component';
+import { BasicService } from './pages/services/basic.service';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
   }
@@ -108,7 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -137,7 +138,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService,WebsockertService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService,WebsockertService,BasicService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

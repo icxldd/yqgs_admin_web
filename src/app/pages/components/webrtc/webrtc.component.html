@@ -1,0 +1,22 @@
+<div>
+
+<h5>音频输入:</h5>
+  <div *ngFor="let source of audioSource" class="p-field-checkbox">
+    <p-radioButton [inputId]="source.code" name="audioSource" [value]="source" [(ngModel)]="selectAudioSource" [disabled]="source.code === 'R'"></p-radioButton>
+    <label [for]="source.code">{{source.name}}</label>
+</div>
+
+<h5>音频输出:</h5>
+ 
+  <div *ngFor="let source of audioOutput" class="p-field-checkbox">
+    <p-radioButton [inputId]="source.code" name="audioOutput" [value]="source" [(ngModel)]="selectAudioOutput" [disabled]="source.code === 'R'"></p-radioButton>
+    <label [for]="source.code">{{source.name}}</label>
+</div>
+
+<h5>视频输入:</h5>
+<div *ngFor="let source of videoSource" class="p-field-checkbox">
+  <p-radioButton [inputId]="source.code" name="videoSource" [value]="source" [(ngModel)]="selectVideoSource" [disabled]="source.code === 'R'"></p-radioButton>
+  <label [for]="source.code">{{source.name}}</label>
+</div>
+
+</div>

@@ -129,50 +129,41 @@ export class AppComponent {
             // }
          ]
       },
-      // {
-      //    label:'Events',
-      //    icon:'pi pi-fw pi-calendar',
-      //    items:[
-      //       {
-      //          label:'Edit',
-      //          icon:'pi pi-fw pi-pencil',
-      //          items:[
-      //             {
-      //                label:'Save',
-      //                icon:'pi pi-fw pi-calendar-plus'
-      //             },
-      //             {
-      //                label:'Delete',
-      //                icon:'pi pi-fw pi-calendar-minus'
-      //             },
+      {
+         label:'WebRTC',
+         icon:'pi pi-fw pi-calendar',
+         items:[
+            // {
+            //    label:'Edit',
+            //    icon:'pi pi-fw pi-pencil',
+            //    items:[
+            //       {
+            //          label:'Save',
+            //          icon:'pi pi-fw pi-calendar-plus'
+            //       },
+            //       {
+            //          label:'Delete',
+            //          icon:'pi pi-fw pi-calendar-minus'
+            //       },
 
-      //          ]
-      //       },
-      //       {
-      //          label:'Archieve',
-      //          icon:'pi pi-fw pi-calendar-times',
-      //          items:[
-      //             {
-      //                label:'Remove',
-      //                icon:'pi pi-fw pi-calendar-minus'
-      //             }
-      //          ]
-      //       }
-      //    ]
-      // }, {
-      //    label:'内容管理',
-      //    icon:'pi pi-fw pi-file',
-      //    items:[
-      //       {
-      //          label:'帖子发布',
-      //          icon:'pi pi-fw pi-list',routerLink:'/pages/post'
-      //       },
-      //       {
-      //           label:'测试路由',
-      //           icon:'pi pi-fw pi-list',routerLink:'/pages/test'
-      //        }
-      //    ]
-      // },
+            //    ]
+            // },
+            // {
+            //    label:'获取音频视频设备',
+            //    icon:'pi pi-fw pi-calendar-times',
+            //    items:[
+            //       {
+            //          label:'Remove',
+            //          icon:'pi pi-fw pi-calendar-minus'
+            //       }
+            //    ]
+            // }
+            {
+               label:'获取音频视频设备',
+               icon:'pi pi-fw pi-calendar-times',routerLink:'/pages/webrtc'
+            },
+         ]
+      },
   ];
 
   this.items2=[{
