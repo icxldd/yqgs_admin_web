@@ -23,10 +23,9 @@ const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path:'webrtc',
-        component:WebrtcComponent
-    }
-    ,
+        path: 'webrtc',
+        loadChildren: () => import('./modules/webrtc/webrtc.module').then(m => m.WebrtcModule),
+    },
     {
         path: 'dashboards',
         loadChildren: () => import('./modules/dashboards/dashboards.module').then(m => m.DashboardsModule),

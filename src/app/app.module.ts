@@ -96,6 +96,16 @@ import { GuildLivecastFluxConsumeComponent } from './pages/modules/dashboards/gu
 import { WebsockertService } from './pages/services/websockert.service';
 import { WebrtcComponent } from './pages/components/webrtc/webrtc.component';
 import { BasicService } from './pages/services/basic.service';
+import { WebrtcModule } from './pages/modules/webrtc/webrtc.module';
+import { SearchPageComponent } from './pages/modules/webrtc/search-page/search-page.component';
+import { RoomPageComponent } from './pages/modules/webrtc/room-page/room-page.component';
+
+
+
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketWebrtcService } from './pages/modules/services/socket-webrtc.service';
+const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
   }
@@ -109,7 +119,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -123,6 +133,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           }),
         BrowserAnimationsModule,
         AppRoutingModule,
+        SocketIoModule.forRoot(config),
         StoreModule.forRoot({}),
         EffectsModule.forRoot(),
         StoreDevtoolsModule.instrument(),
@@ -134,11 +145,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule
     ],
     providers: [
         httpInterceptorProviders,
-        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService,WebsockertService,BasicService
+        AuthGuardService,AuthService,LocalStoreService,AppCacheService,PagecontrolService,MessageService,ProductService,ConfirmationService,ImageUploadOssService,LiveService,DialogService,WebsockertService,BasicService,SocketWebrtcService
     ],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

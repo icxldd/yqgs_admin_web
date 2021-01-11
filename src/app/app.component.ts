@@ -159,8 +159,8 @@ export class AppComponent {
             //    ]
             // }
             {
-               label:'获取音频视频设备',
-               icon:'pi pi-fw pi-calendar-times',routerLink:'/pages/webrtc'
+               label:'搜索房间',
+               icon:'pi pi-fw pi-calendar-times',routerLink:'/pages/webrtc/search'
             },
          ]
       },

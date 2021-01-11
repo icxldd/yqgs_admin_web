@@ -16,13 +16,10 @@ export class HomeComponent implements OnInit {
     //   console.log(x);
     // })
 
-    this.sockert.createObservableSocket(this.cacheSrv.token,'wss://192.168.31.114:8181').subscribe(x=>{
-      console.log(x);
-    })
-    // this.sockert.createObservableSocket('4Y7uIXeYTTgAv48uNLLO','ws://church.yangqungongshe.com:8181').subscribe(x=>{
+    // this.sockert.createObservableSocket(this.cacheSrv.token,'wss://192.168.31.114:8181').subscribe(x=>{
     //   console.log(x);
     // })
-    //4Y7uIXeYTTgAv48uNLLO
+    
   }
 
 }

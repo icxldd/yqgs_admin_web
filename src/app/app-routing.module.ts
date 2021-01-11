@@ -17,7 +17,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
         canActivate: [AuthGuardService]
     },
-    
+   
     { path: '', pathMatch: 'full', redirectTo: 'pages' },
     { path: '**', redirectTo: 'pages' }
 ];
