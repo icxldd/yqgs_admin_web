@@ -88,11 +88,14 @@ export class LivecastComponent implements OnInit {
     })
   }
   DetailLivecast(livecast:livecastDto){
-  this.ddService.putEnterLivecast(livecast.livecastId).subscribe(x=>{
 
-      this.displayModal = !this.displayModal;
-        this.showLivecast = livecast;
-    })
+    this.displayModal = !this.displayModal;
+    this.showLivecast = livecast;
+  // this.ddService.putEnterLivecast(livecast.livecastId).subscribe(x=>{
+
+  //     this.displayModal = !this.displayModal;
+  //       this.showLivecast = livecast;
+  //   })
   
 
   }
@@ -106,8 +109,8 @@ export class LivecastComponent implements OnInit {
   }
   }
   onHide(livecast:livecastDto){
-    this.ddService.putLeaveLivecast(livecast.livecastId).subscribe(x=>{
-    })
+    // this.ddService.putLeaveLivecast(livecast.livecastId).subscribe(x=>{
+    // })
   }
   openFiles(livecast:livecastDto){
     this.dialogService.open(FileListComponent, {
