@@ -80,7 +80,7 @@
       <app-mp4-video *ngIf="displayModal&&showLivecast.recordUrl!=null" [url]="showLivecast.recordUrl"></app-mp4-video>
       <app-hls-video *ngIf="displayModal&&showLivecast.recordUrl==null" [url]="showLivecast.hlsPlayUrl"></app-hls-video>
 
-      <div class="messages">
+      <div class="messages" *ngIf="false">
           <div class="top">
             <input pInputText type="text" (keydown)="publishMessage(showLivecast,$event)" placeholder="Search..." />
           </div>

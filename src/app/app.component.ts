@@ -129,41 +129,41 @@ export class AppComponent {
             // }
          ]
       },
-      {
-         label:'WebRTC',
-         icon:'pi pi-fw pi-calendar',
-         items:[
-            // {
-            //    label:'Edit',
-            //    icon:'pi pi-fw pi-pencil',
-            //    items:[
-            //       {
-            //          label:'Save',
-            //          icon:'pi pi-fw pi-calendar-plus'
-            //       },
-            //       {
-            //          label:'Delete',
-            //          icon:'pi pi-fw pi-calendar-minus'
-            //       },
+      // {
+      //    label:'WebRTC',
+      //    icon:'pi pi-fw pi-calendar',
+      //    items:[
+      //       // {
+      //       //    label:'Edit',
+      //       //    icon:'pi pi-fw pi-pencil',
+      //       //    items:[
+      //       //       {
+      //       //          label:'Save',
+      //       //          icon:'pi pi-fw pi-calendar-plus'
+      //       //       },
+      //       //       {
+      //       //          label:'Delete',
+      //       //          icon:'pi pi-fw pi-calendar-minus'
+      //       //       },
 
-            //    ]
-            // },
-            // {
-            //    label:'获取音频视频设备',
-            //    icon:'pi pi-fw pi-calendar-times',
-            //    items:[
-            //       {
-            //          label:'Remove',
-            //          icon:'pi pi-fw pi-calendar-minus'
-            //       }
-            //    ]
-            // }
-            {
-               label:'搜索房间',
-               icon:'pi pi-fw pi-calendar-times',routerLink:'/pages/webrtc/search'
-            },
-         ]
-      },
+      //       //    ]
+      //       // },
+      //       // {
+      //       //    label:'获取音频视频设备',
+      //       //    icon:'pi pi-fw pi-calendar-times',
+      //       //    items:[
+      //       //       {
+      //       //          label:'Remove',
+      //       //          icon:'pi pi-fw pi-calendar-minus'
+      //       //       }
+      //       //    ]
+      //       // }
+      //       {
+      //          label:'搜索房间',
+      //          icon:'pi pi-fw pi-calendar-times',routerLink:'/pages/webrtc/search'
+      //       },
+      //    ]
+      // },
   ];
 
   this.items2=[{
