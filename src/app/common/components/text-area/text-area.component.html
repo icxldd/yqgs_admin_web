@@ -5,7 +5,12 @@
     </h3>
   </div>
 
-  <div id="text-area-context">
+  <div id="text-area-context" *ngIf="unitIsNetwork==false" (click)="textClick.next()" [ngClass]="{'canClick': canClick}">
     <span id="text-area-count">{{this.selfFrom.value}}</span><h3 id="text-area-unit">{{this.selfFrom.unit}}</h3>
+  </div>
+
+
+  <div id="text-area-context" *ngIf="unitIsNetwork==true" (click)="textClick.next()" [ngClass]="{'canClick': canClick}">
+    <span id="text-area-count">{{this.selfFrom.value | networkUnit: 1 : 2 }}</span><h3 id="text-area-unit">GB</h3>
   </div>
 </div>

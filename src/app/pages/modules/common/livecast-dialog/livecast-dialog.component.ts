@@ -21,10 +21,19 @@ export class LivecastDialogComponent implements OnInit {
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
 
   ngOnInit() {
+    
     this.livecasts = this.config.data
   }
 
-  
+  openFileDialog(livecast:livecastDto){
+    this.dialogService.open(FileListComponent, {
+      data:livecast.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
   openDialog(livecast:livecastDto,type:number){
 
     if(type==0){

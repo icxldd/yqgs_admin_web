@@ -13,7 +13,7 @@
               <th pSortableColumn="amount">充值数量 <p-sortIcon field="amount"></p-sortIcon></th>
               <th pSortableColumn="remark">充值备注 <p-sortIcon field="remark"></p-sortIcon></th>
               <th pSortableColumn="ownerId">充值者UserAuthID <p-sortIcon field="ownerId"></p-sortIcon></th>
-              
+              <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-guild>
@@ -27,6 +27,7 @@
               <td>{{guild.amount}}</td>
               <td>{{guild.remark}}</td>
               <td>{{guild.ownerId}}</td>
+              <td>{{guild.createdDate}}</td>
           </tr>
       </ng-template>
       <ng-template pTemplate="summary">

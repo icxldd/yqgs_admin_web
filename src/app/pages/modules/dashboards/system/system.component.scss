@@ -1,0 +1,54 @@
+:host{
+    .card{
+        margin: 10px 150px;
+    }
+    .pieLine{
+        margin: 10px 150px;
+    }
+    .singleLine{
+        margin: 20px 0;
+    }
+    .multiLine{
+        margin: 20px 0;
+    }
+    @media screen and (max-width:1210px) {
+        .card{
+            margin: 10px 10px;
+        }
+        .singleLine{
+            margin: 10px 10px;
+        }
+    }
+    @media screen and (max-width:1600px) and(min-width:1450px) {
+        .card{
+            margin: 10px 10px;
+        }
+        .singleLine{
+            margin: 10px 10px;
+        }
+    }
+
+    @media screen and (max-width:1400px) and(min-width:1210px) {
+        .card{
+            margin: 10px 10px;
+        }
+        .singleLine{
+            margin: 10px 10px;
+        }
+    }
+
+  
+    @media screen and (max-width:1800px) and(min-width:1400px) {
+        .card{
+            margin: 10px 100px;
+        }
+        .singleLine{
+            margin: 10px 10px;
+        }
+    }
+    // .container{
+    //     // .panel{
+    //     //     // margin: 20px 0px;
+    //     // }
+    // }
+}

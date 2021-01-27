@@ -25,6 +25,15 @@ export class DiscussDialogComponent implements OnInit {
     this.discusss = this.config.data
   }
 
+  openFileDialog(discuss:discussDto){
+    this.dialogService.open(FileListComponent, {
+      data:discuss.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
   openDialog(discuss:discussDto,type:number){
 
     if(type==0){

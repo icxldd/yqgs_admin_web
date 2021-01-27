@@ -1,5 +1,11 @@
 :host{
     display: inline-block;
+
+
+    .canClick{
+        cursor: pointer;
+    }
+
     #text-area-box{
         width: 20rem;
         height: 10rem;

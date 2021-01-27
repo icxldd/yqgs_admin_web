@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ApiService } from '../basic/ApiService';
 import { DashboardsService } from '../services/dashboards.service';
 import { GuildService } from '../services/guild.service';
+import { SystemService } from '../services/system.service';
 import { AccountComponent } from './account/account.component';
 import { DiscussComponent } from './discuss/discuss.component';
 import { GuildMemberComponent } from './guild-member/guild-member.component';
@@ -10,7 +11,15 @@ import { DetailGuildComponent } from './guild/detail-guild/detail-guild.componen
 import { GuildComponent } from './guild/guild.component';
 import { LivecastComponent } from './livecast/livecast.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SystemComponent } from './system/system.component';
 const routes: Routes = [
+    {
+        path: 'system',
+        component: SystemComponent,
+        resolve:{
+            obj:SystemService
+        }
+    },
     {
         path: 'guild',
         component: GuildComponent

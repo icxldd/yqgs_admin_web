@@ -23,7 +23,15 @@ export class NotificationDialogComponent implements OnInit {
     this.notifications = this.config.data
   }
 
-  
+  openFileDialog(notification:notificationDto){
+    this.dialogService.open(FileListComponent, {
+      data:notification.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
 openDialog(notification:notificationDto,type:number){
 
   if(type==0){

@@ -1,0 +1,123 @@
+
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+<div [ngStyle]="{'background-color': backcolor,'height':'100%'}" class="container">
+  <div class="panel">
+    <p-panel header="今日统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="toDayNewUserCount" [unitIsNetwork]="false" [from]="toDayNewUserCount" class="card" (textClick)="textClick('toDayNewUserCount');"></app-text-area>
+     
+        <app-text-area id="toDayLivecastCount" [unitIsNetwork]="false" [from]="toDayLivecastCount" class="card" (textClick)="textClick('toDayLivecastCount');"></app-text-area>
+     
+        <app-text-area id="toDayDiscussCount" [unitIsNetwork]="false" [from]="toDayDiscussCount" class="card" (textClick)="textClick('toDayDiscussCount');"></app-text-area><br/>
+     
+        <app-text-area id="toDayNotificationCount" [unitIsNetwork]="false" [from]="toDayNotificationCount" class="card" (textClick)="textClick('toDayNotificationCount');"></app-text-area>
+     
+        <app-text-area id="toDayUserFeedback" [unitIsNetwork]="false" [from]="toDayUserFeedback" class="card"></app-text-area>
+        <app-text-area id="toDayAbuseCount" [unitIsNetwork]="false" [from]="toDayAbuseCount" class="card"></app-text-area><br/>
+
+     
+      </div>
+    </p-panel>
+
+    <p-panel header="昨天统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="yesterDayNewUserCount" [unitIsNetwork]="false" [from]="yesterDayNewUserCount" class="card" (textClick)="textClick('yesterDayNewUserCount');"></app-text-area>
+     
+        <app-text-area id="yesterDayLivecastCount" [unitIsNetwork]="false" [from]="yesterDayLivecastCount" class="card" (textClick)="textClick('yesterDayLivecastCount');"></app-text-area>
+     
+        <app-text-area id="yesterDayDiscussCount" [unitIsNetwork]="false" [from]="yesterDayDiscussCount" class="card" (textClick)="textClick('yesterDayDiscussCount');"></app-text-area><br/>
+     
+        <app-text-area id="yesterDayNotificationCount" [unitIsNetwork]="false" [from]="yesterDayNotificationCount" class="card" (textClick)="textClick('yesterDayNotificationCount');"></app-text-area>
+     
+        <app-text-area id="yesterDayUserFeedback" [unitIsNetwork]="false" [from]="yesterDayUserFeedback" class="card"></app-text-area>
+        <app-text-area id="yesterDayAbuseCount" [unitIsNetwork]="false" [from]="yesterDayAbuseCount" class="card"></app-text-area><br/>
+
+     
+      </div>
+    </p-panel>
+
+
+    <p-panel header="总共统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="sumNewUserCount" [unitIsNetwork]="false" [from]="sumNewUserCount" class="card"></app-text-area>
+     
+        <app-text-area id="sumLivecastCount" [unitIsNetwork]="false" [from]="sumLivecastCount" class="card"></app-text-area>
+     
+        <app-text-area id="sumDiscussCount" [unitIsNetwork]="false" [from]="sumDiscussCount" class="card"></app-text-area><br/>
+     
+        <app-text-area id="sumNotificationCount" [unitIsNetwork]="false" [from]="sumNotificationCount" class="card"></app-text-area>
+     
+        <app-text-area id="sumUserFeedback" [unitIsNetwork]="false" [from]="sumUserFeedback" class="card"></app-text-area>
+        <app-text-area id="sumAbuseCount" [unitIsNetwork]="false" [from]="sumAbuseCount" class="card"></app-text-area><br/>
+        
+        <app-text-area id="sumUsingFluxCount" [unitIsNetwork]="false" [from]="sumUsingFluxCount" class="card"></app-text-area>
+     
+      </div>
+    </p-panel>
+
+
+
+    <p-panel header="本月统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-basic-area id="currentMonthNewUserCount" [req]="currentMonthNewUserCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentMonthLiveCastUseCount" [req]="currentMonthLiveCastUseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentMonthAbuseCount" [req]="currentMonthAbuseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentMonthUserFeedback" [req]="currentMonthUserFeedback"  class="singleLine"></app-basic-area>
+
+        <app-multi-area  id="currentMonthBlocCount" [req]="currentMonthBlocCount" class="multiLine"></app-multi-area>
+
+      </div>
+    </p-panel> 
+
+    <p-panel header="今年统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-basic-area id="currentYearNewUserCount" [req]="currentYearNewUserCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYearLiveCastUseCount" [req]="currentYearLiveCastUseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYearAbuseCount" [req]="currentYearAbuseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYearUserFeedback" [req]="currentYearUserFeedback"  class="singleLine"></app-basic-area>
+
+        <app-multi-area  id="currentYearBlocCount" [req]="currentYearBlocCount" class="multiLine"></app-multi-area>
+
+      </div>
+    </p-panel> 
+
+    <p-panel header="去年统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-basic-area id="currentYestYearNewUserCount" [req]="currentYestYearNewUserCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYestYearLiveCastUseCount" [req]="currentYestYearLiveCastUseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYestYearAbuseCount" [req]="currentYestYearAbuseCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="currentYestYearUserFeedback" [req]="currentYestYearUserFeedback"  class="singleLine"></app-basic-area>
+
+        <app-multi-area  id="currentYestYearBlocCount" [req]="currentYestYearBlocCount" class="multiLine"></app-multi-area>
+
+      </div>
+    </p-panel> 
+
+
+
+    <!-- <p-panel header="总共统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-text-area id="sumGuildAbuseCount" [unitIsNetwork]="false" [from]="sumGuildAbuseCount" class="card"></app-text-area>
+        <app-text-area id="sumLiveUseCount" [unitIsNetwork]="true" [from]="sumLiveUseCount" class="card"></app-text-area>
+        <app-text-area id="sumGuildMemberJoinCount" [unitIsNetwork]="false" [from]="sumGuildMemberJoinCount" class="card"></app-text-area><br/>
+        <app-pie-chart id="sumguildBlocCount" [req]="sumguildBlocCount" class="pieLine"></app-pie-chart>
+      </div>
+    </p-panel>
+
+    <p-panel header="本月统计" [toggleable]="true">
+      <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-basic-area id="monthJoinCount" [req]="monthJoinCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="monthLivecastCount" [req]="monthLivecastCount"  class="singleLine"></app-basic-area>
+        <app-basic-area id="monthAbuseCount" [req]="monthAbuseCount"  class="singleLine"></app-basic-area>
+
+        <app-multi-area [req]="monthBlocMultiAreaObject" class="multiLine"></app-multi-area>
+    
+
+      </div>
+    </p-panel> -->
+
+  
+  </div>
+
+ 
+</div>

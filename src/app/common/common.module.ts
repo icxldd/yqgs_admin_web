@@ -7,12 +7,13 @@ import { BasicAreaComponent } from './components/basic-area/basic-area.component
 import { MultiAreaComponent } from './components/multi-area/multi-area.component';
 import { HlsVideoComponent } from './components/hls-video/hls-video.component';
 import { Mp4VideoComponent } from './components/mp4-video/mp4-video.component';
+import { NetworkUnitPipe } from '../pipe/network-unit.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [CommonComponent,TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent,HlsVideoComponent,Mp4VideoComponent],
+  declarations: [NetworkUnitPipe,CommonComponent,TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent,HlsVideoComponent,Mp4VideoComponent],
   exports:[TextAreaComponent,PieChartComponent,BasicAreaComponent,MultiAreaComponent,HlsVideoComponent,Mp4VideoComponent]
 })
 export class CommonmModule { }

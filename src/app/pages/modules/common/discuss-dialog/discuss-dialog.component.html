@@ -22,7 +22,8 @@
                 <th pSortableColumn="discussId">讨论ID <p-sortIcon field="discussId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
                 <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
-                <th>讨论文件</th>
+                <!-- <th>讨论文件</th> -->
+                <th pSortableColumn="files.length">讨论文件 <p-sortIcon field="files.length"></p-sortIcon></th>
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
                 <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
@@ -43,7 +44,8 @@
                 <td>{{discuss.title}}</td>
                 <td><img *ngIf="discuss.avatarUrl!=null" [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <!-- <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td> -->
-                <td>{{discuss.files.length}}</td>
+                <!-- <td>{{discuss.files.length}}</td> -->
+                <td><a href='javascript:' (click)="openFileDialog(discuss)" >{{discuss.files.length}}</a></td>
                 <td>{{discuss.createdDate}}</td>
                 <td>{{discuss.beginDate}}</td>
                 <td>{{discuss.endDate}}</td>

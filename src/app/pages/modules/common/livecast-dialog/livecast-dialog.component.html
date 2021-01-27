@@ -21,7 +21,8 @@
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
                 <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
-                <th>直播文件</th>
+                <!-- <th>直播文件</th> -->
+                <th pSortableColumn="files.length">直播文件 <p-sortIcon field="files.length"></p-sortIcon></th>
                 <!-- <th pSortableColumn="avatarUrl">封面图地址 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
                 <th pSortableColumn="recordUrl">录播地址 <p-sortIcon field="recordUrl"></p-sortIcon></th> -->
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
@@ -43,7 +44,7 @@
                 <td>{{livecast.livecastId}}</td>
                 <td>{{livecast.title}}</td>
                 <!-- <td><a href='javascript:' (click)="openFiles(livecast)" >{{livecast.files.length}}</a></td> -->
-                <td>{{livecast.files.length}}</td>
+                <td><a href='javascript:' (click)="openFileDialog(livecast)" >{{livecast.files.length}}</a></td>
                 <!-- <td>{{livecast.avatarUrl}}</td>
                 <td>{{livecast.recordUrl}}</td> -->
                 <td>{{livecast.createdDate}}</td>

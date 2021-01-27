@@ -45,6 +45,10 @@ export class AppComponent {
          icon:'pi pi-fw pi-globe',
          items:[
             {
+               label:'系统数据报表',
+               icon:'pi pi-fw pi-home',routerLink:'/pages/dashboards/system'
+            },
+            {
                label:'云教会用户',
                icon:'pi pi-fw pi-user',routerLink:'/pages/dashboards/account'
             },

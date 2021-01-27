@@ -3,9 +3,9 @@
   <div class="panel">
     <p-panel header="今日统计" [toggleable]="true">
       <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
-        <app-text-area id="toDayguildAbuseCount" [from]="toDayguildAbuseCount" class="card"></app-text-area>
-        <app-text-area id="toDayliveUseCount" [from]="toDayliveUseCount" class="card"></app-text-area>
-        <app-text-area id="toDayguildMemberJoinCount" [from]="toDayguildMemberJoinCount" class="card"></app-text-area><br/>
+        <app-text-area id="toDayguildAbuseCount" [unitIsNetwork]="false" [from]="toDayguildAbuseCount" class="card"></app-text-area>
+        <!-- <app-text-area id="toDayliveUseCount" [unitIsNetwork]="false" [from]="toDayliveUseCount" class="card"></app-text-area> -->
+        <app-text-area id="toDayguildMemberJoinCount" [unitIsNetwork]="false" [from]="toDayguildMemberJoinCount" class="card"></app-text-area><br/>
         <app-pie-chart id="toDayguildBlocCount" [req]="toDayguildBlocCount" class="pieLine"></app-pie-chart>
         <!-- <app-pie-chart [req]="todayBlocObject" class="pieLine"></app-pie-chart> -->
       </div>
@@ -14,9 +14,9 @@
 
     <p-panel header="总共统计" [toggleable]="true">
       <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
-        <app-text-area id="sumGuildAbuseCount" [from]="sumGuildAbuseCount" class="card"></app-text-area>
-        <app-text-area id="sumLiveUseCount" [from]="sumLiveUseCount" class="card"></app-text-area>
-        <app-text-area id="sumGuildMemberJoinCount" [from]="sumGuildMemberJoinCount" class="card"></app-text-area><br/>
+        <app-text-area id="sumGuildAbuseCount" [unitIsNetwork]="false" [from]="sumGuildAbuseCount" class="card"></app-text-area>
+        <app-text-area id="sumLiveUseCount" [unitIsNetwork]="true" [from]="sumLiveUseCount" class="card"></app-text-area>
+        <app-text-area id="sumGuildMemberJoinCount" [unitIsNetwork]="false" [from]="sumGuildMemberJoinCount" class="card"></app-text-area><br/>
         <app-pie-chart id="sumguildBlocCount" [req]="sumguildBlocCount" class="pieLine"></app-pie-chart>
         <!-- <app-pie-chart [req]="todayBlocObject" class="pieLine"></app-pie-chart> -->
       </div>

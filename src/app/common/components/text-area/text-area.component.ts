@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-text-area',
@@ -10,6 +10,17 @@ export class TextAreaComponent implements OnInit {
   selfFrom:any;
 
   @Input() from;
+
+  @Input() unitIsNetwork;
+
+
+
+  @Output() textClick = new EventEmitter();
+
+  get canClick():boolean{
+    return this.textClick.observers.length!=0;
+  }
+  
   constructor() {
     
   }
