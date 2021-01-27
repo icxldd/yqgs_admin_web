@@ -22,17 +22,20 @@
                 <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
                 <!-- <th>直播文件</th> -->
+                <th pSortableColumn="flux">此直播使用流量 <p-sortIcon field="flux"></p-sortIcon></th>
                 <th pSortableColumn="files.length">直播文件 <p-sortIcon field="files.length"></p-sortIcon></th>
                 <!-- <th pSortableColumn="avatarUrl">封面图地址 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
                 <th pSortableColumn="recordUrl">录播地址 <p-sortIcon field="recordUrl"></p-sortIcon></th> -->
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
                 <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
-                <th pSortableColumn="status">直播状态 <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="isInLive">直播状态 <p-sortIcon field="isInLive"></p-sortIcon></th>
                 <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
                 <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
-               
+                <th>
+                    <span style="color:red;">操作</span>
+                  </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-livecast>
@@ -43,6 +46,7 @@
                 <td>{{livecast.guildId}}</td>
                 <td>{{livecast.livecastId}}</td>
                 <td>{{livecast.title}}</td>
+                <td>{{livecast.flux<1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
                 <!-- <td><a href='javascript:' (click)="openFiles(livecast)" >{{livecast.files.length}}</a></td> -->
                 <td><a href='javascript:' (click)="openFileDialog(livecast)" >{{livecast.files.length}}</a></td>
                 <!-- <td>{{livecast.avatarUrl}}</td>
@@ -55,7 +59,12 @@
               
                 <td><a href='javascript:' (click)="openDialog(livecast,0)" >{{livecast.viewedReceiversCount}}</a></td>
                 <td><a href='javascript:' (click)="openDialog(livecast,1)" >{{livecast.unviewedReceiversCount}}</a></td>
-               
+                <td style="word-wrap: normal !important;word-break: normal !important;">
+                    <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+                    <ng-template #elseBlock>
+                        <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+                    </ng-template>
+                </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
@@ -65,4 +74,13 @@
         </ng-template>
     </p-table>
 </div>
+
+
+
+
+<p-dialog [header]="showLivecast.recordUrl!=null?'录播视频':'直播视频'" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" >
+      <app-mp4-video *ngIf="displayModal&&showLivecast.recordUrl!=null" [url]="showLivecast.recordUrl"></app-mp4-video>
+      <app-hls-video *ngIf="displayModal&&showLivecast.recordUrl==null" [url]="showLivecast.hlsPlayUrl"></app-hls-video>
+</p-dialog>
 

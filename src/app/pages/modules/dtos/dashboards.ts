@@ -121,6 +121,7 @@ export class guildMemberDto {
     phoneNumber:string
     role:boolean// 角色。（0: 信徒; 1: 同工; 2: 牧者）
     status:number// 状态。（-3：已拒绝; -2: 已屏蔽; -1: 已退出; 0: 正常; 1: 等待审核; 2: 已邀请等待加入）
+    modifiedDate:string
 }
 
 
@@ -138,12 +139,13 @@ export class  livecastDto {
     createdDate:string
     beginDate:string
     endDate:string
+    flux:number
     viewedReceiversCount:number
     unviewedReceiversCount:number
     files:fileBasicDto[]
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
-
+    
     constructor(){
         this.livecastId = '';
         this.guildId = '';
@@ -163,6 +165,10 @@ export class  livecastDto {
         this.files = [];
         this.hasViewMembers = [];
         this.noViewMembers = [];
+    }
+
+    get isInLive(){
+        return this.status==0?1:0;
     }
 
 }
@@ -185,23 +191,23 @@ export class  discussDto {
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
 
-    constructor(){
-        this.discussId = '';
-        this.guildId = '';
-        this.title = '';
-        this.description = '';
-        this.avatarUrl = '';
-        this.status = 0;
-        this.creatorId = '';
-        this.createdDate = '';
-        this.beginDate = '';
-        this.endDate = '';
-        this.viewedReceiversCount = 0;
-        this.unviewedReceiversCount = 0;
-        this.files = [];
-        this.hasViewMembers = [];
-        this.noViewMembers = [];
-    }
+    // constructor(){
+    //     this.discussId = '';
+    //     this.guildId = '';
+    //     this.title = '';
+    //     this.description = '';
+    //     this.avatarUrl = '';
+    //     this.status = 0;
+    //     this.creatorId = '';
+    //     this.createdDate = '';
+    //     this.beginDate = '';
+    //     this.endDate = '';
+    //     this.viewedReceiversCount = 0;
+    //     this.unviewedReceiversCount = 0;
+    //     this.files = [];
+    //     this.hasViewMembers = [];
+    //     this.noViewMembers = [];
+    // }
 }
 
 
@@ -222,23 +228,23 @@ export class  notificationDto {
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
 
-    constructor(){
-        this.notificationId = '';
-        this.guildId = '';
-        this.title = '';
-        this.description = '';
-        this.avatarUrl = '';
-        this.status = 0;
-        this.creatorId = '';
-        this.createdDate = '';
-        this.beginDate = '';
-        this.endDate = '';
-        this.viewedReceiversCount = 0;
-        this.unviewedReceiversCount = 0;
-        this.files = [];
-        this.hasViewMembers = [];
-        this.noViewMembers = [];
-    }
+    // constructor(){
+    //     this.notificationId = '';
+    //     this.guildId = '';
+    //     this.title = '';
+    //     this.description = '';
+    //     this.avatarUrl = '';
+    //     this.status = 0;
+    //     this.creatorId = '';
+    //     this.createdDate = '';
+    //     this.beginDate = '';
+    //     this.endDate = '';
+    //     this.viewedReceiversCount = 0;
+    //     this.unviewedReceiversCount = 0;
+    //     this.files = [];
+    //     this.hasViewMembers = [];
+    //     this.noViewMembers = [];
+    // }
 }
 
 

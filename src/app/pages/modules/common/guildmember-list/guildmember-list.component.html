@@ -19,6 +19,7 @@
                                 <th pSortableColumn="phoneNumber">手机号 <p-sortIcon field="phoneNumber"></p-sortIcon></th>
                                 <th pSortableColumn="role">成员角色 <p-sortIcon field="role"></p-sortIcon></th>
                                 <th pSortableColumn="status">成员状态 <p-sortIcon field="status"></p-sortIcon></th>
+                                <th pSortableColumn="modifiedDate">加入时间 <p-sortIcon field="modifiedDate"></p-sortIcon></th>
                                 <th style="width: 8rem">操作</th>
                             </tr>
                         </ng-template>
@@ -32,6 +33,7 @@
                                 <td>{{guildMember.phoneNumber}}</td>
                                 <td>{{guildMember.role==2?'教会管理员':guildMember.role==1?'同工':'普通成员'}}</td>
                                 <td [ngStyle]="{'color': guildMember.status!=0?'red':'green'}">{{guildMember.status| dashboardspipe:"guildMemberStatus"}}</td>
+                                <td>{{guildMember.modifiedDate}}</td>
                                 <td> <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2"  ></button></td>
                             </tr>
                         </ng-template>

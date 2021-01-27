@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { CopyObject } from 'src/app/pages/common/copy-object';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { WebsockertService } from 'src/app/pages/services/websockert.service';
 import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
 import { livecastDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
-
 @Component({
   selector: 'app-livecast',
   templateUrl: './livecast.component.html',
@@ -51,8 +51,9 @@ export class LivecastComponent implements OnInit {
   ngOnInit() {
     this.showProgress = true;
     this.ddService.getLivecasts().subscribe(x=>{
-
-       this.livecasts =  <livecastDto[]>x.livecasts;
+      this.livecasts = CopyObject.copyObject(<livecastDto[]>x.livecasts,livecastDto);
+      //  this.livecasts =  <livecastDto[]>x.livecasts;
+      // this.livecasts = Object.assign([], x.livecasts);
        this.showProgress = false;
     })
 
@@ -88,7 +89,7 @@ export class LivecastComponent implements OnInit {
     })
   }
   DetailLivecast(livecast:livecastDto){
-
+    // let vvv =  Object.assign(new livecastDto(),livecast);
     this.displayModal = !this.displayModal;
     this.showLivecast = livecast;
   // this.ddService.putEnterLivecast(livecast.livecastId).subscribe(x=>{

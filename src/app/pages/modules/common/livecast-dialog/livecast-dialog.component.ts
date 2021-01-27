@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { CopyObject } from 'src/app/pages/common/copy-object';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { GuildDto, livecastDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
@@ -17,14 +18,22 @@ export class LivecastDialogComponent implements OnInit {
   livecast: livecastDto;
   selectedlivecasts: livecastDto[];
   displayModal:boolean=false;
+  showLivecast:livecastDto=new livecastDto();
 
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
 
   ngOnInit() {
-    
-    this.livecasts = this.config.data
+    this.livecasts = CopyObject.copyObject(<livecastDto[]>this.config.data,livecastDto);
+    // this.livecasts = this.config.data
   }
 
+  DetailLivecast(livecast:livecastDto){
+
+    this.displayModal = !this.displayModal;
+    this.showLivecast = livecast;
+ 
+
+  }
   openFileDialog(livecast:livecastDto){
     this.dialogService.open(FileListComponent, {
       data:livecast.files,
