@@ -44,7 +44,7 @@
                 </td>
                 <td>{{livecast.guildId}}</td>
                 <td>{{livecast.livecastId}}</td>
-                <td>{{livecast.title}}</td>
+                <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="livecast.description||'未发布简介'">{{livecast.title}}</a></td>
                 <td><a href='javascript:' (click)="openFiles(livecast)" >{{livecast.files.length}}</a></td>
                 <!-- <td>{{livecast.avatarUrl}}</td>
                 <td>{{livecast.recordUrl}}</td> -->

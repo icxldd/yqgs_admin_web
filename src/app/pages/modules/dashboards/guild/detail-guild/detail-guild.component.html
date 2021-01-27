@@ -22,7 +22,7 @@
       </div>
     </p-panel>
 
-    <p-panel header="本月统计" [toggleable]="true">
+    <p-panel header="本月统计" [toggleable]="true" [collapsed]="true">
       <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
         <app-basic-area id="monthJoinCount" [req]="monthJoinCount"  class="singleLine"></app-basic-area>
         <app-basic-area id="monthLivecastCount" [req]="monthLivecastCount"  class="singleLine"></app-basic-area>

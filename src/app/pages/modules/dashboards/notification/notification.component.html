@@ -39,8 +39,10 @@
                     <p-tableCheckbox [value]="notification"></p-tableCheckbox>
                 </td>
                 <td>{{notification.guildId}}</td>
-                <td>{{notification.notificationId}}</td>
-                <td>{{notification.title}}</td>
+                <td>
+                    {{notification.notificationId}}
+               </td>
+                <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="notification.description||'未发布简介'">{{notification.title}}</a></td>
                 <td><a href='javascript:' (click)="openFiles(notification)" >{{notification.files.length}}</a></td>
                 <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{notification.createdDate}}</td>

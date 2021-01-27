@@ -99,7 +99,7 @@ import { BasicService } from './pages/services/basic.service';
 import { WebrtcModule } from './pages/modules/webrtc/webrtc.module';
 import { SearchPageComponent } from './pages/modules/webrtc/search-page/search-page.component';
 import { RoomPageComponent } from './pages/modules/webrtc/room-page/room-page.component';
-
+import {TooltipModule} from 'primeng/tooltip';
 
 
 
@@ -149,7 +149,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule,TooltipModule
     ],
     providers: [
         httpInterceptorProviders,
