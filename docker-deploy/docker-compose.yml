@@ -3,7 +3,7 @@ version: '3.4'
 services:
   app-microservice-basic-admin:
     container_name: app-microservice-basic-admin
-    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:0127_3
+    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:0201
     ports:
       - "8080:8080"
     networks:
