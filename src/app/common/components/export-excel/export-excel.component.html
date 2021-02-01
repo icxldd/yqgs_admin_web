@@ -1,0 +1,13 @@
+<div id="rightExportIcon" [ngClass]="{'leftMove': isLeftMove,'restoreMove':!isLeftMove}" (click)="clickSwitch();">
+  <img src="assets/imgs/export.png" />
+</div>
+
+
+<p-sidebar [showCloseIcon]="false" [modal]="false" [(visible)]="display" position="right" [style]="{width:'400px'}">
+  <ng-container *ngTemplateOutlet="page? page :defaultPage;"></ng-container>
+</p-sidebar>
+
+
+<ng-template #defaultPage>
+  Content
+</ng-template>

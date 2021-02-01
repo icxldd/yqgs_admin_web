@@ -109,6 +109,12 @@ import { NetworkUnitPipe } from './pipe/network-unit.pipe';
 import { SystemComponent } from './pages/modules/dashboards/system/system.component';
 import { SystemService } from './pages/modules/services/system.service';
 import { AccountDialogComponent } from './pages/modules/common/account-dialog/account-dialog.component';
+
+import {SidebarModule} from 'primeng/sidebar';
+import { ExportExcelComponent } from './common/components/export-excel/export-excel.component';
+import { FeatureModule } from './feature/feature.module';
+import { ExportExcelDetailComponent } from './feature/components/export-excel-detail/export-excel-detail.component';
+
 const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -123,7 +129,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent,ExportExcelComponent,ExportExcelDetailComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -149,7 +155,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TableModule,
         DialogModule,
         PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule,TooltipModule
+        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule,TooltipModule,SidebarModule,FeatureModule
     ],
     providers: [
         httpInterceptorProviders,
