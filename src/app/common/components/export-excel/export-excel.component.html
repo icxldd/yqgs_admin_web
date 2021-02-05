@@ -1,5 +1,5 @@
-<div id="rightExportIcon" [ngClass]="{'leftMove': isLeftMove,'restoreMove':!isLeftMove}" (click)="clickSwitch();">
-  <img src="assets/imgs/export.png" />
+<div id="rightExportIcon" [ngClass]="{'leftMove': isLeftMove,'restoreMove':!isLeftMove}" (click)="clickSwitch();" [ngStyle]="{'top': top}">
+  <img [src]="icon" />
 </div>
 
 

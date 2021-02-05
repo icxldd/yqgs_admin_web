@@ -1,0 +1,26 @@
+<app-export-excel [page]="detailpage" icon="assets/imgs/search.png" top="20%"></app-export-excel>
+
+
+<ng-template #detailpage>
+  <h1 style="text-align: center; display: block;">搜索</h1>
+  <hr/>
+
+
+  <h5>搜索教会</h5>
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="guildId" placeholder="Search" (keyup.enter)="onKeyupEnterSearch(1);">         
+  </span>
+
+  <h5>搜索用户</h5>
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="userId" placeholder="Search" (keyup.enter)="onKeyupEnterSearch(2);">         
+  </span>
+
+
+  
+  
+  
+
+</ng-template>

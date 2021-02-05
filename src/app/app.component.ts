@@ -24,7 +24,32 @@ export class AppComponent {
   constructor(protected accsrc:AccountService,protected tokensrc:AppCacheService) { 
 
   }
-
+  isShowModel:boolean = false;
+  title:string;
+  subTitle:string;
+  avatarUrl:string;
+  description:string;
+  onSearchEnter(data){
+     this.isShowModel = true;
+     if(data.type==1){
+        this.accsrc.getGuild(data.data).subscribe(x=>{
+            let obj = x.guild;
+            this.title = obj.displayName;
+            this.description = obj.description;
+            this.avatarUrl = obj.avatarUrl;
+            this.subTitle = obj.address;
+        });
+     }
+     else if(data.type==2){
+      this.accsrc.getUser(data.data).subscribe(x=>{
+         let obj = x.user;
+         this.title = obj.displayName;
+         this.description = obj.description;
+         this.avatarUrl = obj.avatarUrl;
+         this.subTitle = obj.city;
+      });
+     }
+  }
   ngOnInit() {
       // if(location.pathname.includes("/home")){
       //     location.href="/pages/home"

@@ -8,6 +8,8 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 export class ExportExcelComponent implements OnInit {
   display:boolean = false;
   isLeftMove:boolean = false;
+  @Input() top:number;
+  @Input() icon:string;
   @Input() page: TemplateRef<any>;
   constructor() { }
 

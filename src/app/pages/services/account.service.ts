@@ -13,6 +13,13 @@ export class AccountService extends Basichttpclient {
   constructor(private http: HttpClient,protected cacheSrv: AppCacheService) {
     super(http)
    }
+
+  getGuild(guildId:number):Observable<any>{
+    return this.http.get(this.uriBase+`/organization/guild?GuildId=${guildId}`,  { headers: this.header})
+  }
+  getUser(userId:number):Observable<any>{
+    return this.http.get(this.uriBase+`/people/user?UserId=${userId}`,  { headers: this.header})
+  }
   login(reqdto:Accountdto):Observable<Object>{
     return from(this.http.post(this.uriBase+"/account/auth/mobile", reqdto, { headers: this.header }).toPromise())
   }
