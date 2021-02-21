@@ -64,7 +64,7 @@ export class GuildDto {
     auditables:auditableItemDto[]
     guildmembers:guildMemberDto[]
     informations:informationDto[]
-
+    createdDate:string
     notificationCount:number
     discussCount:number
     livecastCount:number

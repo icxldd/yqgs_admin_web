@@ -22,7 +22,8 @@
                 <th pSortableColumn="DisplayName">教会名称 </th>
                 <th pSortableColumn="avatarUrl">教会头像 </th>
                 <th pSortableColumn="Address">教会地址 </th>
-                <th pSortableColumn="isCanNewJoin">教会是否允许新成员加入 <p-sortIcon field="isCanNewJoin"></p-sortIcon></th>
+                <!-- <th pSortableColumn="isCanNewJoin">教会是否允许新成员加入 <p-sortIcon field="isCanNewJoin"></p-sortIcon></th> -->
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="guildAuditMode">用户加入教会是否需要审核 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
                 <th pSortableColumn="status">教会状态 <p-sortIcon field="status"></p-sortIcon></th>
                 <th pSortableColumn="ownerId">教会所属人ID <p-sortIcon field="ownerId"></p-sortIcon></th>
@@ -30,7 +31,7 @@
                 <th>教会文件</th>
                 <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
                 <th pSortableColumn="membersCount">成员人数 <p-sortIcon field="membersCount"></p-sortIcon></th>
-
+                
                 <th pSortableColumn="notificationCount">教会通知 <p-sortIcon field="notificationCount"></p-sortIcon></th>
                 <th pSortableColumn="discussCount">教会讨论 <p-sortIcon field="discussCount"></p-sortIcon></th>
                 <th pSortableColumn="livecastCount">教会直播 <p-sortIcon field="livecastCount"></p-sortIcon></th>
@@ -48,7 +49,8 @@
                 <td>{{guild.displayName}}</td>
                 <td><img *ngIf="guild.avatarUrl!=null" [src]='guild.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td>{{guild.address}}</td>
-                <td>{{guild.isCanNewJoin==0?'不允许':'允许'}}</td>
+                <!-- <td>{{guild.isCanNewJoin==0?'不允许':'允许'}}</td> -->
+                <td>{{guild.createdDate | chinaTime}}</td>
                 <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
