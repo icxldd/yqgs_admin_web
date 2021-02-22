@@ -1,7 +1,7 @@
 <div class="card">
   <p-table  #dtt [value]="guildMembersDtos" [rows]="5" [paginator]="true" [globalFilterFields]="['memberId','nickname','phoneNumber']"
                     [(selection)]="selectedguildMembers" [rowHover]="true" dataKey="memberId"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" >
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" sortField="role" sortOrder="-1">
                     <ng-template pTemplate="caption">
                         <div class="p-d-flex p-ai-center p-jc-between">
                             <h5 class="p-m-0">GuildMember Management</h5>
@@ -17,7 +17,7 @@
                                 <th pSortableColumn="nickname">教会成员名字<p-sortIcon field="nickname"></p-sortIcon></th>
                                 <th pSortableColumn="avatarUrl">成员头像 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
                                 <th pSortableColumn="phoneNumber">手机号 <p-sortIcon field="phoneNumber"></p-sortIcon></th>
-                                <th pSortableColumn="role">成员角色 <p-sortIcon field="role"></p-sortIcon></th>
+                                <th pSortableColumn="role">成员角色 <p-sortIcon field="role" ></p-sortIcon></th>
                                 <th pSortableColumn="status">成员状态 <p-sortIcon field="status"></p-sortIcon></th>
                                 <th pSortableColumn="modifiedDate">加入时间 <p-sortIcon field="modifiedDate"></p-sortIcon></th>
                                 <th style="width: 8rem">操作</th>

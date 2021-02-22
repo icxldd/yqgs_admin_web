@@ -23,9 +23,9 @@ export class DashboardspipePipe implements PipeTransform {
     else if('livecastStatus'==args){
       switch(value){
           case 0:
-            return '进行中';
+            return '<span style="color: green;">进行中</span>';
             case 1:
-            return '未开始';
+            return '<span style="color: red;">未开始</span>';
             case 2:
             return '已结束';
             case 3:

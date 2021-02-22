@@ -145,7 +145,7 @@ export class  livecastDto {
     files:fileBasicDto[]
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
-    
+    guild:GuildDto
     constructor(){
         this.livecastId = '';
         this.guildId = '';
@@ -165,6 +165,7 @@ export class  livecastDto {
         this.files = [];
         this.hasViewMembers = [];
         this.noViewMembers = [];
+        this.guild = new GuildDto();
     }
 
     get isInLive(){

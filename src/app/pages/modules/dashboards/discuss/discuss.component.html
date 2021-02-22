@@ -24,8 +24,8 @@
                 <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
                 <th>讨论文件</th>
                 <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
-                <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
-                <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
+                <!-- <th pSortableColumn="beginDate">开始时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
+                <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th> -->
                 <th pSortableColumn="status">讨论状态 <p-sortIcon field="status"></p-sortIcon></th>
                 <th pSortableColumn="creatorId">讨论创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
@@ -45,9 +45,9 @@
                 <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="discuss.description||'未发布简介'">{{discuss.title}}</a></td>
                 <td><img *ngIf="discuss.avatarUrl!=null" [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td>
-                <td>{{discuss.createdDate}}</td>
-                <td>{{discuss.beginDate}}</td>
-                <td>{{discuss.endDate}}</td>
+                <td>{{discuss.createdDate  | chinaTime}}</td>
+                <!-- <td>{{discuss.beginDate}}</td>
+                <td>{{discuss.endDate }}</td> -->
                 <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>
                 <td>{{discuss.creatorId}}</td>
                 <td><a href='javascript:' (click)="openDialog(discuss,0)" >{{discuss.viewedReceiversCount}}</a></td>

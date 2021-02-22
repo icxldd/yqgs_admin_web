@@ -21,6 +21,7 @@
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
                 <th pSortableColumn="notificationId">通知ID <p-sortIcon field="notificationId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="description">简介 <p-sortIcon field="description"></p-sortIcon></th>
                 <!-- <th>直播文件</th> -->
                 <th pSortableColumn="files.length">通知文件 <p-sortIcon field="files.length"></p-sortIcon></th>
                 <th pSortableColumn="avatarUrl">封面图片 <p-sortIcon field="avatarUrl"></p-sortIcon></th> 
@@ -40,11 +41,12 @@
                 <td>{{notification.guildId}}</td>
                 <td>{{notification.notificationId}}</td>
                 <td>{{notification.title}}</td>
+                <td>{{notification.description}}</td>
                 <!-- <td><a href='javascript:' (click)="openFiles(notification)" >{{notification.files.length}}</a></td> -->
                 <!-- <td>{{notification.files.length}}</td> -->
                 <td><a href='javascript:' (click)="openFileDialog(notification)" >{{notification.files.length}}</a></td>
                 <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
-                <td>{{notification.createdDate}}</td>
+                <td>{{notification.createdDate  | chinaTime}}</td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
         
