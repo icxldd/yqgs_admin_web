@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   angular-ssr-app:
-    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:0205_2
+    image: registry.cn-hangzhou.aliyuncs.com/yqgs-pu/admin:0222
     build:
       context: .
       dockerfile: image/Dockerfile
