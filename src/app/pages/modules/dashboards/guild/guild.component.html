@@ -11,6 +11,9 @@
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
                 </span>
+                <span style="margin-left: 5%;">
+                    <button pButton type="button" label="导出教会联系人" (click)="exportGuildExcel();"></button>
+                </span>
             </div>
         </ng-template>
         <ng-template pTemplate="header">

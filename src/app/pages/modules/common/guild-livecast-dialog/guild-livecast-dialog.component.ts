@@ -33,7 +33,9 @@ export class GuildLivecastDialogComponent implements OnInit {
     if(this.selectedguildLivecasts==undefined ||this.selectedguildLivecasts.length==0){
       this.messageService.add({severity:'error', summary: 'error', detail: '请先选中需要导出的教会', life: 3000});
     }else{
-      this.messageService.add({severity:'success', summary: 'Successful', detail: `导出${this.selectedguildLivecasts.length}个教会`, life: 3000});
+      
+      this.ddService.getGuildContact(this.selectedguildLivecasts.map(x=>x.guildId));
+      this.messageService.add({severity:'success', summary: 'Successful', detail: `导出${this.selectedguildLivecasts.length}个教会成功`, life: 3000});
     }
 
   }

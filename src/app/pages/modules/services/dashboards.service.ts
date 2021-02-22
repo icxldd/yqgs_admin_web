@@ -16,6 +16,14 @@ export class DashboardsService extends ApiService {
 
 
 
+   getGuildContact(guildIds:string[]){
+
+
+    window.open(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`)
+    // return this.http.get(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`,  { headers: this.header})
+   }
+
+
    getUserViolations(userId:number):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/account/violation?userId=${userId}`,  { headers: this.header})
    }

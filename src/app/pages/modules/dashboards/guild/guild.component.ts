@@ -33,6 +33,17 @@ export class GuildComponent implements OnInit {
   }
 
 
+  exportGuildExcel(){
+
+    if(this.selectedguilds==undefined ||this.selectedguilds.length==0){
+      this.messageService.add({severity:'error', summary: 'error', detail: '请先选中需要导出的教会', life: 3000});
+    }else{
+      
+      this.ddService.getGuildContact(this.selectedguilds.map(x=>x.guildId));
+      this.messageService.add({severity:'success', summary: 'Successful', detail: `导出${this.selectedguilds.length}个教会成功`, life: 3000});
+    }
+
+  }
   DetailGuild(_guild:GuildDto){
     // this.pagesrc.gotopage(`/pages/dashboards/guild-detail/${_guild.guildId}`)
     window.open(`/pages/dashboards/guild-detail/${_guild.guildId}`);
@@ -140,6 +151,8 @@ this.ddService.getGuildTotalAmount(guild.guildId).subscribe(x=>{
 
 
 }
+
+
   setGuildStatus(guild){
     
     let value = guild.status==0?false:true;
