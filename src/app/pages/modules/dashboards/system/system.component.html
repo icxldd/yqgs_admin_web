@@ -59,12 +59,13 @@
 
     <p-panel header="本月统计" [toggleable]="true" [collapsed]="true">
       <div [ngStyle]="{'background-color': backcolor,'height':'100%'}">
+        <app-multi-area  id="currentMonthBlocCount" [req]="currentMonthBlocCount" class="multiLine"></app-multi-area>
         <app-basic-area id="currentMonthNewUserCount" [req]="currentMonthNewUserCount"  class="singleLine"></app-basic-area>
         <app-basic-area id="currentMonthLiveCastUseCount" [req]="currentMonthLiveCastUseCount"  class="singleLine"></app-basic-area>
         <app-basic-area id="currentMonthAbuseCount" [req]="currentMonthAbuseCount"  class="singleLine"></app-basic-area>
         <app-basic-area id="currentMonthUserFeedback" [req]="currentMonthUserFeedback"  class="singleLine"></app-basic-area>
 
-        <app-multi-area  id="currentMonthBlocCount" [req]="currentMonthBlocCount" class="multiLine"></app-multi-area>
+       
 
       </div>
     </p-panel> 
