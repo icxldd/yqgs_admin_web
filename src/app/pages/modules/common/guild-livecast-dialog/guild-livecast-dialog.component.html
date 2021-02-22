@@ -1,0 +1,137 @@
+
+<div  class="card">
+
+  <p-table  #dt [value]="guildLivecastDtos" [rows]="5" [paginator]="true" [globalFilterFields]="['guildName','guildAddress','guildId']"
+  [(selection)]="selectedguildLivecasts" [rowHover]="true" dataKey="guildId"
+  sortField="lasterCreatedLivecastTime" sortOrder="-1"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Guild Management</h5>
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+        </span>
+    </div>
+</ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+            <th pSortableColumn="guildName">教会名字 <p-sortIcon field="guildName"></p-sortIcon></th>
+            <th>教会头像</th>
+            <!-- <th pSortableColumn="guildAddress">教会地址 <p-sortIcon field="guildAddress"></p-sortIcon></th> -->
+            <th pSortableColumn="lasterCreatedLivecastTime">最新发布直播时间 <p-sortIcon field="lasterCreatedLivecastTime"></p-sortIcon></th>
+            <th pSortableColumn="guildDto.guildLivecastDto.length">发布直播次数 <p-sortIcon field="guildDto.guildLivecastDto.length"></p-sortIcon></th>
+            <th>教会创建时间</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-guildDto let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="guildDto" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{guildDto.guildId}}</td>
+            <td>{{guildDto.guildName}}</td>
+            <td><img *ngIf="guildDto.guildAvatarUrl!=null" [src]="guildDto.guildAvatarUrl" style="    height: 60px;
+              object-fit: cover;
+              width: 65px;" class="p-shadow-4" /></td>
+            <!-- <td>{{guildDto.guildAddress}}</td> -->
+            <td>{{guildDto.lasterCreatedLivecastTime | chinaTime}}</td>
+            <td style="color: red;">{{guildDto.guildLivecastDto.length}}</td>
+            <td>{{guildDto.guildCreatedTime|showTime:'创建'}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-guildDto>
+        <tr>
+            <td colspan="7">
+                <div class="p-p-3">
+                  <p-table #dt [value]="guildDto.guildLivecastDto" [rows]="5" [paginator]="true" [globalFilterFields]="['title','guildId','livecastId']"
+        [(selection)]="selectedLivecasts" [rowHover]="true" dataKey="livecastId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">livecast Management</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="guild.displayName">教会名字</th>
+                <th pSortableColumn="guild.avatarUrl">教会头像</th>
+                <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
+                <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
+                <!-- <th>直播文件</th> -->
+                <th pSortableColumn="flux">此直播使用流量 <p-sortIcon field="flux"></p-sortIcon></th>
+                <th pSortableColumn="files.length">直播文件 <p-sortIcon field="files.length"></p-sortIcon></th>
+                <!-- <th pSortableColumn="avatarUrl">封面图地址 <p-sortIcon field="avatarUrl"></p-sortIcon></th>
+                <th pSortableColumn="recordUrl">录播地址 <p-sortIcon field="recordUrl"></p-sortIcon></th> -->
+                <!-- <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th> -->
+                <th pSortableColumn="beginDate">创建时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
+                <!-- <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th> -->
+                <th>视频播放时长</th>
+                <th pSortableColumn="isInLive">直播状态 <p-sortIcon field="isInLive"></p-sortIcon></th>
+                <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
+                <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
+                <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
+                <th>
+                    <span style="color:red;">操作</span>
+                  </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-livecast>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="livecast"></p-tableCheckbox>
+                </td>
+                <td>{{livecast.guildId}}</td>
+                <td>{{livecast.guild.displayName}}</td>
+                <td><img *ngIf="livecast.guild.avatarUrl!=null" [src]='livecast.guild.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td class="limitText">{{livecast.livecastId}}</td>
+                <td>{{livecast.title}}</td>
+                <td>{{livecast.flux<1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
+                <td><a href='javascript:' (click)="openFileDialog(livecast)" >{{livecast.files.length}}</a></td>
+                <td>{{livecast.beginDate | chinaTime}}</td>
+                <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'直播未开始或进行中'}}</td>
+                <td [innerHTML]='(livecast.status | dashboardspipe:"livecastStatus")|htmlBuild'></td>
+                <td>{{livecast.creatorId}}</td>
+              
+                <td><a href='javascript:' (click)="openDialog(livecast,0)" >{{livecast.viewedReceiversCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(livecast,1)" >{{livecast.unviewedReceiversCount}}</a></td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
+                    <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+                    <ng-template #elseBlock>
+                        <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+                    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{guildDto.guildLivecastDto ? guildDto.guildLivecastDto.length : 0 }} livecasts.
+
+            </div>
+        </ng-template>
+    </p-table>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+  
+</div>
+
+
+<p-dialog [header]="showLivecast.recordUrl!=null?'录播视频':'直播视频'" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" >
+      <app-mp4-video *ngIf="displayModal&&showLivecast.recordUrl!=null" [url]="showLivecast.recordUrl"></app-mp4-video>
+      <app-hls-video *ngIf="displayModal&&showLivecast.recordUrl==null" [url]="showLivecast.hlsPlayUrl"></app-hls-video>
+</p-dialog>
+

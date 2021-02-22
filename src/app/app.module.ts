@@ -119,6 +119,8 @@ import { ShowInfoDetailComponent } from './common/components/show-info-detail/sh
 import { ChinaTimePipe } from './pages/modules/pipes/china-time.pipe';
 import { SecondTimePipe } from './pages/modules/pipes/second-time.pipe';
 import { HtmlBuildPipe } from './pages/modules/pipes/html-build.pipe';
+import { GuildLivecastDialogComponent } from './pages/modules/common/guild-livecast-dialog/guild-livecast-dialog.component';
+import { ShowTimePipe } from './pages/modules/pipes/show-time.pipe';
 const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -133,7 +135,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent,ExportExcelComponent,ExportExcelDetailComponent,OpenSearchDetailComponent,ShowInfoDetailComponent,ChinaTimePipe,SecondTimePipe,HtmlBuildPipe
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent,ExportExcelComponent,ExportExcelDetailComponent,OpenSearchDetailComponent,ShowInfoDetailComponent,ChinaTimePipe,SecondTimePipe,HtmlBuildPipe,GuildLivecastDialogComponent,ShowTimePipe
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -6,6 +6,7 @@ import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { DetailBasic } from '../../basic/detail-basic';
 import { AccountDialogComponent } from '../../common/account-dialog/account-dialog.component';
 import { DiscussDialogComponent } from '../../common/discuss-dialog/discuss-dialog.component';
+import { GuildLivecastDialogComponent } from '../../common/guild-livecast-dialog/guild-livecast-dialog.component';
 import { LivecastDialogComponent } from '../../common/livecast-dialog/livecast-dialog.component';
 import { NotificationDialogComponent } from '../../common/notification-dialog/notification-dialog.component';
 import { DashboardsService } from '../../services/dashboards.service';
@@ -126,9 +127,9 @@ export class SystemComponent extends DetailBasic implements OnInit {
       }
       else if(flag==='toDayLivecastCount'){
         result = x.systemDetailInfo.todayLivecasts;
-        this.dialogService.open(LivecastDialogComponent, {
+        this.dialogService.open(GuildLivecastDialogComponent, {
           data:result,
-          header: '发布直播列表',
+          header: '教会直播列表',
           width: '70%',
           contentStyle: {"max-height": "700px", "overflow": "auto"},
           baseZIndex: 10000
@@ -166,9 +167,9 @@ export class SystemComponent extends DetailBasic implements OnInit {
       }
       else if(flag==='yesterDayLivecastCount'){
         result = x.systemDetailInfo.yesterdayLivecasts;
-        this.dialogService.open(LivecastDialogComponent, {
+        this.dialogService.open(GuildLivecastDialogComponent, {
           data:result,
-          header: '发布直播列表',
+          header: '教会直播列表',
           width: '70%',
           contentStyle: {"max-height": "700px", "overflow": "auto"},
           baseZIndex: 10000

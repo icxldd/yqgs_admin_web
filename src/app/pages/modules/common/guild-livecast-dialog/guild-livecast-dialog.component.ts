@@ -1,49 +1,32 @@
+import { guildLivecastAdminDto, guildMemberDto, livecastDto } from '../../dtos/dashboards';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { BlocCommon } from 'src/app/pages/common/bloc-common';
-import { CopyObject } from 'src/app/pages/common/copy-object';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
-import { GuildDto, livecastDto } from '../../dtos/dashboards';
+import { GuildDto } from '../../dtos/dashboards';
 import { FileListComponent } from '../../manual-review/common-component/file-list/file-list.component';
 import { DashboardsService } from '../../services/dashboards.service';
 import { GuildmemberListComponent } from '../guildmember-list/guildmember-list.component';
+import { BlocCommon } from 'src/app/pages/common/bloc-common';
+
 
 @Component({
-  selector: 'app-livecast-dialog',
-  templateUrl: './livecast-dialog.component.html',
-  styleUrls: ['./livecast-dialog.component.scss']
+  selector: 'app-guild-livecast-dialog',
+  templateUrl: './guild-livecast-dialog.component.html',
+  styleUrls: ['./guild-livecast-dialog.component.scss']
 })
-export class LivecastDialogComponent implements OnInit {
-  livecasts: livecastDto[]
-  livecast: livecastDto;
-  selectedlivecasts: livecastDto[];
+export class GuildLivecastDialogComponent implements OnInit {
+
+  
+  guildLivecastDtos: guildLivecastAdminDto[]
+  guildLivecast: guildLivecastAdminDto;
+  selectedguildLivecasts: guildLivecastAdminDto[];
+  selectedLivecasts: livecastDto[];
+  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
   displayModal:boolean=false;
   showLivecast:livecastDto=new livecastDto();
-
-  constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
-
   ngOnInit() {
-    this.livecasts = CopyObject.copyObject(<livecastDto[]>this.config.data,livecastDto);
-    // this.livecasts = this.config.data
-  }
-
-  DetailLivecast(livecast:livecastDto){
-
-    this.displayModal = !this.displayModal;
-    livecast.hlsPlayUrl =  BlocCommon.livecastUrlBuild(livecast.hlsPlayUrl);
-    this.showLivecast = livecast;
- 
-
-  }
-  openFileDialog(livecast:livecastDto){
-    this.dialogService.open(FileListComponent, {
-      data:livecast.files,
-      header: '文件列表',
-      width: '70%',
-      contentStyle: {"max-height": "700px", "overflow": "auto"},
-      baseZIndex: 10000
-  });
+    this.guildLivecastDtos = this.config.data
   }
   openDialog(livecast:livecastDto,type:number){
 
@@ -68,4 +51,21 @@ export class LivecastDialogComponent implements OnInit {
   
   }
 
+  DetailLivecast(livecast:livecastDto){
+
+    this.displayModal = !this.displayModal;
+    livecast.hlsPlayUrl =  BlocCommon.livecastUrlBuild(livecast.hlsPlayUrl);
+    this.showLivecast = livecast;
+    
+
+  }
+  openFileDialog(livecast:livecastDto){
+    this.dialogService.open(FileListComponent, {
+      data:livecast.files,
+      header: '文件列表',
+      width: '70%',
+      contentStyle: {"max-height": "700px", "overflow": "auto"},
+      baseZIndex: 10000
+  });
+  }
 }

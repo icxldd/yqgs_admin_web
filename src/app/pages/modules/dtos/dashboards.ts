@@ -81,7 +81,18 @@ export class guildMemberAdminDto {
 
     guildMembersDto:guildMemberDto[]
 }
+export class guildLivecastAdminDto {
 
+
+    guildId:string
+    guildName:string
+    guildAvatarUrl:string
+    guildAddress:string
+    guildMembersCount:string
+    guildCreatedTime:string
+    lasterCreatedLivecastTime:string
+    guildLivecastDto:livecastDto[]
+}
 
 
 

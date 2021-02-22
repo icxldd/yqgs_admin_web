@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { BlocCommon } from 'src/app/pages/common/bloc-common';
 import { CopyObject } from 'src/app/pages/common/copy-object';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { WebsockertService } from 'src/app/pages/services/websockert.service';
@@ -91,6 +92,7 @@ export class LivecastComponent implements OnInit {
   DetailLivecast(livecast:livecastDto){
     // let vvv =  Object.assign(new livecastDto(),livecast);
     this.displayModal = !this.displayModal;
+    livecast.hlsPlayUrl =  BlocCommon.livecastUrlBuild(livecast.hlsPlayUrl);
     this.showLivecast = livecast;
   // this.ddService.putEnterLivecast(livecast.livecastId).subscribe(x=>{
 
