@@ -2,6 +2,17 @@
     <p-table #dt [value]="guildTotalAmounts" [rows]="5" [paginator]="true" 
         [(selection)]="selectedGuildTotalAmounts" [rowHover]="true" dataKey="guildId"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">流量管理</h5>
+                <span>
+                    <input pInputText type="text" [(ngModel)]="flux" placeholder="需要充值的流量（GB）" />
+                </span>
+                <span style="margin-left: 5%;">
+                    <button pButton type="button" label="充值" (click)="PayFlux();"></button>
+                </span>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 3rem">

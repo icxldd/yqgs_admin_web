@@ -68,6 +68,8 @@ export class GuildDto {
     notificationCount:number
     discussCount:number
     livecastCount:number
+    lasterCreatedLivecastTime:string
+    guildLivecastRemainFlux:number
 }
 
 export class guildMemberAdminDto {

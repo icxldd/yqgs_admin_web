@@ -23,7 +23,9 @@ export class DashboardsService extends ApiService {
     // return this.http.get(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`,  { headers: this.header})
    }
 
-
+   postPalyFlux(guildId:number,count:number){
+      return this.http.post(this.uriBase+`/organization/guild/charge`,{GuildId:guildId,Type:1,Amount:count*1024,ConsumedMoney:0,Remark:'网页后台充值',isInward:true},  { headers: this.header})
+   }
    getUserViolations(userId:number):Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/account/violation?userId=${userId}`,  { headers: this.header})
    }

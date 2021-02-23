@@ -17,7 +17,14 @@ export class GuildLivecastFluxTotalComponent implements OnInit {
   guildTotalAmount: guildTotalAmountDto;
   selectedGuildTotalAmounts: guildTotalAmountDto[];
   constructor(private ddService: DashboardsService,protected pagesrc:PagecontrolService,private messageService: MessageService,protected dialogService: DialogService,public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
-
+  flux:number;
+  PayFlux(){
+    let guildId = this.guildTotalAmounts[0].guildId;
+    this.ddService.postPalyFlux(Number(guildId),this.flux).subscribe(x=>{
+      this.messageService.add({severity:'success', summary: 'Successful', detail: `给教会编号为${guildId}成功充值${this.flux}GB直播流量。`, life: 3000});
+    });
+    // console.log(this.flux);
+  }
   ngOnInit() {
     this.guildTotalAmounts = this.config.data;
   }

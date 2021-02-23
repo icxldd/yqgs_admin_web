@@ -28,6 +28,7 @@ export class GuildComponent implements OnInit {
     this.showProgress=true;
     this.ddService.getGuilds().subscribe(x=>{
        this.guilds =  <GuildDto[]>x.guilds;
+       
        this.showProgress = false;
     })
   }

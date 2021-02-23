@@ -30,7 +30,7 @@
                 <th pSortableColumn="guildAuditMode">用户加入教会是否需要审核 <p-sortIcon field="guildAuditMode"></p-sortIcon></th>
                 <th pSortableColumn="status">教会状态 <p-sortIcon field="status"></p-sortIcon></th>
                 <th pSortableColumn="ownerId">教会所属人ID <p-sortIcon field="ownerId"></p-sortIcon></th>
-                <th>教会直播流量</th>
+                <th pSortableColumn="guildLivecastRemainFlux">教会直播流量  <p-sortIcon field="guildLivecastRemainFlux"></p-sortIcon></th>
                 <th>教会文件</th>
                 <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
                 <th pSortableColumn="membersCount">成员人数 <p-sortIcon field="membersCount"></p-sortIcon></th>
@@ -38,6 +38,7 @@
                 <th pSortableColumn="notificationCount">教会通知 <p-sortIcon field="notificationCount"></p-sortIcon></th>
                 <th pSortableColumn="discussCount">教会讨论 <p-sortIcon field="discussCount"></p-sortIcon></th>
                 <th pSortableColumn="livecastCount">教会直播 <p-sortIcon field="livecastCount"></p-sortIcon></th>
+                <th pSortableColumn="lasterCreatedLivecastTime">上次直播时间 <p-sortIcon field="lasterCreatedLivecastTime"></p-sortIcon></th>
                 <th style="width: 12rem">
                   <span style="color:red;">操作</span>
                 </th>
@@ -57,7 +58,7 @@
                 <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
                 <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
                 <td>{{guild.ownerId}}</td>
-                <td><a href='javascript:' (click)="openDialogLivecastFlux(guild)" >点击查看</a></td>
+                <td><a href='javascript:' (click)="openDialogLivecastFlux(guild)" >{{(guild.guildLivecastRemainFlux / 1024 ).toFixed(2)}}GB</a></td>
                 <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td>
                 <td><a href='javascript:' (click)="openDialog(guild,0)" >{{guild.violationCount}}</a></td>
                 <td><a href='javascript:' (click)="openDialog(guild,1)" >{{guild.membersCount}}</a></td>
@@ -67,6 +68,8 @@
 
                 <td><a href='javascript:' (click)="openBlocDialog(guild,1)" >{{guild.discussCount}}</a></td>
                 <td><a href='javascript:' (click)="openBlocDialog(guild,2)" >{{guild.livecastCount}}</a></td>
+
+                <td>{{guild.lasterCreatedLivecastTime==null?'没创建过直播':guild.lasterCreatedLivecastTime|showTime:'上次创建'}}</td>
                 <td style="word-wrap: normal !important;word-break: normal !important;">
                     <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setGuildStatus(guild)" class="p-button-raised p-button-danger"></button>
                     <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>
