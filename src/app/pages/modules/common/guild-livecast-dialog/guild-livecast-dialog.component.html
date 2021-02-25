@@ -47,9 +47,9 @@
               object-fit: cover;
               width: 65px;" class="p-shadow-4" /></td>
             <!-- <td>{{guildDto.guildAddress}}</td> -->
-            <td>{{guildDto.lasterCreatedLivecastTime | chinaTime}}</td>
+            <td>{{guildDto.lasterCreatedLivecastTime |showTime:'直播发布'}}</td>
             <!-- <td style="color: red;">{{guildDto.guildLivecastDto.length}}</td> -->
-            <td>{{guildDto.guildCreatedTime|showTime:'创建'}}</td>
+            <td>{{guildDto.guildCreatedTime|showTime:'教会创建'}}</td>
         </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-guildDto>
