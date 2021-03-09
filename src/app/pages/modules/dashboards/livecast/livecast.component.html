@@ -20,6 +20,7 @@
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
                 <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th pSortableColumn="guild.displayName">教会名称</th>
                 <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
                 <th pSortableColumn="title">标题 <p-sortIcon field="title"></p-sortIcon></th>
                 <th pSortableColumn="flux">此直播使用流量 <p-sortIcon field="flux"></p-sortIcon></th>
@@ -45,6 +46,7 @@
                     <p-tableCheckbox [value]="livecast"></p-tableCheckbox>
                 </td>
                 <td>{{livecast.guildId}}</td>
+                <td>{{livecast.guild.displayName}}</td>
                 <td>{{livecast.livecastId}}</td>
                 <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="livecast.description||'未发布简介'">{{livecast.title}}</a></td>
                 <td>{{livecast.flux<1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
@@ -80,7 +82,7 @@
 
 
 
-<p-dialog [header]="showLivecast.recordUrl!=null?'录播视频':'直播视频 在线人数：'+onlineCount" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+<p-dialog [header]="showLivecast.recordUrl!=null?'录播视频':'直播视频'" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false" (onHide)="onHide(showLivecast)">
       <app-mp4-video *ngIf="displayModal&&showLivecast.recordUrl!=null" [url]="showLivecast.recordUrl"></app-mp4-video>
       <app-hls-video *ngIf="displayModal&&showLivecast.recordUrl==null" [url]="showLivecast.hlsPlayUrl"></app-hls-video>

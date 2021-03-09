@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { BlocCommon } from 'src/app/pages/common/bloc-common';
 import { PagecontrolService } from 'src/app/pages/services/pagecontrol.service';
 import { DiscussDialogComponent } from '../../common/discuss-dialog/discuss-dialog.component';
 import { GuildmemberListComponent } from '../../common/guildmember-list/guildmember-list.component';
@@ -40,8 +41,12 @@ export class GuildComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'error', detail: '请先选中需要导出的教会', life: 3000});
     }else{
       
-      this.ddService.getGuildContact(this.selectedguilds.map(x=>x.guildId));
-      this.messageService.add({severity:'success', summary: 'Successful', detail: `导出${this.selectedguilds.length}个教会成功`, life: 3000});
+      this.ddService.getGuildContact(this.selectedguilds.map(x=>x.guildId)).subscribe(x=>{
+        BlocCommon.downloadFile(x);
+        this.messageService.add({severity:'success', summary: 'Successful', detail: `导出${this.selectedguilds.length}个教会成功`, life: 3000});
+      });
+      
+      
     }
 
   }

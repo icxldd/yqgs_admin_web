@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -16,12 +16,12 @@ export class DashboardsService extends ApiService {
 
 
 
-   getGuildContact(guildIds:string[]){
-
-
-    window.open(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`)
-    // return this.http.get(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`,  { headers: this.header})
+   getGuildContact(guildIds:string[]) :Observable<any>{
+     return this.http.post(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`,undefined,{ headers: this.header,responseType: "blob"});
    }
+
+
+
 
    postPalyFlux(guildId:number,count:number){
       return this.http.post(this.uriBase+`/organization/guild/charge`,{GuildId:guildId,Type:1,Amount:count*1024,ConsumedMoney:0,Remark:'网页后台充值',isInward:true},  { headers: this.header})

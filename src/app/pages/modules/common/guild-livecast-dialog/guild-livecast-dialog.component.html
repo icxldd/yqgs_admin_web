@@ -106,7 +106,7 @@
                 <td><img *ngIf="livecast.guild.avatarUrl!=null" [src]='livecast.guild.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td class="limitText">{{livecast.livecastId}}</td>
                 <td>{{livecast.title}}</td>
-                <td>{{livecast.flux<1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
+                <td>{{livecast.flux < 1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
                 <td><a href='javascript:' (click)="openFileDialog(livecast)" >{{livecast.files.length}}</a></td>
                 <td>{{livecast.beginDate |showTime:'创建'}}</td>
                 <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'直播未开始或进行中'}}</td>
