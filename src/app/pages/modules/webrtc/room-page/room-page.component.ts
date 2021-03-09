@@ -41,13 +41,10 @@ export class RoomPageComponent implements OnInit {
     });
    }
 
-  
-
-
-
 ngOnInit(){}
 
 async  getUserMedia() {
+
   try {
     this.localStream = await navigator.mediaDevices.getUserMedia(this.mediaConstraints);
     this.localVideo.srcObject = this.localStream;
@@ -56,6 +53,7 @@ async  getUserMedia() {
       type: 'join'
     });
   } catch (error) {
+
     console.log('获取本地摄像头失败：'+error);
   }
 }
@@ -121,6 +119,7 @@ async  getUserMedia() {
   // 如果检测到媒体流连接到本地，将其绑定到一个video标签上输出
   if (hasAddTrack) {
     peer.ontrack = (event) => {
+      
       let videos:any ;
       try {
       videos = document.getElementById(v.account);
@@ -192,8 +191,8 @@ async  getUserMedia() {
  websocketInit() {
   try {
     // 浏览器提供 WebSocket 对象
-    this.chatSocket = new ReconnectingWebSocket('wss://116.62.190.90:3000');
-    // this.chatSocket = new ReconnectingWebSocket('wss://192.168.31.114:3000');
+    // this.chatSocket = new ReconnectingWebSocket('wss://church.yangqungongshe.com:3000');
+    this.chatSocket = new ReconnectingWebSocket('wss://192.168.31.114:3000');
   } catch (error) {
     console.log('发生错误：'+error);
   }
@@ -243,7 +242,7 @@ let self = this;
   }
   //连接关闭的回调方法
   this.chatSocket.onclose = function () {
-    this.chatSocket.close();
+    self.chatSocket.close();
     console.log("websocket.onclose");
   }
   //连接发生错误的回调方法
@@ -251,7 +250,7 @@ let self = this;
     console.log("chatSocket.error");
   };
   window.onbeforeunload = function () {
-    this.chatSocket.close();
+    self.chatSocket.close();
   }
 }
 

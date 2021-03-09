@@ -40,7 +40,8 @@ getUserMedia();
 function websocketInit() {
   try {
     // 浏览器提供 WebSocket 对象
-    chatSocket = new ReconnectingWebSocket('ws://localhost:3000');
+    // chatSocket = new ReconnectingWebSocket('wss://church.yangqungongshe.com:3000');
+    chatSocket = new ReconnectingWebSocket('wss://192.168.31.114:3000');
   } catch (error) {
     console.log('发生错误：'+error);
   }
