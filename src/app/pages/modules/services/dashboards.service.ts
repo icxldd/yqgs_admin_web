@@ -17,7 +17,7 @@ export class DashboardsService extends ApiService {
 
 
    getGuildContact(guildIds:string[]) :Observable<any>{
-     return this.http.post(this.uriBase+`/spaadmin/export/guildcontact?guildIds=${JSON.stringify(guildIds)}`,undefined,{ headers: this.header,responseType: "blob"});
+     return this.http.post(this.uriBase+`/spaadmin/export/guildcontact`,{guildIds:guildIds},{ headers: this.header,responseType: "blob"});
    }
 
 
