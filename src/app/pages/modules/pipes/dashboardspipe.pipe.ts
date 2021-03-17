@@ -25,15 +25,15 @@ export class DashboardspipePipe implements PipeTransform {
           case 0:
             return '<span style="color: green;">进行中</span>';
             case 1:
-            return '<span style="color: red;">未开始</span>';
+            return '未开始';
             case 2:
-            return '已结束';
+            return '<span style="color: #2196f3;">已结束</span>';
             case 3:
-            return '已中断';
+            return '<span style="color: red;">已中断</span>';
             case -1:
-            return '已删除';
+            return '<span style="color: red;">已删除</span>';
             case -2:
-            return '已屏蔽';
+            return '<span style="color: red;">已屏蔽</span>';
       }
     }
     else if('discussStatus'==args){

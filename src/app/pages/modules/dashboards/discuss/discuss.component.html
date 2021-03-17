@@ -45,7 +45,8 @@
                 <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="discuss.description||'未发布简介'">{{discuss.title}}</a></td>
                 <td><img *ngIf="discuss.avatarUrl!=null" [src]='discuss.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
                 <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td>
-                <td>{{discuss.createdDate  | chinaTime}}</td>
+                <!-- <td>{{discuss.createdDate  | chinaTime}}</td> -->
+                <td><app-china-datetime-text [value]="discuss.createdDate" textColor="red" prefixName="讨论创建"></app-china-datetime-text></td>
                 <!-- <td>{{discuss.beginDate}}</td>
                 <td>{{discuss.endDate }}</td> -->
                 <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>

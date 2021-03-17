@@ -10,8 +10,8 @@
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-
                 </span>
+                <app-input-search inputType="InputSearchType.number" lableText="显示几天内直播：" (inputEvent)="onDateInputEvent($event);" suffixLable="天"></app-input-search>
             </div>
         </ng-template>
         <ng-template pTemplate="header">
@@ -30,7 +30,7 @@
                 <!-- <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th> -->
                 <th pSortableColumn="beginDate">创建时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
                 <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
-                <th>播放时长</th>
+                <th pSortableColumn="videoDuration">播放时长<p-sortIcon field="videoDuration"></p-sortIcon></th>
                 <th pSortableColumn="isInLive">直播状态 <p-sortIcon field="isInLive"></p-sortIcon></th>
                 <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
@@ -54,9 +54,13 @@
                 <!-- <td>{{livecast.avatarUrl}}</td>
                 <td>{{livecast.recordUrl}}</td> -->
                 <!-- <td>{{livecast.createdDate | chinaTime }}</td> -->
-                <td>{{livecast.beginDate | chinaTime}}</td>
-                <td>{{livecast.endDate  | chinaTime}}</td>
-                <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'直播未开始或进行中'}}</td>
+                <!-- <td>{{livecast.beginDate | chinaTime}}</td> -->
+                <!-- <td>{{livecast.endDate  | chinaTime}}</td> -->
+
+                <td><app-china-datetime-text [value]="livecast.beginDate" textColor="#21a1f2" prefixName="开始"></app-china-datetime-text></td>
+                <td><app-china-datetime-text [value]="livecast.endDate" textColor="red" prefixName="结束"></app-china-datetime-text></td>              
+
+                <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):(livecast.status==0?'直播进行中':(livecast.status==1?'直播未开始':''))}}</td>
                 <!-- <td>{{livecast.status | dashboardspipe:"livecastStatus"}}</td> -->
                 <td [innerHTML]='(livecast.status | dashboardspipe:"livecastStatus")|htmlBuild'></td>
                 <td>{{livecast.creatorId}}</td>

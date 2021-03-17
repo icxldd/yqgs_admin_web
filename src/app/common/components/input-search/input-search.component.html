@@ -1,0 +1,13 @@
+<div style="margin-left:10px">
+  <span class="p-input-icon-left" *ngIf="isNumber;else stringBlock;">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="value" [placeholder]="lableText">         
+  </span>
+
+
+  <ng-template #stringBlock>
+    <span style="margin:0px 10px;">{{lableText}}</span>
+    <p-inputNumber [(ngModel)]="value" [useGrouping]="false" (onInput)="onInput($event);" [suffix]="suffixLable"></p-inputNumber>
+  </ng-template>
+  
+</div>

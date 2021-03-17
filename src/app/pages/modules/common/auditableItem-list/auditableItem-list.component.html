@@ -38,7 +38,8 @@
                   <a href="javascript:" (click)="openFiles(auditableItem)" *ngIf="isHasFile(auditableItem)">点我查看</a>
                   <span *ngIf="!isHasFile(auditableItem)">无文件</span>
                 </td>
-                <td>{{auditableItem.createdDate}}</td>
+                <!-- <td>{{auditableItem.createdDate}}</td> -->
+                <td> <app-china-datetime-text [value]="auditableItem.createdDate" textColor="red" prefixName="创建"></app-china-datetime-text></td>
                 <td [ngClass]="{'text-red': auditableItem.status==-2,'text-green':auditableItem.status==0}">{{auditableItem.statusName}}</td>
                 <td>{{auditableItem.auditMessage}}</td>
                 <td>{{auditableItem.userId}}</td>

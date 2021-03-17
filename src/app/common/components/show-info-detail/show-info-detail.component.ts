@@ -12,6 +12,7 @@ export class ShowInfoDetailComponent implements OnInit {
   @Input() subTitle:string;
   @Input() avatarUrl:string;
   @Input() description:string;
+  @Input() phone:string;
 
   constructor() { }
 

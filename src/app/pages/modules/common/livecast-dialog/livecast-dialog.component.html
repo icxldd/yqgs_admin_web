@@ -58,7 +58,8 @@
                 <!-- <td>{{livecast.avatarUrl}}</td>
                 <td>{{livecast.recordUrl}}</td> -->
                 <!-- <td>{{livecast.createdDate | chinaTime}}</td> -->
-                <td>{{livecast.beginDate | showTime:'创建'}}</td>
+                <!-- <td>{{livecast.beginDate | showTime:'创建'}}</td> -->
+                <td><app-china-datetime-text [value]="livecast.beginDate" textColor="red" prefixName="创建"></app-china-datetime-text></td>
                 <!-- <td>{{livecast.endDate | chinaTime}}</td> -->
                 <!-- <td>{{livecast.endDate | secondTime : livecast.beginDate}}</td> -->
                 <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'直播未开始或进行中'}}</td>

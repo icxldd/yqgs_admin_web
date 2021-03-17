@@ -29,6 +29,7 @@ export class AppComponent {
   subTitle:string;
   avatarUrl:string;
   description:string;
+  phone:string;
   onSearchEnter(data){
      this.isShowModel = true;
      if(data.type==1){
@@ -38,6 +39,7 @@ export class AppComponent {
             this.description = obj.description;
             this.avatarUrl = obj.avatarUrl;
             this.subTitle = obj.address;
+            this.phone = obj.owner.userPhone;
         });
      }
      else if(data.type==2){
@@ -47,6 +49,7 @@ export class AppComponent {
          this.description = obj.description;
          this.avatarUrl = obj.avatarUrl;
          this.subTitle = obj.city;
+         this.phone = obj.userPhone;
       });
      }
   }

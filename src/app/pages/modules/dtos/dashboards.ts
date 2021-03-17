@@ -159,31 +159,33 @@ export class  livecastDto {
     hasViewMembers:guildMemberDto[]
     noViewMembers:guildMemberDto[]
     guild:GuildDto
-    constructor(){
-        this.livecastId = '';
-        this.guildId = '';
-        this.title = '';
-        this.description = '';
-        this.avatarUrl = '';
-        this.rtmpPlayUrl = '';
-        this.hlsPlayUrl = '';
-        this.recordUrl = '';
-        this.status = 0;
-        this.creatorId = '';
-        this.createdDate = '';
-        this.beginDate = '';
-        this.endDate = '';
-        this.viewedReceiversCount = 0;
-        this.unviewedReceiversCount = 0;
-        this.files = [];
-        this.hasViewMembers = [];
-        this.noViewMembers = [];
-        this.guild = new GuildDto();
-    }
 
     get isInLive(){
         return this.status==0?1:0;
     }
+
+    get distanceTodayCount(){
+        var stime = Date.parse(this.beginDate);
+        var date = new Date(); 
+        var now_utc =  Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+ date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        var etime = now_utc;
+        var usedTime = etime - stime;
+        var day = Math.floor(usedTime / (24 * 3600 * 1000));
+        return day;
+    }
+
+    get videoDuration(){
+        if(this.status==1){
+            return -1;
+        }
+        var stime = Date.parse(this.beginDate);
+        var etime = Date.parse(this.endDate);
+        // 两个时间戳相差的毫秒数
+        var usedTime = etime - stime;
+        return usedTime/1000;
+    }
+
 
 }
 

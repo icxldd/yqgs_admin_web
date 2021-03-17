@@ -39,7 +39,8 @@
                 <td>{{userFeedback.feedbackId}}</td>
                 <td>{{userFeedback.userId}}</td>
                 <td>{{userFeedback.description}}</td>
-                <td>{{userFeedback.createdDate}}</td>
+                <!-- <td>{{userFeedback.createdDate}}</td> -->
+                <td><app-china-datetime-text [value]="userFeedback.createdDate" textColor="red" prefixName="用户反馈"></app-china-datetime-text></td>
                 <td>{{userFeedback.isReplied?'已回复':'未回复'}}</td>
                 <td>{{userFeedback.replierId}}</td>
                 <td>{{userFeedback.repliedDescription}}</td>

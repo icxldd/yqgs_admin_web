@@ -46,7 +46,8 @@
                 <!-- <td>{{notification.files.length}}</td> -->
                 <td><a href='javascript:' (click)="openFileDialog(notification)" >{{notification.files.length}}</a></td>
                 <td><img *ngIf="notification.avatarUrl!=null" [src]='notification.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
-                <td>{{notification.createdDate  | chinaTime}}</td>
+                <!-- <td>{{notification.createdDate  | chinaTime}}</td> -->
+                <td><app-china-datetime-text [value]="notification.createdDate" textColor="red" prefixName="创建"></app-china-datetime-text></td>
                 <td>{{notification.status | dashboardspipe:"notificationStatus"}}</td>
                 <td>{{notification.creatorId}}</td>
         

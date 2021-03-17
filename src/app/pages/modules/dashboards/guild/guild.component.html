@@ -38,8 +38,8 @@
                 <th pSortableColumn="notificationCount">教会通知 <p-sortIcon field="notificationCount"></p-sortIcon></th>
                 <th pSortableColumn="discussCount">教会讨论 <p-sortIcon field="discussCount"></p-sortIcon></th>
                 <th pSortableColumn="livecastCount">教会直播 <p-sortIcon field="livecastCount"></p-sortIcon></th>
-                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th pSortableColumn="lasterCreatedLivecastTime">上次直播时间 <p-sortIcon field="lasterCreatedLivecastTime"></p-sortIcon></th>
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
                 <th style="width: 12rem">
                   <span style="color:red;">操作</span>
                 </th>
@@ -69,8 +69,17 @@
 
                 <td><a href='javascript:' (click)="openBlocDialog(guild,1)" >{{guild.discussCount}}</a></td>
                 <td><a href='javascript:' (click)="openBlocDialog(guild,2)" >{{guild.livecastCount}}</a></td>
-                <td>{{guild.createdDate |showTime:'教会创建'}}</td>
-                <td>{{guild.lasterCreatedLivecastTime==null?'没创建过直播':guild.lasterCreatedLivecastTime|showTime:'上次创建'}}</td>
+                <!-- <td>{{guild.createdDate |showTime:'教会创建'}}</td> -->
+                <td>
+                    <span style="color: red;" *ngIf="guild.lasterCreatedLivecastTime==null;else elseBlock;">没创建过直播</span>
+
+                    <ng-template #elseBlock>
+                        <app-china-datetime-text [value]="guild.lasterCreatedLivecastTime" textColor="red" prefixName="上次直播创建"></app-china-datetime-text>
+                    </ng-template>
+                    
+                    <!-- {{guild.lasterCreatedLivecastTime==null?'没创建过直播':guild.lasterCreatedLivecastTime|showTime:'上次创建'}} -->
+                </td>
+                <td><app-china-datetime-text [value]="guild.createdDate" prefixName="教会创建"></app-china-datetime-text></td>
                 <td style="word-wrap: normal !important;word-break: normal !important;">
                     <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setGuildStatus(guild)" class="p-button-raised p-button-danger"></button>
                     <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>

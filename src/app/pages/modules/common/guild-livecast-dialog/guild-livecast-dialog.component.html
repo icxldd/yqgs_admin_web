@@ -47,9 +47,11 @@
               object-fit: cover;
               width: 65px;" class="p-shadow-4" /></td>
             <!-- <td>{{guildDto.guildAddress}}</td> -->
-            <td>{{guildDto.lasterCreatedLivecastTime |showTime:'直播发布'}}</td>
+            <!-- <td>{{guildDto.lasterCreatedLivecastTime |showTime:'直播发布'}}</td> -->
             <!-- <td style="color: red;">{{guildDto.guildLivecastDto.length}}</td> -->
-            <td>{{guildDto.guildCreatedTime|showTime:'教会创建'}}</td>
+            <!-- <td>{{guildDto.guildCreatedTime|showTime:'教会创建'}}</td> -->
+            <td><app-china-datetime-text [value]="guildDto.lasterCreatedLivecastTime" textColor="red" prefixName="直播发布"></app-china-datetime-text></td>
+            <td><app-china-datetime-text [value]="guildDto.guildCreatedTime" textColor="#2196f3" prefixName="教会创建"></app-china-datetime-text></td>
         </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-guildDto>
@@ -86,7 +88,7 @@
                 <!-- <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th> -->
                 <th pSortableColumn="beginDate">创建时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
                 <!-- <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th> -->
-                <th>视频播放时长</th>
+                <th pSortableColumn="videoDuration">播放时长<p-sortIcon field="videoDuration"></p-sortIcon></th>
                 <th pSortableColumn="isInLive">直播状态 <p-sortIcon field="isInLive"></p-sortIcon></th>
                 <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
                 <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
@@ -108,8 +110,9 @@
                 <td>{{livecast.title}}</td>
                 <td>{{livecast.flux < 1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
                 <td><a href='javascript:' (click)="openFileDialog(livecast)" >{{livecast.files.length}}</a></td>
-                <td>{{livecast.beginDate |showTime:'创建'}}</td>
-                <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'直播未开始或进行中'}}</td>
+                <!-- <td>{{livecast.beginDate |showTime:'创建'}}</td> -->
+                <td><app-china-datetime-text [value]="livecast.beginDate" textColor="red" prefixName="创建"></app-china-datetime-text></td>
+                <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):'0'}}</td>
                 <td [innerHTML]='(livecast.status | dashboardspipe:"livecastStatus")|htmlBuild'></td>
                 <td>{{livecast.creatorId}}</td>
               

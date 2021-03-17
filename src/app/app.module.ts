@@ -14,9 +14,6 @@ import { LocalStoreService } from './pages/services/local-store.service';
 import { AppCacheService } from './pages/services/app-cache.service';
 import { LoginComponent } from './pages/components/Login/Login.component';
 import {AccordionModule} from 'primeng/accordion';   
-import {PasswordModule} from 'primeng/password';
-import {MenubarModule} from 'primeng/menubar';
-import {MenuModule} from 'primeng/menu';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PagecontrolService } from './pages/services/pagecontrol.service';
 import { AuthInterceptorService } from './pages/services/AuthInterceptor.service';
@@ -29,38 +26,15 @@ import {ProductService} from './pages/services/product.service'
 
 
 
-
-
-import {TableModule} from 'primeng/table';
-import {ToastModule} from 'primeng/toast';
-import {CalendarModule} from 'primeng/calendar';
-import {SliderModule} from 'primeng/slider';
-import {MultiSelectModule} from 'primeng/multiselect';
-import {ContextMenuModule} from 'primeng/contextmenu';
-import {DialogModule} from 'primeng/dialog';
-import {ButtonModule} from 'primeng/button';
-import {DropdownModule} from 'primeng/dropdown';
-import {ProgressBarModule} from 'primeng/progressbar';
-import {InputTextModule} from 'primeng/inputtext';
-import {FileUploadModule} from 'primeng/fileupload';
-import {ToolbarModule} from 'primeng/toolbar';
-import {RatingModule} from 'primeng/rating';
-import {RadioButtonModule} from 'primeng/radiobutton';
-import {InputNumberModule} from 'primeng/inputnumber';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
 import { Post_Component } from './pages/components/post_/post_.component';
 import { TestComponent } from './pages/components/test/test.component';
 
 
-import { LiveModule } from './live/live.module';
 
-import {PanelModule} from 'primeng/panel';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
 import { LiveComponent } from './live/live.component';
 import { LiveService } from './live/services/live.service';
 import { StrlimitPipe } from './pipe/strlimit.pipe';
@@ -96,31 +70,23 @@ import { GuildLivecastFluxConsumeComponent } from './pages/modules/dashboards/gu
 import { WebsockertService } from './pages/services/websockert.service';
 import { WebrtcComponent } from './pages/components/webrtc/webrtc.component';
 import { BasicService } from './pages/services/basic.service';
-import { WebrtcModule } from './pages/modules/webrtc/webrtc.module';
 import { SearchPageComponent } from './pages/modules/webrtc/search-page/search-page.component';
 import { RoomPageComponent } from './pages/modules/webrtc/room-page/room-page.component';
-import {TooltipModule} from 'primeng/tooltip';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketWebrtcService } from './pages/modules/services/socket-webrtc.service';
-import { NetworkUnitPipe } from './pipe/network-unit.pipe';
 import { SystemComponent } from './pages/modules/dashboards/system/system.component';
 import { SystemService } from './pages/modules/services/system.service';
 import { AccountDialogComponent } from './pages/modules/common/account-dialog/account-dialog.component';
 
-import {SidebarModule} from 'primeng/sidebar';
 import { ExportExcelComponent } from './common/components/export-excel/export-excel.component';
-import { FeatureModule } from './feature/feature.module';
 import { ExportExcelDetailComponent } from './feature/components/export-excel-detail/export-excel-detail.component';
 import { OpenSearchDetailComponent } from './feature/components/open-search-detail/open-search-detail.component';
-import {CardModule} from 'primeng/card';
 import { ShowInfoDetailComponent } from './common/components/show-info-detail/show-info-detail.component';
-import { ChinaTimePipe } from './pages/modules/pipes/china-time.pipe';
 import { SecondTimePipe } from './pages/modules/pipes/second-time.pipe';
 import { HtmlBuildPipe } from './pages/modules/pipes/html-build.pipe';
 import { GuildLivecastDialogComponent } from './pages/modules/common/guild-livecast-dialog/guild-livecast-dialog.component';
-import { ShowTimePipe } from './pages/modules/pipes/show-time.pipe';
 const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -135,7 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ];
 @NgModule({
     declarations: [
-        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent,ExportExcelComponent,ExportExcelDetailComponent,OpenSearchDetailComponent,ShowInfoDetailComponent,ChinaTimePipe,SecondTimePipe,HtmlBuildPipe,GuildLivecastDialogComponent,ShowTimePipe
+        AppComponent,LoginComponent,Post_Component,LiveComponent,StrlimitPipe,TestComponent,GuildComponent,LivecastComponent,DashboardspipePipe,DiscussComponent,NotificationComponent,GuildMemberComponent,AccountComponent,ManualAuditComponent,FileListComponent,ManualReviewPipe,ManualAuditDetailComponent,AbuseReportAuditComponent,IdeaFeedbackComponent,IdeaReplierComponent,AuditableItemListComponent,LivecastDialogComponent,DiscussDialogComponent,NotificationDialogComponent,GuildDialogComponent,ViolatedAuditableItemComponent,GuildmemberListComponent,GuildLivecastFluxTotalComponent,GuildLivecastFluxChargeComponent,GuildLivecastFluxConsumeComponent,WebrtcComponent,SearchPageComponent,RoomPageComponent,SystemComponent,AccountDialogComponent,ExportExcelComponent,ExportExcelDetailComponent,OpenSearchDetailComponent,ShowInfoDetailComponent,SecondTimePipe,HtmlBuildPipe,GuildLivecastDialogComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -153,15 +119,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         StoreModule.forRoot({}),
         EffectsModule.forRoot(),
         StoreDevtoolsModule.instrument(),
+        CommonmModule,
         MatProgressBarModule,
         AccordionModule,
-        FormsModule,
-        InputTextModule,
-        ButtonModule,
-        TableModule,
-        DialogModule,
-        PasswordModule,
-        MenubarModule,MenuModule,ToastModule,CalendarModule,SliderModule,MultiSelectModule,ContextMenuModule,DropdownModule,ProgressBarModule,FileUploadModule,ToolbarModule,RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule,InputTextareaModule,LiveModule,MatToolbarModule,CommonmModule,PanelModule,ManualReviewModule,DynamicDialogModule,WebrtcModule,TooltipModule,SidebarModule,FeatureModule,CardModule
+        
     ],
     providers: [
         httpInterceptorProviders,

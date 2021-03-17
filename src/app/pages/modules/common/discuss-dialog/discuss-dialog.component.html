@@ -46,9 +46,12 @@
                 <!-- <td><a href='javascript:' (click)="openFiles(discuss)" >{{discuss.files.length}}</a></td> -->
                 <!-- <td>{{discuss.files.length}}</td> -->
                 <td><a href='javascript:' (click)="openFileDialog(discuss)" >{{discuss.files.length}}</a></td>
-                <td>{{discuss.createdDate}}</td>
-                <td>{{discuss.beginDate}}</td>
-                <td>{{discuss.endDate}}</td>
+                <!-- <td>{{discuss.createdDate}}</td> -->
+                <!-- <td>{{discuss.beginDate}}</td>
+                <td>{{discuss.endDate}}</td> -->
+                <td><app-china-datetime-text [value]="discuss.createdDate" textColor="red" prefixName="创建"></app-china-datetime-text></td>
+                <td><app-china-datetime-text [value]="discuss.beginDate" prefixName="创建"></app-china-datetime-text></td>
+                <td><app-china-datetime-text [value]="discuss.endDate" prefixName="创建"></app-china-datetime-text></td>
                 <td>{{discuss.status | dashboardspipe:"discussStatus"}}</td>
                 <td>{{discuss.creatorId}}</td>
                 <td><a href='javascript:' (click)="openDialog(discuss,0)" >{{discuss.viewedReceiversCount}}</a></td>

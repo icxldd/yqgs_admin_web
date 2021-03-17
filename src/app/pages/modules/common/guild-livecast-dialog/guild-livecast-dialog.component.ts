@@ -8,6 +8,7 @@ import { FileListComponent } from '../../manual-review/common-component/file-lis
 import { DashboardsService } from '../../services/dashboards.service';
 import { GuildmemberListComponent } from '../guildmember-list/guildmember-list.component';
 import { BlocCommon } from 'src/app/pages/common/bloc-common';
+import { CopyObject } from '@app/pages/common/copy-object';
 
 
 @Component({
@@ -26,7 +27,11 @@ export class GuildLivecastDialogComponent implements OnInit {
   displayModal:boolean=false;
   showLivecast:livecastDto=new livecastDto();
   ngOnInit() {
-    this.guildLivecastDtos = this.config.data
+    this.guildLivecastDtos = this.config.data;
+    this.guildLivecastDtos.map(x=>{
+      x.guildLivecastDto =  CopyObject.copyObject(x.guildLivecastDto,livecastDto);
+    });
+    // this.guildLivecastDtos = CopyObject.copyObject(<livecastDto[]>x.livecasts,livecastDto);
   }
   exportGuildExcel(){
 

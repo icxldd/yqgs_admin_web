@@ -27,7 +27,11 @@
               <td>{{guild.amount}}</td>
               <td>{{guild.remark}}</td>
               <td>{{guild.ownerId}}</td>
-              <td>{{guild.createdDate | chinaTime}}</td>
+              <!-- <td>{{guild.createdDate | chinaTime}}</td> -->
+              <td>
+                <app-china-datetime-text [value]="guild.createdDate" textColor="red" prefixName="充值"></app-china-datetime-text>
+              </td>
+              
           </tr>
       </ng-template>
       <ng-template pTemplate="summary">

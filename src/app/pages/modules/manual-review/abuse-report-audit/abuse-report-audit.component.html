@@ -46,7 +46,8 @@
                 <td><span>{{abuseReport.item.itemId}}</span></td>
                 <td>{{abuseReport.description}}</td>
                 <td>{{abuseReport.category}}</td>
-                <td>{{abuseReport.createdDate}}</td>
+                <!-- <td>{{abuseReport.createdDate}}</td> -->
+                <td><app-china-datetime-text [value]="abuseReport.createdDate" textColor="red" prefixName="用户举报"></app-china-datetime-text></td>
                 <td>{{abuseReport.item.guildId}}</td>
                 <td>{{abuseReport.item.typeName}}</td>
                 <td>{{abuseReport.item.title}}</td>

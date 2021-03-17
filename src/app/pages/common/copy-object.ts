@@ -12,7 +12,6 @@ export class CopyObject {
         return rarrys;
     }
 
-
     // let vvv =  Object.assign(new livecastDto(),livecast);
 
     // isHasVal<T>(dto:Array<T>):boolean{
