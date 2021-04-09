@@ -142,12 +142,9 @@ openBlocDialog(guild:GuildDto,type:number){
 
 
 openDialogLivecastFlux(guild:GuildDto){
-
-console.log(guild)
-
 this.ddService.getGuildTotalAmount(guild.guildId).subscribe(x=>{
   this.dialogService.open(GuildLivecastFluxTotalComponent, {
-    data:x.guildLivecastFluxs,
+    data:{flux:x.guildLivecastFluxs,dto:guild},
     header: '教会直播流量',
     width: '70%',
     contentStyle: {"max-height": "700px", "overflow": "auto"},
