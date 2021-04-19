@@ -1,4 +1,4 @@
 export const environment = {
-  APIURL:'https://church.yangqungongshe.com',
+  APIURL:'https://church.yangqungongshe.com/mobileWebShare',
   production: true
 };

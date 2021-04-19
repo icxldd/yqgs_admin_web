@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Basichttpclient } from '../../services/basichttpclient';
 import { ApiService } from '../basic/ApiService';
-import { GuildDto } from '../dtos/dashboards';
+import { GuildDto, queryDto } from '../dtos/dashboards';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,8 @@ export class DashboardsService extends ApiService {
 
 
 
+
+   
    getGuildContact(guildIds:string[]) :Observable<any>{
      return this.http.post(this.uriBase+`/spaadmin/export/guildcontact`,{guildIds:guildIds},{ headers: this.header,responseType: "blob"});
    }
@@ -54,6 +56,14 @@ export class DashboardsService extends ApiService {
    getLivecasts():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/livecasts/show`,  { headers: this.header})
    }
+   getLivecastsLazy(query:queryDto):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/livecasts/lazy/show?first=${query.first}&rows=${query.rows}&sortField=${query.sortField}&sortOrder=${query.sortOrder}&data=${query.data}`,  { headers: this.header})
+   }
+
+   getGuildsLazy(query:queryDto):Observable<any>{
+    return this.http.get(this.uriBase+`/spaadmin/guilds/lazy/show?first=${query.first}&rows=${query.rows}&sortField=${query.sortField}&sortOrder=${query.sortOrder}&data=${query.data}`,  { headers: this.header})
+   }
+
    getDiscuss():Observable<any>{
     return this.http.get(this.uriBase+`/spaadmin/discuss/show`,  { headers: this.header})
    }

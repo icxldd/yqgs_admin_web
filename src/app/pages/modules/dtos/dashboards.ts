@@ -137,7 +137,20 @@ export class guildMemberDto {
     modifiedDate:string
 }
 
-
+export class queryDto{
+    first?:number=0;
+    rows?:number=10;
+    sortField?:string="CreatedDate";
+    sortOrder?:number=-1;
+    data?:string='';
+    public queryDto(first,rows,sortField,sortOrder,data){
+        this.first = first;
+        this.rows = rows;
+        this.sortField = sortField;
+        this.sortOrder = sortOrder;
+        this.data = data;
+    }
+}
 export class  livecastDto {
     livecastId:string
     guildId:string

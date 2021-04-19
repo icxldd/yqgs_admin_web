@@ -1,0 +1,79 @@
+<p-toast></p-toast>
+<p-table [value]="guilds" [lazy]="true" (onLazyLoad)="loadCustomers($event)"
+    [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          <h5 class="p-m-0">guilds Management</h5>
+          <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" [(ngModel)]="data" (keydown)="flushData($event);" placeholder="Search..." />
+          </span>
+      </div>
+  </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+                <th>教会名称 </th>
+                <th>教会头像 </th>
+                <th>教会地址 </th>
+                <th>用户加入教会是否需要审核</th>
+                <th pSortableColumn="status">教会状态 <p-sortIcon field="status"></p-sortIcon></th>
+                <th>教会所属人ID</th>
+                <th>教会直播流量</th>
+                <th>教会文件</th>
+                <th pSortableColumn="violationCount">违规次数 <p-sortIcon field="violationCount"></p-sortIcon></th>
+                <th pSortableColumn="membersCount">成员人数 <p-sortIcon field="membersCount"></p-sortIcon></th>
+                <th>教会通知 </th>
+                <th>教会讨论</th>
+                <th>教会直播</th>
+                <th>上次直播时间</th>
+                <th pSortableColumn="createdDate">创建时间 <p-sortIcon field="createdDate"></p-sortIcon></th>
+                <th style="width: 12rem">
+                  <span style="color:red;">操作</span>
+                </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-guild>
+        <tr>
+          <td>{{guild.guildId}}</td>
+                <td>{{guild.displayName}}</td>
+                <td><img *ngIf="guild.avatarUrl!=null" [src]='guild.avatarUrl' style="height: 100px;object-fit: cover;width: 100px;"/></td>
+                <td>{{guild.address}}</td>
+                <td>{{guild.guildAuditMode==1?'仅被邀请加入的新成员不需要审核':guild.guildAuditMode==2?'仅搜索加入的新成员需要审核':guild.guildAuditMode==3?'需要审核':'不需要审核'}}</td>
+                <td>{{guild.status | dashboardspipe:"GuildStatus"}}</td>
+                <td>{{guild.ownerId}}</td>
+                <td><a href='javascript:' (click)="openDialogLivecastFlux(guild)" >{{(guild.guildLivecastRemainFlux / 1024 ).toFixed(2)}}GB</a></td>
+                <td><a href='javascript:' (click)="openFiles(guild)" >{{guild.files.length}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(guild,0)" >{{guild.violationCount}}</a></td>
+                <td><a href='javascript:' (click)="openDialog(guild,1)" >{{guild.membersCount}}</a></td>
+
+
+                <td><a href='javascript:' (click)="openBlocDialog(guild,0)" >{{guild.notificationCount}}</a></td>
+
+                <td><a href='javascript:' (click)="openBlocDialog(guild,1)" >{{guild.discussCount}}</a></td>
+                <td><a href='javascript:' (click)="openBlocDialog(guild,2)" >{{guild.livecastCount}}</a></td>
+                <td>
+                    <span style="color: red;" *ngIf="guild.lasterCreatedLivecastTime==null;else elseBlock;">没创建过直播</span>
+
+                    <ng-template #elseBlock>
+                        <app-china-datetime-text [value]="guild.lasterCreatedLivecastTime" textColor="red" prefixName="上次直播创建"></app-china-datetime-text>
+                    </ng-template>
+                    
+                </td>
+                <td><app-china-datetime-text [value]="guild.createdDate" prefixName="教会创建"></app-china-datetime-text></td>
+                <td style="word-wrap: normal !important;word-break: normal !important;">
+                    <button *ngIf="guild.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setGuildStatus(guild)" class="p-button-raised p-button-danger"></button>
+                    <button *ngIf="guild.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setGuildStatus(guild)" class="p-button-raised p-button-success"></button>
+                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailGuild(guild)" ></button>
+                </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          In total there are {{totalRecords}} guilds.
+      </div>
+  </ng-template>
+</p-table>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

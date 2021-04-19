@@ -1,0 +1,77 @@
+<p-toast></p-toast>
+<p-table [value]="livecasts" [lazy]="true" (onLazyLoad)="loadCustomers($event)"
+    [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          <h5 class="p-m-0">Livecast Management</h5>
+          <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" [(ngModel)]="data" (keydown)="flushData($event);" placeholder="Search..." />
+          </span>
+      </div>
+  </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="guildId">教会ID <p-sortIcon field="guildId"></p-sortIcon></th>
+          <th>教会名称</th>
+          <th pSortableColumn="livecastId">直播ID <p-sortIcon field="livecastId"></p-sortIcon></th>
+          <th>标题</th>
+          <th pSortableColumn="flux">此直播使用流量 <p-sortIcon field="flux"></p-sortIcon></th>
+          <th>直播文件</th>
+          <th pSortableColumn="beginDate">创建时间 <p-sortIcon field="beginDate"></p-sortIcon></th>
+          <th pSortableColumn="endDate">结束时间 <p-sortIcon field="endDate"></p-sortIcon></th>
+          <th>播放时长</th>
+          <th pSortableColumn="isInLive">直播状态 <p-sortIcon field="isInLive"></p-sortIcon></th>
+          <th pSortableColumn="creatorId">直播创建人ID <p-sortIcon field="creatorId"></p-sortIcon></th>
+          <th pSortableColumn="viewedReceiversCount">已查看人员数量 <p-sortIcon field="viewedReceiversCount"></p-sortIcon></th>
+          <th pSortableColumn="unviewedReceiversCount">未查看人员数量 <p-sortIcon field="unviewedReceiversCount"></p-sortIcon></th>
+          <th style="width: 12rem">
+            <span style="color:red;">操作</span>
+          </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-livecast>
+        <tr>
+          <td>{{livecast.guildId}}</td>
+          <td>{{livecast.guild.displayName}}</td>
+          <td>{{livecast.livecastId}}</td>
+          <td><a style="text-decoration: none;" href="javascript:" tooltipPosition="top" [pTooltip]="livecast.description||'未发布简介'">{{livecast.title}}</a></td>
+          <td>{{livecast.flux<1024?livecast.flux.toFixed(2)+'MB':(livecast.flux/1024).toFixed(2)+'GB'}}</td>
+          <td><a href='javascript:' (click)="openFiles(livecast)" >{{livecast.files.length}}</a></td>
+          <td><app-china-datetime-text [value]="livecast.beginDate" textColor="#21a1f2" prefixName="开始"></app-china-datetime-text></td>
+          <td><app-china-datetime-text [value]="livecast.endDate" textColor="red" prefixName="结束"></app-china-datetime-text></td>              
+          <td>{{(livecast.status!=0&&livecast.status!=1)? (livecast.endDate  |  secondTime : livecast.beginDate):(livecast.status==0?'直播进行中':(livecast.status==1?'直播未开始':''))}}</td>
+          <td [innerHTML]='(livecast.status | dashboardspipe:"livecastStatus")|htmlBuild'></td>
+          <td>{{livecast.creatorId}}</td>
+          <td><a href='javascript:' (click)="openDialog(livecast,0)" >{{livecast.viewedReceiversCount}}</a></td>
+          <td><a href='javascript:' (click)="openDialog(livecast,1)" >{{livecast.unviewedReceiversCount}}</a></td>
+          <td style="word-wrap: normal !important;word-break: normal !important;">
+              <button *ngIf="livecast.status==0" style="margin-right: 1rem;" pButton type="button" label='删除' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-danger"></button>
+              <button *ngIf="livecast.status!=0" style="margin-right: 1rem;" pButton type="button" label='恢复' (click)="setLivecastStatus(livecast)" class="p-button-raised p-button-success"></button>
+              <button *ngIf="livecast.status!=0&&livecast.recordUrl==null;else elseBlock" disabled pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+              <ng-template #elseBlock>
+                  <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-mr-2" (click)="DetailLivecast(livecast)" ></button>
+              </ng-template>
+          </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          In total there are {{totalRecords}} livecasts.
+      </div>
+  </ng-template>
+</p-table>
+
+
+<p-dialog [header]="showLivecast.recordUrl!=null?'录播视频':'直播视频'" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false" (onHide)="onHide(showLivecast)">
+      <app-mp4-video *ngIf="displayModal&&showLivecast.recordUrl!=null" [url]="showLivecast.recordUrl"></app-mp4-video>
+      <app-hls-video *ngIf="displayModal&&showLivecast.recordUrl==null" [url]="showLivecast.hlsPlayUrl"></app-hls-video>
+
+      <!-- <div class="messages" *ngIf="false">
+          <div class="top">
+            <input pInputText type="text" (keydown)="publishMessage(showLivecast,$event)" placeholder="Search..." />
+          </div>
+        
+      </div> -->
+</p-dialog>
