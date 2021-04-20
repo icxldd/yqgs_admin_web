@@ -162,7 +162,7 @@ export class AppComponent {
          ]
       },
       {
-         label:'搜索全部版本',
+         label:'老版本',
          icon:'pi pi-fw pi-calendar',
          items:[
             // {
