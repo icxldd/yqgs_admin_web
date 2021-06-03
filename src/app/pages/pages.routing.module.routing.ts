@@ -31,6 +31,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/dashboards/dashboards.module').then(m => m.DashboardsModule),
     },
     {
+        path: 'basic-data',
+        loadChildren: () => import('./modules/basic-data/basic-data.module').then(m => m.BasicDataModule),
+    },
+    {
         path: 'manual-review',
         loadChildren: () => import('./modules/manual-review/manual-review.module').then(m => m.ManualReviewModule),
     },

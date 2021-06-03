@@ -162,34 +162,19 @@ export class AppComponent {
          ]
       },
       {
+         label:'数据字典',
+         icon:'pi pi-fw pi-calendar',
+         items:[
+            {
+               label:'字典分类',
+               routerLink:'/pages/basic-data/data-category-tree'
+            }
+         ]
+      },
+      {
          label:'老版本',
          icon:'pi pi-fw pi-calendar',
          items:[
-            // {
-            //    label:'Edit',
-            //    icon:'pi pi-fw pi-pencil',
-            //    items:[
-            //       {
-            //          label:'Save',
-            //          icon:'pi pi-fw pi-calendar-plus'
-            //       },
-            //       {
-            //          label:'Delete',
-            //          icon:'pi pi-fw pi-calendar-minus'
-            //       },
-
-            //    ]
-            // },
-            // {
-            //    label:'获取音频视频设备',
-            //    icon:'pi pi-fw pi-calendar-times',
-            //    items:[
-            //       {
-            //          label:'Remove',
-            //          icon:'pi pi-fw pi-calendar-minus'
-            //       }
-            //    ]
-            // }
             {
                label:'教会管理',
                icon:'pi pi-fw pi-home',routerLink:'/pages/dashboards/guild'
