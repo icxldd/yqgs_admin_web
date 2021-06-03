@@ -1,0 +1,13 @@
+export { TestService } from './services/test.service';
+export { StorageService } from './services/storage.service';
+export { SpaadminService } from './services/spaadmin.service';
+export { SecurityService } from './services/security.service';
+export { WellKnownService } from './services/well-known.service';
+export { PromotionService } from './services/promotion.service';
+export { PeopleService } from './services/people.service';
+export { OrganizationService } from './services/organization.service';
+export { BasicdataService } from './services/basicdata.service';
+export { ModuleService } from './services/module.service';
+export { AdminService } from './services/admin.service';
+export { AccountService } from './services/account.service';
+export { AuthService } from './services/auth.service';
