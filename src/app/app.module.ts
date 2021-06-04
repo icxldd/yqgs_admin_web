@@ -89,6 +89,7 @@ import { HtmlBuildPipe } from './pages/modules/pipes/html-build.pipe';
 import { GuildLivecastDialogComponent } from './pages/modules/common/guild-livecast-dialog/guild-livecast-dialog.component';
 import { LivecastLazyComponent } from './pages/modules/dashboards/livecast-lazy/livecast-lazy.component';
 import { GuildLazyComponent } from './pages/modules/dashboards/guild-lazy/guild-lazy.component';
+
 const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -123,8 +124,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         StoreDevtoolsModule.instrument(),
         CommonmModule,
         MatProgressBarModule,
-        AccordionModule,
-        
+        AccordionModule
     ],
     providers: [
         httpInterceptorProviders,

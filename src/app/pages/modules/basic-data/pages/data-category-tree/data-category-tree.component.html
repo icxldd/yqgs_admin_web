@@ -1,3 +1,9 @@
-<p>
-  data-category-tree works!
-</p>
+<div id="box">
+  <app-basic-list [data]="currentDataSource" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
+
+
+  <div class="trees">
+    <app-basic-list *ngFor="let treeItem of childrenTrees" [data]="treeItem" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
+
+  </div>
+</div>

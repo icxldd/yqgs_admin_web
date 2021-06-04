@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="tree_container">
+    <div class="tree">
+      <div class="tree_header">
+        <mat-card>管理字典分类第({{data[0].level}})层</mat-card>
+        <div class="call-container">
+          <!-- <i nz-icon nzType="plus" nzTheme="outline"></i>
+          <i nz-icon nzType="minus" nzTheme="outline"></i>
+          <i nz-icon nzType="up" nzTheme="outline"></i>
+          <i nz-icon nzType="down" nzTheme="outline"></i> -->
+        </div>
+      </div>
+      <div class="tree_body">
+        <div [class.actived]="currentSelectDto==null?false:currentSelectDto.id==item.id" class="tree-box" matRipple *ngFor="let item of data" tooltipPosition="top"
+          [pTooltip]="item.description==null?'没有备注':item.description" tooltipZIndex="99999" (click)="treeClick(item);">
+          <span>
+            {{item.name}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

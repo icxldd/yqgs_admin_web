@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { liveDto } from './dto/live';
-import videojs from 'video.js'
 import Player from 'xgplayer'
 import HlsPlayer from 'xgplayer-hls'
 import { LiveService } from './services/live.service';

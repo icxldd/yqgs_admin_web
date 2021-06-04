@@ -21,6 +21,8 @@ class BlocDataDictionaryTreeService extends __BaseService {
   static readonly BlocDataDictionaryTreeGetPath = '/api/bloc/bloc-data-dictionary-tree/{id}';
   static readonly BlocDataDictionaryTreeDeletePath = '/api/bloc/bloc-data-dictionary-tree/{id}';
   static readonly BlocDataDictionaryTreeGetTreesPath = '/api/bloc/bloc-data-dictionary-tree/trees';
+  static readonly BlocDataDictionaryTreeMoveUpPath = '/api/bloc/bloc-data-dictionary-tree/move-up';
+  static readonly BlocDataDictionaryTreeMoveDownPath = '/api/bloc/bloc-data-dictionary-tree/move-down';
   static readonly BlocDataDictionaryTreeMoveToBeforePath = '/api/bloc/bloc-data-dictionary-tree/{id}/move-to-before/{beforeId}';
   static readonly BlocDataDictionaryTreeMoveToPath = '/api/bloc/bloc-data-dictionary-tree/move-to';
   static readonly BlocDataDictionaryTreeRegeneratePath = '/api/bloc/bloc-data-dictionary-tree/regenerate';
@@ -199,6 +201,74 @@ class BlocDataDictionaryTreeService extends __BaseService {
    */
   BlocDataDictionaryTreeGetTrees(ParentId?: null | string): __Observable<Array<DataDictionaryTreeDto>> {
     return this.BlocDataDictionaryTreeGetTreesResponse(ParentId).pipe(
+      __map(_r => _r.body as Array<DataDictionaryTreeDto>)
+    );
+  }
+
+  /**
+   * @param dto undefined
+   */
+  BlocDataDictionaryTreeMoveUpResponse(dto: DataDictionaryTreeDto): __Observable<__StrictHttpResponse<Array<DataDictionaryTreeDto>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = dto;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/bloc/bloc-data-dictionary-tree/move-up`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<DataDictionaryTreeDto>>;
+      })
+    );
+  }
+  /**
+   * @param dto undefined
+   */
+  BlocDataDictionaryTreeMoveUp(dto: DataDictionaryTreeDto): __Observable<Array<DataDictionaryTreeDto>> {
+    return this.BlocDataDictionaryTreeMoveUpResponse(dto).pipe(
+      __map(_r => _r.body as Array<DataDictionaryTreeDto>)
+    );
+  }
+
+  /**
+   * @param dto undefined
+   */
+  BlocDataDictionaryTreeMoveDownResponse(dto: DataDictionaryTreeDto): __Observable<__StrictHttpResponse<Array<DataDictionaryTreeDto>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = dto;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/bloc/bloc-data-dictionary-tree/move-down`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<DataDictionaryTreeDto>>;
+      })
+    );
+  }
+  /**
+   * @param dto undefined
+   */
+  BlocDataDictionaryTreeMoveDown(dto: DataDictionaryTreeDto): __Observable<Array<DataDictionaryTreeDto>> {
+    return this.BlocDataDictionaryTreeMoveDownResponse(dto).pipe(
       __map(_r => _r.body as Array<DataDictionaryTreeDto>)
     );
   }

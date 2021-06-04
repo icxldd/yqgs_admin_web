@@ -5,6 +5,7 @@ export interface DataDictionaryTreeDto extends FullAuditedEntityDtoOfGuid{
   code?: string;
   description?: string;
   fullName?: string;
+  index: number;
   level: number;
   name?: string;
   parentId?: string;
