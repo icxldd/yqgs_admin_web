@@ -1,18 +1,23 @@
-<div class="container">
+<div class="container" *ngIf="data.length != 0 || currentLevel == 1">
   <div class="tree_container">
     <div class="tree">
       <div class="tree_header">
-        <mat-card>管理字典分类第({{data[0].level}})层</mat-card>
-        <div class="call-container">
-          <!-- <i nz-icon nzType="plus" nzTheme="outline"></i>
-          <i nz-icon nzType="minus" nzTheme="outline"></i>
-          <i nz-icon nzType="up" nzTheme="outline"></i>
-          <i nz-icon nzType="down" nzTheme="outline"></i> -->
-        </div>
+        <mat-card>
+          <span style="width: 133px;    display: inline-block;">
+            第({{currentLevel}})层分类
+          </span>
+          <div class="call-container">
+            <i class="pi pi-plus" (click)="addChild();"></i>
+            <i class="pi pi-times" (click)="removeChild_();"></i>
+            <i class="pi pi-angle-up" (click)="upChild();"></i>
+            <i class="pi pi-angle-down" (click)="downChild();"></i>
+          </div>
+        </mat-card>
       </div>
       <div class="tree_body">
-        <div [class.actived]="currentSelectDto==null?false:currentSelectDto.id==item.id" class="tree-box" matRipple *ngFor="let item of data" tooltipPosition="top"
-          [pTooltip]="item.description==null?'没有备注':item.description" tooltipZIndex="99999" (click)="treeClick(item);">
+        <div [class.actived]="currentSelectDto==null?false:currentSelectDto.id==item.id" class="tree-box" matRipple
+          *ngFor="let item of data" tooltipPosition="top" [pTooltip]="item.description==null?'没有备注':item.description"
+          tooltipZIndex="99999" (click)="treeClick($event,item);" (dblclick)="doubleClick(item);">
           <span>
             {{item.name}}
           </span>

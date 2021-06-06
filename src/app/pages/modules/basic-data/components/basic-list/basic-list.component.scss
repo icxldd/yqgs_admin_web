@@ -36,6 +36,16 @@
     overflow: hidden;
   }
 
+  .call-container{
+    display: inline-block;
+    position: relative;
+    left: 30%;
+
+    i{
+      margin: 0px 5px;
+      cursor: pointer;
+    }
+  }
   // .tree-box:last-child {
   //   border: none;
   // }

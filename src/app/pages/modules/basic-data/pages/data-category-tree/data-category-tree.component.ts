@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataDictionaryTreeDto } from '@app/api/ddd-api/models';
 import { BlocDataDictionaryTreeService } from '@app/api/ddd-api/services';
 import { MenuItem } from 'primeng/api';
@@ -24,6 +24,16 @@ export class DataCategoryTreeComponent implements OnInit {
 
   childrenTrees: DataDictionaryTreeDto[][] = [];
   flatten(arr) { return [].concat(...arr.map(x => Array.isArray(x) ? this.flatten(x) : x)) }
+
+  removeClick(dto: DataDictionaryTreeDto) {
+    let level = dto.level;
+    if (level == 1) {
+      this.childrenTrees = [];
+    }
+    else {
+      this.childrenTrees.length = level - 1;
+    }
+  }
   TreeClick(dto: DataDictionaryTreeDto) {
     let currentLevel = dto.level;
     let saveLayer = currentLevel - 1;
@@ -39,4 +49,5 @@ export class DataCategoryTreeComponent implements OnInit {
       }
     }
   }
+
 }

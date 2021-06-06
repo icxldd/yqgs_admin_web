@@ -1,9 +1,9 @@
 <div id="box">
-  <app-basic-list [data]="currentDataSource" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
+  <app-basic-list (removeClick)="removeClick($event);" currentLevel="1" [data]="currentDataSource" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
 
 
   <div class="trees">
-    <app-basic-list *ngFor="let treeItem of childrenTrees" [data]="treeItem" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
+    <app-basic-list (removeClick)="removeClick($event);" [currentLevel]="i+2" *ngFor="let treeItem of childrenTrees index as i" [data]="treeItem" [currentSelectDto]="currentSelectDto" (TreeClick)="TreeClick($event);"></app-basic-list>
 
   </div>
 </div>
