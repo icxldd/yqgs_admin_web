@@ -45,7 +45,7 @@ import { FeatureModule } from '@app/feature/feature.module';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 
-
+import {TreeModule} from 'primeng/tree';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MatCardModule } from '@angular/material/card';
 import {MatRippleModule} from '@angular/material/core';
@@ -60,7 +60,7 @@ import {MatRippleModule} from '@angular/material/core';
     TableModule,
     DialogModule,
     PasswordModule,
-    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, FormsModule, BreadcrumbModule, MatCardModule,MatRippleModule
+    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, FormsModule, BreadcrumbModule, MatCardModule,MatRippleModule,TreeModule
   ],
   declarations: [NetworkUnitPipe, CommonComponent, TextAreaComponent, PieChartComponent, BasicAreaComponent, MultiAreaComponent, HlsVideoComponent, Mp4VideoComponent, ChinaDatetimeTextComponent, ShowTimePipe, ChinaTimePipe, InputSearchComponent],
   exports: [
@@ -71,7 +71,7 @@ import {MatRippleModule} from '@angular/material/core';
     DialogModule,
     PasswordModule,
     FormsModule,
-    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, BreadcrumbModule, MatCardModule,MatRippleModule
+    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, BreadcrumbModule, MatCardModule,MatRippleModule,TreeModule
   ]
 })
 export class CommonmModule { }

@@ -10,6 +10,7 @@ import { map as __map, filter as __filter } from 'rxjs/operators';
 import { DataDictionaryDto } from '../models/data-dictionary-dto';
 import { DataDictionaryCreateOrUpdate } from '../models/data-dictionary-create-or-update';
 import { PagedResultDtoOfDataDictionaryDto } from '../models/paged-result-dto-of-data-dictionary-dto';
+import { GetAllDataDto } from '../models/get-all-data-dto';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,6 +20,7 @@ class BlocDataDictionaryService extends __BaseService {
   static readonly BlocDataDictionaryUpdatePath = '/api/bloc/bloc-data-dictionary/{id}';
   static readonly BlocDataDictionaryDeletePath = '/api/bloc/bloc-data-dictionary/{id}';
   static readonly BlocDataDictionaryGetPath = '/api/bloc/bloc-data-dictionary/{id}';
+  static readonly BlocDataDictionaryGetAllDataPath = '/api/bloc/bloc-data-dictionary/data';
 
   constructor(
     config: __Configuration,
@@ -221,6 +223,59 @@ class BlocDataDictionaryService extends __BaseService {
       __map(_r => _r.body as DataDictionaryDto)
     );
   }
+
+  /**
+   * @param params The `BlocDataDictionaryService.BlocDataDictionaryGetAllDataParams` containing the following parameters:
+   *
+   * - `take`:
+   *
+   * - `skip`:
+   *
+   * - `name`:
+   *
+   * - `categoryId`:
+   */
+  BlocDataDictionaryGetAllDataResponse(params: BlocDataDictionaryService.BlocDataDictionaryGetAllDataParams): __Observable<__StrictHttpResponse<GetAllDataDto>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (params.take != null) __params = __params.set('take', params.take.toString());
+    if (params.skip != null) __params = __params.set('skip', params.skip.toString());
+    if (params.name != null) __params = __params.set('name', params.name.toString());
+    if (params.categoryId != null) __params = __params.set('categoryId', params.categoryId.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/bloc/bloc-data-dictionary/data`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<GetAllDataDto>;
+      })
+    );
+  }
+  /**
+   * @param params The `BlocDataDictionaryService.BlocDataDictionaryGetAllDataParams` containing the following parameters:
+   *
+   * - `take`:
+   *
+   * - `skip`:
+   *
+   * - `name`:
+   *
+   * - `categoryId`:
+   */
+  BlocDataDictionaryGetAllData(params: BlocDataDictionaryService.BlocDataDictionaryGetAllDataParams): __Observable<GetAllDataDto> {
+    return this.BlocDataDictionaryGetAllDataResponse(params).pipe(
+      __map(_r => _r.body as GetAllDataDto)
+    );
+  }
 }
 
 module BlocDataDictionaryService {
@@ -245,6 +300,16 @@ module BlocDataDictionaryService {
   export interface BlocDataDictionaryUpdateParams {
     input: DataDictionaryCreateOrUpdate;
     id: string;
+  }
+
+  /**
+   * Parameters for BlocDataDictionaryGetAllData
+   */
+  export interface BlocDataDictionaryGetAllDataParams {
+    take?: number;
+    skip?: number;
+    name?: null | string;
+    categoryId?: null | string;
   }
 }
 

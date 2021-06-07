@@ -1,3 +1,43 @@
-<p>
-  data-dictionary works!
-</p>
+<app-dictionary-tree (nodeClick)="nodeClick($event);"></app-dictionary-tree>
+<div class="right">
+  <h1>当前分类： {{name}}</h1>
+  <div class="table">
+    <p-toast></p-toast>
+    <!-- <mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar> -->
+    <div class="card">
+      <p-table [value]="dataDictionarys" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [paginator]="true"
+        [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+        <ng-template pTemplate="caption">
+          <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Data Management</h5>
+            <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" [(ngModel)]="searchName" (keydown)="flushData($event);"
+                placeholder="Search..." />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Key</th>
+            <th>名字</th>
+            <th>描述</th>
+            <th>内容类型</th>
+            <th>内容</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dictionary>
+          <tr>
+            <td>{{dictionary.id}}</td>
+            <td>{{dictionary.key}}</td>
+            <td>{{dictionary.name}}</td>
+            <td>{{dictionary.description}}</td>
+            <td>{{Convert(dictionary.eContentType)}}</td>
+            <td>{{dictionary.content}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

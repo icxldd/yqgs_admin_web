@@ -1,8 +1,10 @@
 /* tslint:disable */
 import { EContentType } from './econtent-type';
 export interface DataDictionaryCreateOrUpdate {
-  categoryName?: string;
+  categoryId: string;
   content?: string;
-  dataDictionaryName?: string;
+  description?: string;
   eContentType: EContentType;
+  key?: string;
+  name?: string;
 }
