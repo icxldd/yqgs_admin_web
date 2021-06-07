@@ -63,7 +63,9 @@ export class BasicListComponent implements OnInit {
       contentStyle: { "max-height": "700px", "overflow": "auto" },
       baseZIndex: 10000
     }).onClose.subscribe((x: DataDictionaryTreeDto) => {
-
+      if(!x){
+        return;
+      }
       if (this.currentSelectDto) {
         let index = this.data.findIndex(x => x.id == this.currentSelectDto.id);
         if (!this.data[index].children) {
