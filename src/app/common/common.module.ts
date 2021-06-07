@@ -45,9 +45,7 @@ import { FeatureModule } from '@app/feature/feature.module';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 
-import { ApiModule as dddApi } from '@app/api/ddd-api/api.module';
-import { ApiModule as grpcApi } from '@app/api/grpc-api/api.module';
-import { environment } from 'src/environments/environment';
+
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MatCardModule } from '@angular/material/card';
 import {MatRippleModule} from '@angular/material/core';
@@ -62,8 +60,7 @@ import {MatRippleModule} from '@angular/material/core';
     TableModule,
     DialogModule,
     PasswordModule,
-    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, FormsModule, dddApi.forRoot({ rootUrl: environment.APIURL }),
-    grpcApi.forRoot({ rootUrl: environment.APIURL }), BreadcrumbModule, MatCardModule,MatRippleModule
+    MenubarModule, MenuModule, ToastModule, CalendarModule, SliderModule, MultiSelectModule, ContextMenuModule, DropdownModule, ProgressBarModule, FileUploadModule, ToolbarModule, RatingModule, RadioButtonModule, InputNumberModule, ConfirmDialogModule, InputTextareaModule, LiveModule, MatToolbarModule, PanelModule, ManualReviewModule, DynamicDialogModule, WebrtcModule, SidebarModule, FeatureModule, CardModule, FormsModule, BreadcrumbModule, MatCardModule,MatRippleModule
   ],
   declarations: [NetworkUnitPipe, CommonComponent, TextAreaComponent, PieChartComponent, BasicAreaComponent, MultiAreaComponent, HlsVideoComponent, Mp4VideoComponent, ChinaDatetimeTextComponent, ShowTimePipe, ChinaTimePipe, InputSearchComponent],
   exports: [

@@ -90,6 +90,11 @@ import { GuildLivecastDialogComponent } from './pages/modules/common/guild-livec
 import { LivecastLazyComponent } from './pages/modules/dashboards/livecast-lazy/livecast-lazy.component';
 import { GuildLazyComponent } from './pages/modules/dashboards/guild-lazy/guild-lazy.component';
 
+
+import { ApiModule as dddApi } from '@app/api/ddd-api/api.module';
+import { ApiModule as grpcApi } from '@app/api/grpc-api/api.module';
+import { environment } from 'src/environments/environment';
+
 const config: SocketIoConfig = { url: 'https://192.168.31.114:3001', options: {} };
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -124,7 +129,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         StoreDevtoolsModule.instrument(),
         CommonmModule,
         MatProgressBarModule,
-        AccordionModule
+        AccordionModule, dddApi.forRoot({ rootUrl: environment.APIURL }),
+        grpcApi.forRoot({ rootUrl: environment.APIURL })
     ],
     providers: [
         httpInterceptorProviders,
