@@ -5,11 +5,12 @@ import { BasicDataRoutingModule } from './basic-data.routing';
 import { BasicListComponent } from './components/basic-list/basic-list.component';
 import { CommonmModule } from '@app/common/common.module';
 import { BasicListAddEditComponent } from './components/basic-list-add-edit/basic-list-add-edit.component';
+import { DataDictionaryComponent } from './pages/data-dictionary/data-dictionary.component';
 
 @NgModule({
   imports: [
     CommonModule,BasicDataRoutingModule,CommonmModule
   ],
-  declarations: [DataCategoryTreeComponent,BasicListComponent,BasicListAddEditComponent]
+  declarations: [DataCategoryTreeComponent,BasicListComponent,BasicListAddEditComponent,DataDictionaryComponent]
 })
 export class BasicDataModule { }

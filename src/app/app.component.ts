@@ -168,6 +168,10 @@ export class AppComponent {
             {
                label:'字典分类',
                routerLink:'/pages/basic-data/data-category-tree'
+            },
+            {
+               label:'数据字典',
+               routerLink:'/pages/basic-data/data-dictionary'
             }
          ]
       },
