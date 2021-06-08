@@ -6,7 +6,7 @@
     <!-- <mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar> -->
     <div class="card">
       <p-table [value]="dataDictionarys" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [paginator]="true"
-        [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+        [rows]="5" [(selection)]="selectedDataDictionarys" [totalRecords]="totalRecords" [loading]="loading">
         <ng-template pTemplate="caption">
           <div class="p-d-flex p-ai-center p-jc-between">
             <h5 class="p-m-0">Data Management</h5>
@@ -15,28 +15,49 @@
               <input pInputText type="text" [(ngModel)]="searchName" (keydown)="flushData($event);"
                 placeholder="Search..." />
             </span>
+            <div class="HandleContainer" style="display: inline-block;
+            position: relative;
+            top: 9px;
+            left: 2rem;">
+              <button pButton type="button" label="添加" (click)="add();"></button>
+              <button pButton type="button" label="编辑" (click)="edit();"></button>
+              <button pButton type="button" label="删除" class="p-button-danger" (click)="remove();"></button>
+            </div>
           </div>
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
+            <th style="width: 3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
             <th>ID</th>
             <th>Key</th>
             <th>名字</th>
             <th>描述</th>
             <th>内容类型</th>
             <th>内容</th>
+            <th>创建时间</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-dictionary>
           <tr>
+            <td>
+              <p-tableCheckbox [value]="dictionary"></p-tableCheckbox>
+            </td>
             <td>{{dictionary.id}}</td>
             <td>{{dictionary.key}}</td>
             <td>{{dictionary.name}}</td>
             <td>{{dictionary.description}}</td>
             <td>{{Convert(dictionary.eContentType)}}</td>
             <td>{{dictionary.content}}</td>
+            <td>{{dictionary.creationTime | chinatime2}}</td>
           </tr>
         </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="p-d-flex p-ai-center p-jc-between">
+              In total there are {{totalRecords}} data.
+          </div>
+      </ng-template>
       </p-table>
     </div>
   </div>

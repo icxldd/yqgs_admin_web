@@ -7,11 +7,13 @@ import { CommonmModule } from '@app/common/common.module';
 import { BasicListAddEditComponent } from './components/basic-list-add-edit/basic-list-add-edit.component';
 import { DataDictionaryComponent } from './pages/data-dictionary/data-dictionary.component';
 import { DictionaryTreeComponent } from './components/dictionary-tree/dictionary-tree.component';
+import { DataDictionaryEditComponent } from './components/data-dictionary-edit/data-dictionary-edit.component';
+import { ChinaTime2Pipe } from './pipes/china-time2.pipe';
 
 @NgModule({
   imports: [
     CommonModule,BasicDataRoutingModule,CommonmModule
   ],
-  declarations: [DataCategoryTreeComponent,BasicListComponent,BasicListAddEditComponent,DataDictionaryComponent,DictionaryTreeComponent]
+  declarations: [DataCategoryTreeComponent,BasicListComponent,BasicListAddEditComponent,DataDictionaryComponent,DictionaryTreeComponent,DataDictionaryEditComponent,ChinaTime2Pipe]
 })
 export class BasicDataModule { }

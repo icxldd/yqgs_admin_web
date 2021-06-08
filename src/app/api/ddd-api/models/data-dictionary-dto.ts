@@ -4,7 +4,7 @@ import { DataDictionaryTreeDto } from './data-dictionary-tree-dto';
 import { EContentType } from './econtent-type';
 export interface DataDictionaryDto extends FullAuditedEntityDtoOfGuid{
   categoryDto?: DataDictionaryTreeDto;
-  categoryId: string;
+  categoryId?: string;
   content?: string;
   description?: string;
   eContentType: EContentType;
