@@ -1,22 +1,31 @@
 <div class="fromContainer">
   <div class="fromLeft">
     <h5 class="mustRequired">Key：</h5>
-    <input type="text" pInputText [(ngModel)]="dto.key"> 
-  
+    <input type="text" pInputText [(ngModel)]="dto.key">
+
     <h5 class="mustRequired">名字：</h5>
-    <input type="text" pInputText [(ngModel)]="dto.name"> 
+    <input type="text" pInputText [(ngModel)]="dto.name">
   </div>
-  <div class="fromRight" >
+  <div class="fromRight">
     <h5 class="mustRequired">内容类型：</h5>
     <p-dropdown [options]="types" [(ngModel)]="selectedtype" optionLabel="name"></p-dropdown>
     <!-- <input type="text" pInputText [(ngModel)]="dto.eContentType">  -->
-  
-    <h5 class="mustRequired">内容：</h5>
-    <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="dto.content"></textarea>
+
+
+    <div *ngIf="selectedtype.code!=2">
+      <h5 class="mustRequired">内容：</h5>
+      <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="dto.content"></textarea>
+    </div>
+
+    <div *ngIf="selectedtype.code==2">
+      <app-rich-html [content]="dto.content"></app-rich-html>
+    </div>
+
+
   </div>
 
   <h5>描述：</h5>
-  <input type="text" pInputText [(ngModel)]="dto.description"> 
+  <input type="text" pInputText [(ngModel)]="dto.description">
   <br />
   <p-button label="提交" (click)="submit();"></p-button>
 </div>

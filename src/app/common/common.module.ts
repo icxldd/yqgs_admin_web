@@ -51,7 +51,6 @@ import { MatCardModule } from '@angular/material/card';
 import {MatRippleModule} from '@angular/material/core';
 
 
-
 @NgModule({
   imports: [
     CommonModule, TooltipModule,
